@@ -62,8 +62,21 @@ class __AuthPageState extends State<AuthPage> {
                   )
                 : Container(),
             const Spacer(),
-            Center(child: Text(AppText.enText['social-login'])
-                )
+            Center(child: Text(AppText.enText['social-login']!,
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.normal,
+              color: Colors.grey.shade500,
+            ),
+            ),
+            ),
+            Config.spaceSmall,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: const <Widget> [
+                AuthenSocialButton.
+              ],
+            )
           ],
         ),
       ),
