@@ -11,16 +11,29 @@ class SocialButton extends StatelessWidget {
     Config().init(context);
     return OutlinedButton(
       style: OutlinedButton.styleFrom(
-        padding: EdgeInsets.symmetric(vertical: 15),
+        padding: const EdgeInsets.symmetric(vertical: 15),
         side: const BorderSide(width: 1, color: Colors.black),
       ),
-      onPressed: () {},
+onPressed: () {},
       child: SizedBox(
         width: Config.widthSize * 0.4,
-        child: <Widget>[
-          
-        ],
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            Image.asset(
+              'assets/$social.png',
+              width: 40,
+              height: 40,
+            ),
+            Text(
+              social.toUpperCase(),
+              style: const TextStyle(
+                color: Colors.black,
+              ),
+            ),
+          ],
+        ),
       ),
-    )
+    );
   }
 }

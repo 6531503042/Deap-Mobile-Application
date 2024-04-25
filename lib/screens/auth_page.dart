@@ -1,6 +1,7 @@
 import 'package:dentist_appointment/utils/text.dart';
 import 'package:flutter/material.dart';
 import 'package:dentist_appointment/utils/config.dart';
+import 'package:dentist_appointment/components/social_button.dart';
 import 'package:flutter/widgets.dart';
 
 class AuthPage extends StatefulWidget {
@@ -22,13 +23,13 @@ class __AuthPageState extends State<AuthPage> {
         vertical: 15,
       ),
       child: SafeArea(
-            child: Column(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(
               AppText.enText['welcome_text']!,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 36,
                 fontWeight: FontWeight.bold,
               ),
@@ -62,25 +63,26 @@ class __AuthPageState extends State<AuthPage> {
                   )
                 : Container(),
             const Spacer(),
-            Center(child: Text(AppText.enText['social-login']!,
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.normal,
-              color: Colors.grey.shade500,
-            ),
-            ),
+            Center(
+              child: Text(
+                AppText.enText['social-login']!,
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.normal,
+                  color: Colors.grey.shade500,
+                ),
+              ),
             ),
             Config.spaceSmall,
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: const <Widget> [
-                AuthenSocialButton.
+              children: const <Widget>[
+                socialButton(social: 'gogole'),
               ],
             )
           ],
         ),
       ),
-    )
-      );
+    ));
   }
 }
