@@ -46,6 +46,13 @@ class MyApp extends StatelessWidget {
 
         // For Main Layout after Login
         'main': (context) => MainLayout(),
+
+        //Appointment Page
+        'appointments': (context) => AppointmentPage(),
+
+        //Sucessful Appointment Leading Page
+
+        'success-lead': (context) => AppointmentBooked(),
       },
     );
   }

@@ -1,42 +1,34 @@
-// ignore: depend_on_referenced_packages
 import 'package:dentist_appointment/utils/text.dart';
 import 'package:flutter/material.dart';
+import 'package:dentist_appointment/utils/config.dart';
+import 'package:flutter/widgets.dart';
 
 class AuthPage extends StatefulWidget {
-  const AuthPage({Key? key}) : super(key: key);
+  const AuthPage({super.key});
 
   @override
-  State<AuthPage> createState() => _AuthPageState();
+  State<AuthPage> createState() => __AuthPageState();
 }
 
-class _AuthPageState extends State<AuthPage> {
+class __AuthPageState extends State<AuthPage> {
+  bool isSignIn = true;
   @override
   Widget build(BuildContext context) {
+    Config().init(context);
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizoimport 'package:flutter/material.dart';
-
-class AuthPage extends StatefulWidget {
-  const AuthPage({Key? key}) : super(key: key);
-
-  @override
-  State<AuthPage> createState() => _AuthPageState();
-}
-
-class _AuthPageState extends State<AuthPage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-        child: SafeArea(
+        body: Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 15,
+        vertical: 15,
+      ),
+      child: SafeArea(
             child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget> [
+          children: <Widget>[
             Text(
               AppText.enText['welcome_text']!,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 36,
                 fontWeight: FontWeight.bold,
               ),
@@ -44,32 +36,38 @@ class _AuthPageState extends State<AuthPage> {
             Config.spaceSmall,
             Text(
               isSignIn
-            )
-          ],
-        )),
-      ),
-    );
-  }
-}ntal: 15, vertical: 15),
-        child: SafeArea(
-            child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget> [
-            Text(
-              AppText.enText['welcome_text']!,
+                  ? AppText.enText['signin_text']!
+                  : AppText.enText['register_text']!,
               style: const TextStyle(
-                fontSize: 36,
+                fontSize: 16,
                 fontWeight: FontWeight.bold,
               ),
             ),
             Config.spaceSmall,
-            Text(
-              isSignIn
-            )
+            isSignIn ? LoginForm() : SignUpForm(),
+            Config.spaceSmall,
+            isSignIn
+                ? Center(
+                    child: TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        AppText.enText['forgot-password']!,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                  )
+                : Container(),
+            const Spacer(),
+            Center(child: Text(AppText.enText['social-login'])
+                )
           ],
-        )),
+        ),
       ),
-    );
+    )
+      );
   }
 }
