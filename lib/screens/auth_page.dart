@@ -74,10 +74,42 @@ class __AuthPageState extends State<AuthPage> {
               ),
             ),
             Config.spaceSmall,
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: const <Widget>[
-                socialButton(social: 'gogole'),
+              children: <Widget>[
+                SocialButton(social: 'gogole'),
+                SocialButton(social: 'facebook'),
+              ],
+            ),
+            Config.spaceSmall,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  isSignIn
+                      ? AppText.enText['signUp_text']!
+                      : AppText.enText['registered_text']!,
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.normal,
+                    color: Colors.grey.shade500,
+                  ),
+                ),
+                TextButton(
+                  onPressed: () {
+                    setState(() {
+                      isSignIn = !isSignIn;
+                    });
+                  },
+                  child: Text(
+                    isSignIn ? 'Sign Up': 'Sign In',
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
+                )
               ],
             )
           ],
