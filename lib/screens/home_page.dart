@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -66,7 +65,9 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.blue,
+        selectedItemColor: Color.fromARGB(255, 110, 197, 238),
+        unselectedItemColor: Colors.grey,
+        backgroundColor: Colors.white,
         onTap: _onItemTapped,
       ),
     );
@@ -76,21 +77,11 @@ class _HomePageState extends State<HomePage> {
 class HomeTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return SingleChildScrollView(
         child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        Text(
-          'Clinic Dentist',
-          style: TextStyle(fontSize: 18),
-        ),
-        SizedBox(height: 32),
-        ElevatedButton(
-          onPressed: () {
-            // Add functionality for booking an appointment
-          },
-          child: Text('Book your appointment'),
-        ),
+        Image.asset('assets/Banner Animate.png'),
         SizedBox(height: 16),
         Text(
           'STI Problems?',
