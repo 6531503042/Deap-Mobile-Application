@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -47,44 +48,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'Clinic Dentist',
-              style: TextStyle(fontSize: 18),
-            ),
-            SizedBox(height: 32),
-            ElevatedButton(
-              onPressed: () {
-                // Add functionality for booking an appointment
-              },
-              child: Text('Book your appointment'),
-            ),
-            SizedBox(height: 16),
-            Text(
-              'STI Problems?',
-              style: TextStyle(fontSize: 18),
-            ),
-            SizedBox(height: 8),
-            Text(
-              'Find suitable specialists here',
-              style: TextStyle(fontSize: 14),
-            ),
-            SizedBox(height: 16),
-            Wrap(
-              spacing: 8,
-              runSpacing: 8,
-              children: <Widget>[
-                _buildDoctorCard('Dr. Praa', 4.5),
-                _buildDoctorCard('Dr. Bellamy R', 4.5),
-                _buildDoctorCard('Dr. Klimisch J', 4.5),
-              ],
-            ),
-          ],
-        ),
-      ),
+      body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -112,7 +76,8 @@ class _HomePageState extends State<HomePage> {
 class HomeTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Center(
+        child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Text(
@@ -126,8 +91,28 @@ class HomeTab extends StatelessWidget {
           },
           child: Text('Book your appointment'),
         ),
+        SizedBox(height: 16),
+        Text(
+          'STI Problems?',
+          style: TextStyle(fontSize: 18),
+        ),
+        SizedBox(height: 8),
+        Text(
+          'Find suitable specialists here',
+          style: TextStyle(fontSize: 14),
+        ),
+        SizedBox(height: 16),
+        Wrap(
+          spacing: 8,
+          runSpacing: 8,
+          children: <Widget>[
+            _buildDoctorCard('Dr. Praa', 4.5),
+            _buildDoctorCard('Dr. Bellamy R', 4.5),
+            _buildDoctorCard('Dr. Klimisch J', 4.5),
+          ],
+        ),
       ],
-    );
+    ));
   }
 }
 
