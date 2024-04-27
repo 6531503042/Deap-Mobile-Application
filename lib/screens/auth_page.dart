@@ -1,23 +1,23 @@
 import 'package:dentist_appointment/components/login_form.dart';
 import 'package:dentist_appointment/components/sign_up_form.dart';
+import 'package:dentist_appointment/components/social_button.dart';
+import 'package:dentist_appointment/utils/config.dart';
 import 'package:dentist_appointment/utils/text.dart';
 import 'package:flutter/material.dart';
-import 'package:dentist_appointment/utils/config.dart';
-import 'package:dentist_appointment/components/social_button.dart';
-import 'package:flutter/widgets.dart';
 
 class AuthPage extends StatefulWidget {
   const AuthPage({Key? key}) : super(key: key);
 
   @override
-  State<AuthPage> createState() => __AuthPageState();
+  State<AuthPage> createState() => _AuthPageState();
 }
 
-class __AuthPageState extends State<AuthPage> {
+class _AuthPageState extends State<AuthPage> {
   bool isSignIn = true;
   @override
   Widget build(BuildContext context) {
     Config().init(context);
+    //build login text field
     return Scaffold(
         body: Padding(
       padding: const EdgeInsets.symmetric(
@@ -39,7 +39,7 @@ class __AuthPageState extends State<AuthPage> {
             Config.spaceSmall,
             Text(
               isSignIn
-                  ? AppText.enText['signin_text']!
+                  ? AppText.enText['signIn_text']!
                   : AppText.enText['register_text']!,
               style: const TextStyle(
                 fontSize: 16,
@@ -47,9 +47,10 @@ class __AuthPageState extends State<AuthPage> {
               ),
             ),
             Config.spaceSmall,
-            const LoginForm(),
+            isSignIn ? LoginForm() :
             Config.spaceSmall,
-            Center(
+            isSignIn
+                ? Center(
                     child: TextButton(
                       onPressed: () {},
                       child: Text(
@@ -61,8 +62,8 @@ class __AuthPageState extends State<AuthPage> {
                         ),
                       ),
                     ),
-            ),
-            Container(),
+                  )
+                : Container(),
             const Spacer(),
             Center(
               child: Text(
@@ -75,10 +76,10 @@ class __AuthPageState extends State<AuthPage> {
               ),
             ),
             Config.spaceSmall,
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                SocialButton(social: 'gogole'),
+              children: const <Widget>[
+                SocialButton(social: 'google'),
                 SocialButton(social: 'facebook'),
               ],
             ),
@@ -103,7 +104,7 @@ class __AuthPageState extends State<AuthPage> {
                     });
                   },
                   child: Text(
-                    isSignIn ? 'Sign Up': 'Sign In',
+                    isSignIn ? 'Sign Up' : 'Sign In',
                     style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,

@@ -62,3 +62,4 @@ class _MainLayoutState extends State<MainLayout> {
 class AppointmentPage {
   const AppointmentPage();
 }
+
