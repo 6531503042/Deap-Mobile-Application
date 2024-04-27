@@ -1,22 +1,56 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int _selectedIndex = 0;
+
+  static final List<Widget> _widgetOptions = <Widget>[
+    HomeTab(),
+    AppointmentTab(),
+    DoctorTab(),
+    ProfileTab(),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    var widget;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Dental Appointment'),
+        title: Text('Welcome,Username'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.notifications),
+            onPressed: () {
+              // Add functionality for notifications
+            },
+          ),
+          IconButton(
+            icon: Icon(Icons.calendar_today),
+            onPressed: () {
+              // Add functionality for calendar
+            },
+          ),
+          IconButton(
+            icon: Icon(Icons.settings),
+            onPressed: () {
+              // Add functionality for settings
+            },
+          ),
+        ],
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'Welcome,${widget.userName}',
-              style: TextStyle(fontSize: 24),
-            ),
-            SizedBox(height: 16),
             Text(
               'Clinic Dentist',
               style: TextStyle(fontSize: 18),
@@ -51,36 +85,105 @@ class HomePage extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
-
-  Widget _buildDoctorCard(String name, double rating) {
-    return Card(
-      child: InkWell(
-        splashColor: Colors.blue.withAlpha(30),
-        onTap: () {
-          // Add functionality for viewing doctor's profile
-        },
-        child: Container(
-          width: 150,
-          height: 100,
-          padding: EdgeInsets.all(8),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text(
-                name,
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-              ),
-              Text(
-                '${rating.toStringAsFixed(1)} (135 reviews)',
-                style: TextStyle(fontSize: 14),
-              ),
-            ],
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
           ),
-        ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.calendar_today),
+            label: 'Appointment',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.medical_services),
+            label: 'Doctor',
+          ),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.blue,
+        onTap: _onItemTapped,
       ),
     );
   }
+}
+
+class HomeTab extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Text(
+          'Clinic Dentist',
+          style: TextStyle(fontSize: 18),
+        ),
+        SizedBox(height: 32),
+        ElevatedButton(
+          onPressed: () {
+            // Add functionality for booking an appointment
+          },
+          child: Text('Book your appointment'),
+        ),
+      ],
+    );
+  }
+}
+
+class AppointmentTab extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Text('Appointment'),
+    );
+  }
+}
+
+class DoctorTab extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Text('Doctor'),
+    );
+  }
+}
+
+class ProfileTab extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Text('Profile'),
+    );
+  }
+}
+
+Widget _buildDoctorCard(String name, double rating) {
+  return Card(
+    child: InkWell(
+      splashColor: Colors.blue.withAlpha(30),
+      onTap: () {
+        // Add functionality for viewing doctor's profile
+      },
+      child: Container(
+        width: 150,
+        height: 100,
+        padding: EdgeInsets.all(8),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text(
+              name,
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+            Text(
+              '${rating.toStringAsFixed(1)} (135 reviews)',
+              style: TextStyle(fontSize: 14),
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
 }
