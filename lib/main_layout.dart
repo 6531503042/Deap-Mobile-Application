@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class MainLayout extends StatefulWidget {
-  const MainLayout({super.key});
+  const MainLayout({Key? key}) : super(key: key);
 
   @override
   State<MainLayout> createState() => _MainLayoutState();
@@ -23,12 +23,6 @@ class _MainLayoutState extends State<MainLayout> {
             currentPage = value;
           });
         }),
-        children: <Widget>[
-          const HomePage(),
-          FavPage(),
-          const AppointmentPage(),
-          ProfilePage(),
-        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentPage,
@@ -48,12 +42,12 @@ class _MainLayoutState extends State<MainLayout> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: FaIcon(FontAwesomeIcons.solidHeart),
-            label: 'Favorite',
-          ),
-          BottomNavigationBarItem(
             icon: FaIcon(FontAwesomeIcons.solidCalendarCheck),
             label: 'Appointments',
+          ),
+          BottomNavigationBarItem(
+            icon: FaIcon(FontAwesomeIcons.solidHospital),
+            label: 'Doctors',
           ),
           BottomNavigationBarItem(
             icon: FaIcon(FontAwesomeIcons.solidUser),

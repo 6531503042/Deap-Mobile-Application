@@ -1,0 +1,1 @@
+ /Users/bricksocoolxd/IdeaProjects/dentist_appointment/.dart_tool/flutter_build/149948563be0714e75f741f3b5892ef4/native_assets.yaml: 

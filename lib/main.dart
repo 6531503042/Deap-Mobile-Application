@@ -1,3 +1,5 @@
+import 'package:dentist_appointment/main_layout.dart';
+import 'package:dentist_appointment/screens/auth_page.dart' show AuthPage;
 import 'package:flutter/material.dart';
 import 'package:dentist_appointment/utils/config.dart';
 
@@ -45,14 +47,14 @@ class MyApp extends StatelessWidget {
         '/': (context) => const AuthPage(),
 
         // For Main Layout after Login
-        'main': (context) => MainLayout(),
+        'main': (context) => const MainLayout(),
 
-        //Appointment Page
-        'appointments': (context) => AppointmentPage(),
+        // //Appointment Page
+        // 'appointments': (context) => const AppointmentPage(),
 
-        //Sucessful Appointment Leading Page
+        // //Sucessful Appointment Leading Page
 
-        'success-lead': (context) => AppointmentBooked(),
+        // 'success-lead': (context) => const AppointmentBooked(),
       },
     );
   }

@@ -1,3 +1,5 @@
+import 'package:dentist_appointment/components/login_form.dart';
+import 'package:dentist_appointment/components/sign_up_form.dart';
 import 'package:dentist_appointment/utils/text.dart';
 import 'package:flutter/material.dart';
 import 'package:dentist_appointment/utils/config.dart';
@@ -5,7 +7,7 @@ import 'package:dentist_appointment/components/social_button.dart';
 import 'package:flutter/widgets.dart';
 
 class AuthPage extends StatefulWidget {
-  const AuthPage({super.key});
+  const AuthPage({Key? key}) : super(key: key);
 
   @override
   State<AuthPage> createState() => __AuthPageState();
@@ -45,10 +47,9 @@ class __AuthPageState extends State<AuthPage> {
               ),
             ),
             Config.spaceSmall,
-            isSignIn ? LoginForm() : SignUpForm(),
+            const LoginForm(),
             Config.spaceSmall,
-            isSignIn
-                ? Center(
+            Center(
                     child: TextButton(
                       onPressed: () {},
                       child: Text(
@@ -60,8 +61,8 @@ class __AuthPageState extends State<AuthPage> {
                         ),
                       ),
                     ),
-                  )
-                : Container(),
+            ),
+            Container(),
             const Spacer(),
             Center(
               child: Text(
