@@ -39,6 +39,14 @@ class _EditProfileUIState extends State<ProfileTab> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Profile'),
+        leading: IconButton(
+          icon: Icon(
+              Icons.arrow_back), // Example of using an icon as leading widget
+          onPressed: () {
+            // Add functionality for the leading icon/button
+            Navigator.pop(context);
+          },
+        ),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 16.0),

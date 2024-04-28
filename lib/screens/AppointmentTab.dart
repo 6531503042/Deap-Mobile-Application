@@ -38,6 +38,13 @@ class _AppointmentTabState extends State<AppointmentTab> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Booking Calendar'),
+       leading: IconButton(
+          icon: Icon(Icons.arrow_back), // Example of using an icon as leading widget
+          onPressed: () {
+            // Add functionality for the leading icon/button
+            Navigator.pop(context);
+          },
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(
