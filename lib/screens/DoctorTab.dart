@@ -58,17 +58,7 @@ class _DentistPageState extends State<DoctorTab> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Doctors'),
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            try {
-              Navigator.pop(context); // Navigate back to the previous screen
-            } catch (e) {
-              print("Error navigating back: $e");
-            }
-          },
-
-        ),
+        
       ),
       body: Column(
         children: [

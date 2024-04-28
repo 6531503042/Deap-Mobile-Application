@@ -39,15 +39,6 @@ class _EditProfileUIState extends State<ProfileTab> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Profile'),
-        leading: ModalRoute.of(context)!.settings.name != '/home' ? IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => HomePage()),
-            );
-          },
-        ) : null,
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 16.0),
