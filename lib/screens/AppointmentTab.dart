@@ -48,7 +48,7 @@ class _AppointState extends State<AppointmentTab> {
                   selectedDate = newDate;
                 });
               },
-              lastDate: DateTime.now(),
+              lastDate: DateTime.now().add(Duration(days: 30)), // Adjust here for the number of days in advance
             ),
             // Text to display selected date
             Text(
@@ -69,8 +69,8 @@ class _AppointState extends State<AppointmentTab> {
                   child: Text(time),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: selectedTime == time
-                        ? Color.fromARGB(255, 60, 242, 203)
-                        : Colors.grey,
+                        ? Color.white,
+                        : Color.fromARGB(255, 60, 242, 203),
                   ),
                 );
               }).toList(),
