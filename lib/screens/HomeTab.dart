@@ -1,84 +1,4 @@
-import 'package:dentist_appointment/screens/AppointmentTab.dart';
-import 'package:dentist_appointment/screens/DoctorTab.dart';
-import 'package:dentist_appointment/screens/ProfileTab.dart';
 import 'package:flutter/material.dart';
-
-class HomePage extends StatefulWidget {
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  int _selectedIndex = 0;
-
-  static final List<Widget> _widgetOptions = <Widget>[
-    HomeTab(),
-    AppointmentTab(),
-    DoctorTab(),
-    ProfileTab(),
-  ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Welcome,Username',
-          style: TextStyle(fontSize: 18),
-        ),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.notifications),
-            onPressed: () {
-              // Add functionality for notifications
-            },
-          ),
-          IconButton(
-            icon: Icon(Icons.calendar_today),
-            onPressed: () {
-              // Add functionality for calendar
-            },
-          ),
-          IconButton(
-            icon: Icon(Icons.settings),
-            onPressed: () {
-              // Add functionality for settings
-            },
-          ),
-        ],
-      ),
-      body: _widgetOptions.elementAt(_selectedIndex),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_today),
-            label: 'Appointment',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.medical_services),
-            label: 'Doctor',
-          ),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Color.fromARGB(255, 110, 197, 238),
-        unselectedItemColor: Colors.grey,
-        backgroundColor: Colors.white,
-        onTap: _onItemTapped,
-      ),
-    );
-  }
-}
 
 class HomeTab extends StatelessWidget {
   @override
@@ -152,9 +72,6 @@ class HomeTab extends StatelessWidget {
     ));
   }
 }
-
-
-
 
 Widget _buildDoctorCard(String name, double rating) {
   return Card(
