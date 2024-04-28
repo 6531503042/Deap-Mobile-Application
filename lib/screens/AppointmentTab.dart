@@ -69,7 +69,7 @@ class _AppointState extends State<AppointmentTab> {
                   child: Text(time),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: selectedTime == time
-                        ? Color.white,
+                        ? Color.fromARGB(255, 255, 255, 255)
                         : Color.fromARGB(255, 60, 242, 203),
                   ),
                 );
