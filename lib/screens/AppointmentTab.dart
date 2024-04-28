@@ -11,6 +11,7 @@ class AppointmentTab extends StatefulWidget {
 class _AppointmentTabState extends State<AppointmentTab> {
   DateTime selectedDate = DateTime.now();
   String selectedTime = "";
+  String selectedDoctor = "";
 
   final List<String> availableTimes = [
     "09:00 AM",
@@ -38,13 +39,6 @@ class _AppointmentTabState extends State<AppointmentTab> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Booking Calendar'),
-       leading: IconButton(
-          icon: Icon(Icons.arrow_back), // Example of using an icon as leading widget
-          onPressed: () {
-            // Add functionality for the leading icon/button
-            Navigator.pop(context);
-          },
-        ),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -97,6 +91,7 @@ class _AppointmentTabState extends State<AppointmentTab> {
                       builder: (context) => AppointmentConfirmationPage(
                         selectedDate: selectedDate,
                         selectedTime: selectedTime,
+                        selectedDoctor: selectedDoctor, // Pass selected doctor
                       ),
                     ),
                   );
