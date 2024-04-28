@@ -1,7 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:dentist_appointment/screens/AppointmentTab.dart';
 import 'package:dentist_appointment/screens/DoctorTab.dart';
 import 'package:dentist_appointment/screens/ProfileTab.dart';
-import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -10,49 +10,59 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
+  bool _showHeader = true;
 
-  static final List<Widget> _widgetOptions = <Widget>[
-    HomeTab(),
-    AppointmentTab(),
-    DoctorTab(),
-    ProfileTab(),
-  ];
+  late List<Widget> _widgetOptions;
+
+  @override
+  void initState() {
+    super.initState();
+    _widgetOptions = [
+      HomeTab(showHeader: _showHeader),
+      AppointmentTab(),
+      DoctorTab(),
+      ProfileTab(),
+    ];
+  }
 
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
+      _showHeader = index == 0;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Welcome,Username',
-          style: TextStyle(fontSize: 18),
-        ),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.notifications),
-            onPressed: () {
-              // Add functionality for notifications
-            },
-          ),
-          IconButton(
-            icon: Icon(Icons.calendar_today),
-            onPressed: () {
-              // Add functionality for calendar
-            },
-          ),
-          IconButton(
-            icon: Icon(Icons.settings),
-            onPressed: () {
-              // Add functionality for settings
-            },
-          ),
-        ],
-      ),
+      appBar: _showHeader
+          ? AppBar(
+              title: Text(
+                'Welcome,Username',
+                style: TextStyle(fontSize: 18),
+              ),
+              actions: <Widget>[
+                IconButton(
+                  icon: Icon(Icons.notifications),
+                  onPressed: () {
+                    // Add functionality for notifications
+                  },
+                ),
+                IconButton(
+                  icon: Icon(Icons.calendar_today),
+                  onPressed: () {
+                    // Add functionality for calendar
+                  },
+                ),
+                IconButton(
+                  icon: Icon(Icons.settings),
+                  onPressed: () {
+                    // Add functionality for settings
+                  },
+                ),
+              ],
+            )
+          : null,
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
@@ -81,13 +91,17 @@ class _HomePageState extends State<HomePage> {
 }
 
 class HomeTab extends StatelessWidget {
+  final bool showHeader;
+
+  const HomeTab({Key? key, required this.showHeader}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
         child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        Image.asset('assets/Banner Animate.png'),
+        if (showHeader) Image.asset('assets/Banner Animate.png'),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -152,9 +166,6 @@ class HomeTab extends StatelessWidget {
     ));
   }
 }
-
-
-
 
 Widget _buildDoctorCard(String name, double rating) {
   return Card(
