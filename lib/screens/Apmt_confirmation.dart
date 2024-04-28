@@ -63,6 +63,12 @@ class AppointmentConfirmationPage extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          // Add image (logo) here
+                          Image.asset(
+                            'assets/', // Replace 'logo.png' with your image path
+                            height: 100, // Adjust height as needed
+                          ),
+                          SizedBox(height: 16),
                           Text('Your appointment with $selectedDoctor is confirmed for'),
                           Text(
                             '${DateFormat.MMMM().format(selectedDate)} ${selectedDate.day}, ${selectedDate.year}, at $selectedTime .',
