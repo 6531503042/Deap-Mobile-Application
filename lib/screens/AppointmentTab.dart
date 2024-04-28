@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:dentist_appointment/screens/Apmt_confirmation.dart'; // Importing the appointment_confirmation_page.dart file
 
 class AppointmentTab extends StatefulWidget {
+  const AppointmentTab({super.key});
+
   @override
-  _AppointState createState() => _AppointState();
+  _AppointmentTabState createState() => _AppointmentTabState();
 }
 
-class _AppointState extends State<AppointmentTab> {
+class _AppointmentTabState extends State<AppointmentTab> {
   DateTime selectedDate = DateTime.now();
   String selectedTime = "";
 
@@ -69,20 +72,27 @@ class _AppointState extends State<AppointmentTab> {
                   child: Text(time),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: selectedTime == time
-                        ? Color.fromARGB(255, 255, 255, 255)
+                        ? Color.fromARGB(255, 142, 142, 142)
                         : Color.fromARGB(255, 60, 242, 203),
                   ),
                 );
               }).toList(),
             ),
             SizedBox(height: 10.0),
-            // Button to confirm booking (replace with your booking logic)
+            // Button to confirm booking
             ElevatedButton(
               onPressed: () {
                 if (selectedTime.isNotEmpty) {
-                  // Handle booking logic here
-                  print(
-                      'Booking confirmed for ${selectedDate.toIso8601String()} at $selectedTime');
+                  // Navigate to the AppointmentConfirmationPage with selected date and time
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => AppointmentConfirmationPage(
+                        selectedDate: selectedDate,
+                        selectedTime: selectedTime,
+                      ),
+                    ),
+                  );
                 } else {
                   // Show a message if no time is selected
                   ScaffoldMessenger.of(context).showSnackBar(
