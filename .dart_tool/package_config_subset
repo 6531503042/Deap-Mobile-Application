@@ -98,6 +98,10 @@ image_picker_windows
 2.19
 file:///Users/bricksocoolxd/.pub-cache/hosted/pub.dev/image_picker_windows-0.2.1+1/
 file:///Users/bricksocoolxd/.pub-cache/hosted/pub.dev/image_picker_windows-0.2.1+1/lib/
+intl
+2.12
+file:///Users/bricksocoolxd/.pub-cache/hosted/pub.dev/intl-0.17.0/
+file:///Users/bricksocoolxd/.pub-cache/hosted/pub.dev/intl-0.17.0/lib/
 leak_tracker
 3.1
 file:///Users/bricksocoolxd/.pub-cache/hosted/pub.dev/leak_tracker-10.0.0/
@@ -142,6 +146,14 @@ source_span
 2.18
 file:///Users/bricksocoolxd/.pub-cache/hosted/pub.dev/source_span-1.10.0/
 file:///Users/bricksocoolxd/.pub-cache/hosted/pub.dev/source_span-1.10.0/lib/
+sqflite
+3.3
+file:///Users/bricksocoolxd/.pub-cache/hosted/pub.dev/sqflite-2.3.3/
+file:///Users/bricksocoolxd/.pub-cache/hosted/pub.dev/sqflite-2.3.3/lib/
+sqflite_common
+3.3
+file:///Users/bricksocoolxd/.pub-cache/hosted/pub.dev/sqflite_common-2.5.4/
+file:///Users/bricksocoolxd/.pub-cache/hosted/pub.dev/sqflite_common-2.5.4/lib/
 stack_trace
 2.18
 file:///Users/bricksocoolxd/.pub-cache/hosted/pub.dev/stack_trace-1.11.1/
@@ -154,6 +166,10 @@ string_scanner
 2.18
 file:///Users/bricksocoolxd/.pub-cache/hosted/pub.dev/string_scanner-1.2.0/
 file:///Users/bricksocoolxd/.pub-cache/hosted/pub.dev/string_scanner-1.2.0/lib/
+synchronized
+3.0
+file:///Users/bricksocoolxd/.pub-cache/hosted/pub.dev/synchronized-3.1.0+1/
+file:///Users/bricksocoolxd/.pub-cache/hosted/pub.dev/synchronized-3.1.0+1/lib/
 term_glyph
 2.12
 file:///Users/bricksocoolxd/.pub-cache/hosted/pub.dev/term_glyph-1.2.1/
@@ -180,8 +196,8 @@ file:///Users/bricksocoolxd/.pub-cache/hosted/pub.dev/web-0.5.1/
 file:///Users/bricksocoolxd/.pub-cache/hosted/pub.dev/web-0.5.1/lib/
 dentist_appointment
 3.3
-file:///Users/bricksocoolxd/IdeaProjects/dentist_appointment/
-file:///Users/bricksocoolxd/IdeaProjects/dentist_appointment/lib/
+file:///Users/bricksocoolxd/IdeaProjects/Flutter-Ajarn-B/
+file:///Users/bricksocoolxd/IdeaProjects/Flutter-Ajarn-B/lib/
 sky_engine
 3.2
 file:///opt/homebrew/Caskroom/flutter/3.16.7/flutter/bin/cache/pkg/sky_engine/
