@@ -15,8 +15,8 @@ class HomeTab extends StatelessWidget {
               width: 320, // Set the width here
               height: 64,
               decoration: BoxDecoration(
-                color: Color.fromARGB(255, 234, 233, 233),
-                border: Border.all(color: Color.fromARGB(255, 183, 183, 183)),
+                color: Color.fromARGB(255, 255, 255, 255),
+                border: Border.all(color: Color.fromARGB(255, 178, 178, 178)),
                 borderRadius: BorderRadius.circular(16),
               ),
               padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
@@ -42,7 +42,7 @@ class HomeTab extends StatelessWidget {
                       borderRadius: BorderRadius.circular(16),
                     ),
                     child: IconButton(
-                      icon: Icon(Icons.arrow_forward, color: Colors.black),
+                      icon: Icon(Icons.arrow_forward, color: Color.fromARGB(255, 203, 203, 203)),
                       onPressed: () {
                         // Add functionality for the arrow button
                       },
