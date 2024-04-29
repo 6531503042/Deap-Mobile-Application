@@ -157,7 +157,7 @@ class HomeTab extends StatelessWidget {
           ),
           SizedBox(height: 15),
           Padding(
-            padding: const EdgeInsets.only(left: 53.0),
+            padding: const EdgeInsets.only(right: 200.0),
             child: Text(
               'Popular dentist',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),

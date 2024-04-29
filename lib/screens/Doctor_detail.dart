@@ -4,6 +4,7 @@ class DoctorDetailPage extends StatelessWidget {
   final String name;
   final double rating;
   final String imagePath;
+  
 
   const DoctorDetailPage({
     Key? key,
@@ -22,9 +23,10 @@ class DoctorDetailPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Image.asset(imagePath), 
             Text(name),
             Text('Rating: $rating'),
-            Image.asset(imagePath),
+            
             // Add more details or widgets as needed
           ],
         ),
