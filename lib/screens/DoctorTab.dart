@@ -14,49 +14,49 @@ class _DentistPageState extends State<DoctorTab> {
       'rating': 4.5,
       'reviews': 135,
       'type': 'Dentist',
-      'assets' : 'assets/doctor1.png'
+      'assets': 'assets/doctor1.png'
     },
     {
       'name': 'Dr. Mensah T',
       'rating': 4.3,
       'reviews': 130,
       'type': 'Dentist',
-      'assets' : 'assets/doctor2.png'
+      'assets': 'assets/doctor2.png'
     },
     {
       'name': 'Dr. Klimisch J',
       'rating': 4.5,
       'reviews': 135,
       'type': 'Dentist',
-      'assets' : 'assets/doctor3.png'
+      'assets': 'assets/doctor3.png'
     },
     {
       'name': 'Dr. Martinez K',
       'rating': 4.3,
       'reviews': 130,
       'type': 'Dentist',
-      'assets' : 'assets/doctor4.png'
+      'assets': 'assets/doctor4.png'
     },
     {
       'name': 'Dr. Marc M',
       'rating': 4.3,
       'reviews': 130,
       'type': 'Dentist',
-      'assets' : 'assets/doctor5.png'
+      'assets': 'assets/doctor5.png'
     },
     {
       'name': 'Dr. O\'Boyle J',
       'rating': 4.5,
       'reviews': 135,
       'type': 'Dentist',
-      'assets' : 'assets/doctor6.png'
+      'assets': 'assets/doctor6.png'
     },
     {
       'name': 'Dr. Bellamy R',
       'rating': 4.5,
       'reviews': 135,
       'type': 'Dentist',
-      'assets' : "assets/doctor8.png"
+      'assets': "assets/doctor8.png"
     },
   ];
 
@@ -68,82 +68,128 @@ class _DentistPageState extends State<DoctorTab> {
       appBar: AppBar(
         title: Text('Doctors'),
         leading: IconButton(
-          icon: Icon(
-              Icons.arrow_back), // Example of using an icon as leading widget
+          icon: Icon(Icons.arrow_back),
           onPressed: () {
-            // Add functionality for the leading icon/button
-            Navigator.pop(context);
+            try {
+              Navigator.pop(context);
+            } catch (e) {
+              print("Error navigating back: $e");
+            }
           },
         ),
       ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: TextField(
-              controller: _searchController,
-              decoration: InputDecoration(
-                labelText: 'Search',
-                hintText: 'Enter a dentist name',
-                prefixIcon: Icon(Icons.search),
-                border: OutlineInputBorder(),
-              ),
-              onChanged: (value) {
-                setState(() {});
-              },
-            ),
-          ),
-          Expanded(
-            child: GridView.count(
-              crossAxisCount: 2,
-              children: _dentists.map((dentist) {
-                final name = dentist['name'];
-                final rating = dentist['rating'];
-                final type = dentist['type'];
-
-                return _buildDoctorCard(name, rating, type);
-              }).toList(),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-Widget _buildDoctorCard(String name, double rating, String assets) {
-  return Card(
-    child: InkWell(
-      splashColor: Colors.blue.withAlpha(30),
-      onTap: () {
-        // Add functionality for viewing doctor's profile
-      },
-      child: Container(
-        width: 150,
-        height: 150,
-        padding: EdgeInsets.all(8),
+      body: Padding(
+        padding: EdgeInsets.all(16.0), // Add padding to create space from edge
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Image.asset(
-              assets, // Use the correct asset path
-              width: 50,
-              height: 50,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(
+                      10.0), // Adjust border radius as needed
+                  color: Colors.grey[200], // Background color of box
+                ),
+                child: TextField(
+                  controller: _searchController,
+                  decoration: InputDecoration(
+                    labelText: 'Search for doctors',
+                    hintText: 'Enter a dentist name',
+                    prefixIcon: Icon(Icons.search),
+                    border: InputBorder.none, // Remove the border line
+                    contentPadding:
+                        EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
+                  ),
+                  onChanged: (value) {
+                    setState(() {});
+                  },
+                ),
+              ),
             ),
-            SizedBox(height: 8),
-            Text(
-              name,
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            ),
-            Text(
-              '${rating.toStringAsFixed(1)} (135 reviews)',
-              style: TextStyle(fontSize: 14),
+            SizedBox(height: 16),
+            Expanded(
+              child: GridView.count(
+                crossAxisCount: 2,
+                mainAxisSpacing: 20, // Add this line
+                crossAxisSpacing: 20, // Add this line
+                children: _dentists.map((dentist) {
+                  final name = dentist['name'];
+                  final rating = dentist['rating'];
+                  final type = dentist['type'];
+                  final assets = dentist['assets'];
+
+                  return _buildDoctorCard(name, rating, type, assets);
+                }).toList(),
+              ),
             ),
           ],
         ),
       ),
-    ),
-  );
-}
+    );
+  }
 
+
+
+
+  Widget _buildDoctorCard(
+      String name, double rating, String type, String assets) {
+    return Container(
+    
+      child: Card(
+        child: InkWell(
+          splashColor: Colors.blue.withAlpha(30),
+          onTap: () {
+            // Add functionality for viewing doctor's profile
+          },
+          child: Container(
+             decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              boxShadow: [
+                BoxShadow(
+                  color: Color.fromARGB(255, 255, 255, 255).withOpacity(0.5), // Shadow color
+                  spreadRadius: 5, // Spread radius
+                  blurRadius: 3, // Blur radius
+                  offset: Offset(0, 3), // Offset
+                ),
+              ],
+            ),
+            width: 150,
+            height: 150,
+            padding: EdgeInsets.all(8),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Expanded(
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: 1, // Assuming 3 images for each doctor
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                        child: Image.asset(
+                          assets, // Use the provided imagePath
+                          width: 50,
+                          height: 50,
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                SizedBox(height: 8),
+                Text(
+                  name,
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  '${rating.toStringAsFixed(1)} (135 reviews)',
+                  style: TextStyle(fontSize: 14),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
