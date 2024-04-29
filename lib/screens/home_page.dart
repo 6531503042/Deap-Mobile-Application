@@ -100,92 +100,92 @@ class HomeTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-        child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        if (showHeader) Image.asset('assets/Banner Animate.png'),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Container(
-              width: 320, // Set the width here
-              height: 84,
-              padding: EdgeInsets.all(13),
-              decoration: BoxDecoration(
-                color: Color.fromRGBO(100, 100, 100,
-                    0.05), // Adjust the opacity here (0.5 for 50% opacity)
-                border: Border.all(
-                    color: Color.fromRGBO(100, 100, 100,
-                        0.05)), // Adjust the border color opacity
-                borderRadius: BorderRadius.circular(16),
-              ),
-
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'STI Problems?',
-                        style: TextStyle(
-                            fontSize: 17, fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(height: 5),
-                      Text(
-                        'Find suitable specialists here',
-                        style: TextStyle(
-                            fontSize: 15,
-                            color: Color.fromRGBO(165, 157, 157, 1)),
-                      ),
-                    ],
-                  ),
-                  DecoratedBox(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(16),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          if (showHeader) Image.asset('assets/Banner Animate.png'),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Container(
+                width: 320,
+                height: 84,
+                padding: EdgeInsets.all(13),
+                decoration: BoxDecoration(
+                  color: Color.fromRGBO(100, 100, 100, 0.05),
+                  border:
+                      Border.all(color: Color.fromRGBO(100, 100, 100, 0.05)),
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'STI Problems?',
+                          style: TextStyle(
+                              fontSize: 17, fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(height: 5),
+                        Text(
+                          'Find suitable specialists here',
+                          style: TextStyle(
+                              fontSize: 15,
+                              color: Color.fromRGBO(165, 157, 157, 1)),
+                        ),
+                      ],
                     ),
-                    child: IconButton(
-                      icon: Icon(Icons.arrow_forward, color: Colors.black),
-                      onPressed: () {
-                        // Add functionality for the arrow button
-                      },
+                    DecoratedBox(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: IconButton(
+                        icon: Icon(Icons.arrow_forward, color: Colors.black),
+                        onPressed: () {
+                          // Add functionality for the arrow button
+                        },
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
+            ],
+          ),
+          SizedBox(height: 15),
+          Padding(
+            padding: const EdgeInsets.only(left: 53.0),
+            child: Text(
+              'Popular dentist',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
             ),
-          ],
-        ),
-        SizedBox(height: 15),
-        Row(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 53.0),
-              child: Text(
-                'Popular dentist',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
-              ),
+          ),
+          SizedBox(height: 18),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: <Widget>[
+                SizedBox(width: 8),
+                _buildDoctorCard(
+                    'Dr. Praa', 4.5, 'assets/doctor1.png', 'assets/star.png'),
+                SizedBox(width: 8),
+                _buildDoctorCard('Dr. Bellamy R', 4.5, 'assets/doctor8.png',
+                    'assets/star.png'),
+                SizedBox(width: 8),
+                _buildDoctorCard('Dr. Klimisch J', 4.5, 'assets/doctor3.png',
+                    'assets/star.png'),
+                SizedBox(width: 8),
+              ],
             ),
-          ],
-        ),
-        SizedBox(height: 18),
-        Wrap(
-          spacing: 8,
-          runSpacing: 8,
-          children: <Widget>[
-            _buildDoctorCard(
-                'Dr. Praa', 4.5, 'assets/doctor1.png', 'assets/star.png'),
-            _buildDoctorCard(
-                'Dr. Bellamy R', 4.5, 'assets/doctor8.png', 'assets/star.png'),
-            _buildDoctorCard(
-                'Dr. Klimisch J', 4.5, 'assets/doctor3.png', 'assets/star.png'),
-          ],
-        ),
-      ],
-    ));
+          ),
+        ],
+      ),
+    );
   }
 }
+
 
 Widget _buildDoctorCard(
     String name, double rating, String imagePath, String imagePath2) {
@@ -197,8 +197,8 @@ Widget _buildDoctorCard(
         // Add functionality for viewing doctor's profile
       },
       child: Container(
-        width: 150,
-        height: 150,
+        width: 160,
+        height: 160,
         padding: EdgeInsets.all(13),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
