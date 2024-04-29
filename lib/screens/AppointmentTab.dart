@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:dentist_appointment/screens/Apmt_confirmation.dart'; // Importing the appointment_confirmation_page.dart file
 
 class AppointmentTab extends StatefulWidget {
-  const AppointmentTab({super.key});
+  const AppointmentTab({Key? key}) : super(key: key);
 
   @override
   _AppointmentTabState createState() => _AppointmentTabState();
@@ -54,10 +55,25 @@ class _AppointmentTabState extends State<AppointmentTab> {
               },
               lastDate: DateTime.now().add(Duration(days: 30)), // Adjust here for the number of days in advance
             ),
-            // Text to display selected date
-            Text(
-              'Selected Date: ${selectedDate.toIso8601String()}',
-              style: TextStyle(fontSize: 16.0),
+            SizedBox(height: 10.0),
+            // Beautifully styled date display
+            Container(
+              padding: EdgeInsets.all(16.0),
+              decoration: BoxDecoration(
+                color: Color.fromARGB(255, 103, 223, 213),
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.calendar_today),
+                  SizedBox(width: 10.0),
+                  Text(
+                    '${DateFormat.yMMMMd().format(selectedDate)}',
+                    style: TextStyle(fontSize: 18.0),
+                  ),
+                ],
+              ),
             ),
             SizedBox(height: 10.0),
             // List of available times

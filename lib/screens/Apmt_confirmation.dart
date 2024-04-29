@@ -61,11 +61,11 @@ class AppointmentConfirmationPage extends StatelessWidget {
                       title: Text('Congratulations!'),
                       content: Column(
                         mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center, // Center content horizontally
                         children: [
                           // Add image (logo) here
                           Image.asset(
-                            'assets/', // Replace 'logo.png' with your image path
+                            'assets/verify.png',
                             height: 100, // Adjust height as needed
                           ),
                           SizedBox(height: 16),
