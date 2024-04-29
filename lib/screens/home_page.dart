@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:dentist_appointment/screens/AppointmentTab.dart';
 import 'package:dentist_appointment/screens/DoctorTab.dart';
@@ -38,7 +40,7 @@ class _HomePageState extends State<HomePage> {
       appBar: _showHeader
           ? AppBar(
               title: Text(
-                'Welcome,Username',
+                'Welcome, Username', // Must be user model not set name to display
                 style: TextStyle(fontSize: 18),
               ),
               actions: <Widget>[
@@ -107,13 +109,17 @@ class HomeTab extends StatelessWidget {
           children: <Widget>[
             Container(
               width: 320, // Set the width here
-              height: 64,
+              height: 84,
+              padding: EdgeInsets.all(13),
               decoration: BoxDecoration(
-                color: Color.fromARGB(255, 234, 233, 233),
-                border: Border.all(color: Color.fromARGB(255, 183, 183, 183)),
+                color: Color.fromRGBO(100, 100, 100,
+                    0.05), // Adjust the opacity here (0.5 for 50% opacity)
+                border: Border.all(
+                    color: Color.fromRGBO(100, 100, 100,
+                        0.05)), // Adjust the border color opacity
                 borderRadius: BorderRadius.circular(16),
               ),
-              padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -122,11 +128,15 @@ class HomeTab extends StatelessWidget {
                     children: [
                       Text(
                         'STI Problems?',
-                        style: TextStyle(fontSize: 16),
+                        style: TextStyle(
+                            fontSize: 17, fontWeight: FontWeight.bold),
                       ),
+                      SizedBox(height: 5),
                       Text(
                         'Find suitable specialists here',
-                        style: TextStyle(fontSize: 10),
+                        style: TextStyle(
+                            fontSize: 15,
+                            color: Color.fromRGBO(165, 157, 157, 1)),
                       ),
                     ],
                   ),
@@ -147,19 +157,29 @@ class HomeTab extends StatelessWidget {
             ),
           ],
         ),
-        SizedBox(height: 8),
-        Text(
-          'Popular dentist',
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        SizedBox(height: 15),
+        Row(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 53.0),
+              child: Text(
+                'Popular dentist',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
+              ),
+            ),
+          ],
         ),
-        SizedBox(height: 16),
+        SizedBox(height: 18),
         Wrap(
           spacing: 8,
           runSpacing: 8,
           children: <Widget>[
-            _buildDoctorCard('Dr. Praa', 4.5, 'assets/doctor1.png'),
-            _buildDoctorCard('Dr. Bellamy R', 4.5,'assets/doctor8.png'),
-            _buildDoctorCard('Dr. Klimisch J', 4.5,'assets/doctor3.png'),
+            _buildDoctorCard(
+                'Dr. Praa', 4.5, 'assets/doctor1.png', 'assets/star.png'),
+            _buildDoctorCard(
+                'Dr. Bellamy R', 4.5, 'assets/doctor8.png', 'assets/star.png'),
+            _buildDoctorCard(
+                'Dr. Klimisch J', 4.5, 'assets/doctor3.png', 'assets/star.png'),
           ],
         ),
       ],
@@ -167,46 +187,61 @@ class HomeTab extends StatelessWidget {
   }
 }
 
-Widget _buildDoctorCard(String name, double rating, String imagePath) {
+Widget _buildDoctorCard(
+    String name, double rating, String imagePath, String imagePath2) {
   return Card(
+    elevation: 2, // Add elevation for a shadow effect
     child: InkWell(
-      splashColor: Colors.blue.withAlpha(30),
+      splashColor: Colors.green.shade200.withAlpha(30),
       onTap: () {
         // Add functionality for viewing doctor's profile
       },
       child: Container(
         width: 150,
         height: 150,
-        padding: EdgeInsets.all(8),
+        padding: EdgeInsets.all(13),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            // Use a ListView.builder to cycle through images
-            Expanded(
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: 1, // Assuming 3 images for each doctor
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                    child: Image.asset(
-                      imagePath, // Use the provided imagePath
-                      width: 50,
-                      height: 50,
-                    ),
-                  );
-                },
+            // Image
+            Padding(
+              padding: const EdgeInsets.only(bottom: 10.0),
+              child: Image.asset(
+                imagePath, // Use the provided imagePath
+                width: 50,
+                height: 50,
               ),
             ),
-            SizedBox(height: 8),
+
+            // Doctor's name
             Text(
               name,
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+              ),
             ),
-            Text(
-              '${rating.toStringAsFixed(1)} (135 reviews)',
-              style: TextStyle(fontSize: 14),
+            SizedBox(height: 10),
+            // Star rating sentence
+            RichText(
+              text: TextSpan(
+                children: [
+                  WidgetSpan(
+                    child: Image.asset(
+                      imagePath2, // Use the provided imagePath2 for the star image
+                      width: 16,
+                      height: 16,
+                    ),
+                  ),
+                  TextSpan(
+                    text: '${rating.toStringAsFixed(1)} (135 reviews)',
+                    style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                        color: Color.fromARGB(255, 143, 139, 139)),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
