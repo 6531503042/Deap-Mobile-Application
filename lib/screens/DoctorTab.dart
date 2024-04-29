@@ -130,23 +130,14 @@ class _DentistPageState extends State<DoctorTab> {
     );
   }
 
-  Widget _buildDoctorCard(
-      String name, double rating, String type, String imagePath) {
+   Widget _buildDoctorCard(
+      String name, double rating, String type, String assets) {
     return Container(
       child: Card(
         child: InkWell(
           splashColor: Colors.blue.withAlpha(30),
           onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => DoctorDetailPage(
-                  name: name,
-                  rating: rating,
-                  imagePath: imagePath,
-                ),
-              ),
-            ); // Add functionality for viewing doctor's profile
+            // Add functionality for viewing doctor's profile
           },
           child: Container(
             decoration: BoxDecoration(
@@ -166,32 +157,30 @@ class _DentistPageState extends State<DoctorTab> {
             padding: EdgeInsets.all(8),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Expanded(
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: 1, // Assuming 3 images for each doctor
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                  child: Center(
                         child: Image.asset(
-                          imagePath, // Use the provided imagePath
-                          width: 50,
-                          height: 50,
+                          assets, // Use the provided imagePath
+                          width: 70,
+                          height: 70,
+                          
                         ),
-                      );
-                    },
+
                   ),
                 ),
-                SizedBox(height: 8),
+                SizedBox(height: 10),
                 Text(
                   name,
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
                 Text(
                   '${rating.toStringAsFixed(1)} (135 reviews)',
-                  style: TextStyle(fontSize: 14),
+                  style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                      color: Color.fromARGB(255, 143, 139, 139)),
                 ),
               ],
             ),
