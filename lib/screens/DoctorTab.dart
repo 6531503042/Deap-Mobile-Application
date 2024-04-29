@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:dentist_appointment/screens/Doctor_detail.dart';
 import 'package:flutter/material.dart';
 
 class DoctorTab extends StatefulWidget {
@@ -14,49 +15,49 @@ class _DentistPageState extends State<DoctorTab> {
       'rating': 4.5,
       'reviews': 135,
       'type': 'Dentist',
-      'assets': 'assets/doctor1.png'
+      'imagePath': 'assets/doctor1.png'
     },
     {
       'name': 'Dr. Mensah T',
       'rating': 4.3,
       'reviews': 130,
       'type': 'Dentist',
-      'assets': 'assets/doctor2.png'
+      'imagePath': 'assets/doctor2.png'
     },
     {
       'name': 'Dr. Klimisch J',
       'rating': 4.5,
       'reviews': 135,
       'type': 'Dentist',
-      'assets': 'assets/doctor3.png'
+      'imagePath': 'assets/doctor3.png'
     },
     {
       'name': 'Dr. Martinez K',
       'rating': 4.3,
       'reviews': 130,
       'type': 'Dentist',
-      'assets': 'assets/doctor4.png'
+      'imagePath': 'assets/doctor4.png'
     },
     {
       'name': 'Dr. Marc M',
       'rating': 4.3,
       'reviews': 130,
       'type': 'Dentist',
-      'assets': 'assets/doctor5.png'
+      'imagePath': 'assets/doctor5.png'
     },
     {
       'name': 'Dr. O\'Boyle J',
       'rating': 4.5,
       'reviews': 135,
       'type': 'Dentist',
-      'assets': 'assets/doctor6.png'
+      'imagePath': 'assets/doctor6.png'
     },
     {
       'name': 'Dr. Bellamy R',
       'rating': 4.5,
       'reviews': 135,
       'type': 'Dentist',
-      'assets': "assets/doctor8.png"
+      'imagePath': "assets/doctor8.png"
     },
   ];
 
@@ -116,9 +117,10 @@ class _DentistPageState extends State<DoctorTab> {
                   final name = dentist['name'];
                   final rating = dentist['rating'];
                   final type = dentist['type'];
-                  final assets = dentist['assets'];
+                  final imagePath =
+                      dentist['imagePath']; // Corrected access to imagePath
 
-                  return _buildDoctorCard(name, rating, type, assets);
+                  return _buildDoctorCard(name, rating, type, imagePath);
                 }).toList(),
               ),
             ),
@@ -128,25 +130,31 @@ class _DentistPageState extends State<DoctorTab> {
     );
   }
 
-
-
-
   Widget _buildDoctorCard(
-      String name, double rating, String type, String assets) {
+      String name, double rating, String type, String imagePath) {
     return Container(
-    
       child: Card(
         child: InkWell(
           splashColor: Colors.blue.withAlpha(30),
           onTap: () {
-            // Add functionality for viewing doctor's profile
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => DoctorDetailPage(
+                  name: name,
+                  rating: rating,
+                  imagePath: imagePath,
+                ),
+              ),
+            ); // Add functionality for viewing doctor's profile
           },
           child: Container(
-             decoration: BoxDecoration(
+            decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
               boxShadow: [
                 BoxShadow(
-                  color: Color.fromARGB(255, 255, 255, 255).withOpacity(0.5), // Shadow color
+                  color: Color.fromARGB(255, 255, 255, 255)
+                      .withOpacity(0.5), // Shadow color
                   spreadRadius: 5, // Spread radius
                   blurRadius: 3, // Blur radius
                   offset: Offset(0, 3), // Offset
@@ -168,7 +176,7 @@ class _DentistPageState extends State<DoctorTab> {
                       return Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 4.0),
                         child: Image.asset(
-                          assets, // Use the provided imagePath
+                          imagePath, // Use the provided imagePath
                           width: 50,
                           height: 50,
                         ),

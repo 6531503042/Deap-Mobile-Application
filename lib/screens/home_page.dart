@@ -1,5 +1,6 @@
 import 'dart:ffi';
 
+import 'package:dentist_appointment/screens/Doctor_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:dentist_appointment/screens/AppointmentTab.dart';
 import 'package:dentist_appointment/screens/DoctorTab.dart';
@@ -168,14 +169,13 @@ class HomeTab extends StatelessWidget {
             child: Row(
               children: <Widget>[
                 SizedBox(width: 8),
-                _buildDoctorCard(
-                    'Dr. Praa', 4.5, 'assets/doctor1.png', 'assets/star.png'),
-                SizedBox(width: 8),
-                _buildDoctorCard('Dr. Bellamy R', 4.5, 'assets/doctor8.png',
+                _buildDoctorCard(context, 'Dr. Praa', 4.5, 'assets/doctor1.png',
                     'assets/star.png'),
-                SizedBox(width: 8),
-                _buildDoctorCard('Dr. Klimisch J', 4.5, 'assets/doctor3.png',
-                    'assets/star.png'),
+                _buildDoctorCard(context, 'Dr. Bellamy R', 4.5,
+                    'assets/doctor8.png', 'assets/star.png'),
+                _buildDoctorCard(context, 'Dr. Klimisch J', 4.5,
+                    'assets/doctor3.png', 'assets/star.png'),
+
                 SizedBox(width: 8),
               ],
             ),
@@ -187,14 +187,23 @@ class HomeTab extends StatelessWidget {
 }
 
 
-Widget _buildDoctorCard(
-    String name, double rating, String imagePath, String imagePath2) {
+Widget _buildDoctorCard(BuildContext context, String name, double rating,
+    String imagePath, String imagePath2) {
   return Card(
     elevation: 2, // Add elevation for a shadow effect
     child: InkWell(
       splashColor: Colors.green.shade200.withAlpha(30),
       onTap: () {
-        // Add functionality for viewing doctor's profile
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => DoctorDetailPage(
+              name: name,
+              rating: rating,
+              imagePath: imagePath,
+            ),
+          ),
+        ); // Add functionality for viewing doctor's profile
       },
       child: Container(
         width: 160,
@@ -249,3 +258,4 @@ Widget _buildDoctorCard(
     ),
   );
 }
+
