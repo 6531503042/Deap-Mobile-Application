@@ -131,13 +131,22 @@ class _DentistPageState extends State<DoctorTab> {
   }
 
    Widget _buildDoctorCard(
-      String name, double rating, String type, String assets) {
+      String name, double rating, String type, String imagePath) {
     return Container(
       child: Card(
         child: InkWell(
           splashColor: Colors.blue.withAlpha(30),
           onTap: () {
-            // Add functionality for viewing doctor's profile
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => DoctorDetailPage(
+                  name: name,
+                  rating: rating,
+                  imagePath: imagePath,
+                ),
+              ),
+            ); // Add functionality for viewing doctor's profile
           },
           child: Container(
             decoration: BoxDecoration(
@@ -162,7 +171,7 @@ class _DentistPageState extends State<DoctorTab> {
                 Expanded(
                   child: Center(
                         child: Image.asset(
-                          assets, // Use the provided imagePath
+                          imagePath, // Use the provided imagePath
                           width: 70,
                           height: 70,
                           
