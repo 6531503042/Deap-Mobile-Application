@@ -1,9 +1,6 @@
-import 'package:dentist_appointment/main_layout.dart';
 import 'package:dentist_appointment/screens/AuthPage.dart';
 // import 'package:dentist_appointment/screens/auth_page.dart' show AuthPage;
-import 'package:dentist_appointment/screens/home_page.dart';
 import 'package:flutter/material.dart';
-import 'package:dentist_appointment/utils/config.dart';
 
 // void main() {
 //   runApp(const MyApp());

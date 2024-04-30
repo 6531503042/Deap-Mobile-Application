@@ -1,7 +1,6 @@
 import 'dart:io'; // Add this line to import 'File'
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:dentist_appointment/screens/home_page.dart';
 
 class ProfileTab extends StatefulWidget {
   @override
@@ -40,7 +39,7 @@ class _EditProfileUIState extends State<ProfileTab> {
       appBar: AppBar(
         title: const Text('Profile'),
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
               Icons.arrow_back), // Example of using an icon as leading widget
           onPressed: () {
             // Add functionality for the leading icon/button
@@ -58,13 +57,13 @@ class _EditProfileUIState extends State<ProfileTab> {
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.green,
               ),
-              child: Text('Save', style: TextStyle(color: Colors.white)),
+              child: const Text('Save', style: TextStyle(color: Colors.white)),
             ),
           ),
         ],
       ),
       body: Container(
-        padding: EdgeInsets.only(left: 15, right: 15, top: 20),
+        padding: const EdgeInsets.only(left: 15, right: 15, top: 20),
         child: GestureDetector(
           onTap: () {
             FocusScope.of(context).unfocus();
@@ -130,8 +129,8 @@ class _EditProfileUIState extends State<ProfileTab> {
                 ),
               ),
               Container(
-                padding: EdgeInsets.symmetric(vertical: 8),
-                child: Text(
+                padding: const EdgeInsets.symmetric(vertical: 8),
+                child: const Text(
                   'Email',
                   style: TextStyle(
                     color: Colors.green,
@@ -151,8 +150,8 @@ class _EditProfileUIState extends State<ProfileTab> {
                 ),
               ),
               Container(
-                padding: EdgeInsets.symmetric(vertical: 8),
-                child: Text(
+                padding: const EdgeInsets.symmetric(vertical: 8),
+                child: const Text(
                   'Bio',
                   style: TextStyle(
                     color: Colors.green,
@@ -173,8 +172,8 @@ class _EditProfileUIState extends State<ProfileTab> {
                 ),
               ),
               Container(
-                padding: EdgeInsets.symmetric(vertical: 8),
-                child: Text(
+                padding: const EdgeInsets.symmetric(vertical: 8),
+                child: const Text(
                   'Change Password',
                   style: TextStyle(
                     color: Colors.green,
@@ -192,7 +191,7 @@ class _EditProfileUIState extends State<ProfileTab> {
                       obscureText: !isOldPasswordVisible,
                       decoration: InputDecoration(
                         labelText: 'Old Password',
-                        border: OutlineInputBorder(),
+                        border: const OutlineInputBorder(),
                         suffixIcon: IconButton(
                           icon: Icon(
                             isOldPasswordVisible
@@ -207,13 +206,13 @@ class _EditProfileUIState extends State<ProfileTab> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 12),
+                    const SizedBox(height: 12),
                     TextFormField(
                       controller: newPasswordController,
                       obscureText: !isNewPasswordVisible,
                       decoration: InputDecoration(
                         labelText: 'New Password',
-                        border: OutlineInputBorder(),
+                        border: const OutlineInputBorder(),
                         suffixIcon: IconButton(
                           icon: Icon(
                             isNewPasswordVisible

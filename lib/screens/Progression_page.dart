@@ -39,7 +39,6 @@
 // }
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
-import 'package:ionicons/ionicons.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class Regression_Page extends StatefulWidget {
@@ -60,7 +59,7 @@ class _Regression_PageState extends State<Regression_Page> {
         ),
         centerTitle: true,
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
               Icons.arrow_back), // Example of using an icon as leading widget
           onPressed: () {
             // Add functionality for the leading icon/button

@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:dentist_appointment/screens/Doctor_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:dentist_appointment/screens/AppointmentTab.dart';
@@ -23,7 +21,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     _widgetOptions = [
       HomeTab(showHeader: _showHeader),
-      AppointmentTab(),
+      const AppointmentTab(),
       DoctorTab(),
       ProfileTab(),
     ];
@@ -41,13 +39,13 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: _showHeader
           ? AppBar(
-              title: Text(
+              title: const Text(
                 'Welcome, Username', // Must be user model not set name to display
                 style: TextStyle(fontSize: 18),
               ),
               actions: <Widget>[
                 IconButton(
-                  icon: Icon(Icons.notifications),
+                  icon: const Icon(Icons.notifications),
                   onPressed: () {
                     // Navigate to notifications page
                     Navigator.push(
@@ -59,13 +57,13 @@ class _HomePageState extends State<HomePage> {
                 ),
 
                 IconButton(
-                  icon: Icon(Icons.calendar_today),
+                  icon: const Icon(Icons.calendar_today),
                   onPressed: () {
                     // Add functionality for calendar
                   },
                 ),
                 IconButton(
-                  icon: Icon(Icons.settings),
+                  icon: const Icon(Icons.settings),
                   onPressed: () {
                     // Add functionality for settings
                   },
@@ -91,7 +89,7 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Color.fromARGB(255, 110, 197, 238),
+        selectedItemColor: const Color.fromARGB(255, 110, 197, 238),
         unselectedItemColor: Colors.grey,
         backgroundColor: Colors.white,
         onTap: _onItemTapped,
@@ -118,17 +116,18 @@ class HomeTab extends StatelessWidget {
               Container(
                 width: 320,
                 height: 84,
-                padding: EdgeInsets.all(13),
+                padding: const EdgeInsets.all(13),
                 decoration: BoxDecoration(
-                  color: Color.fromRGBO(100, 100, 100, 0.05),
+                  color: const Color.fromRGBO(100, 100, 100, 0.05),
                   border:
-                      Border.all(color: Color.fromRGBO(100, 100, 100, 0.05)),
+                      Border.all(
+                      color: const Color.fromRGBO(100, 100, 100, 0.05)),
                   borderRadius: BorderRadius.circular(16),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Column(
+                    const Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
@@ -151,7 +150,8 @@ class HomeTab extends StatelessWidget {
                         borderRadius: BorderRadius.circular(16),
                       ),
                       child: IconButton(
-                        icon: Icon(Icons.arrow_forward, color: Colors.black),
+                        icon: const Icon(Icons.arrow_forward,
+                            color: Colors.black),
                         onPressed: () {
                           // Add functionality for the arrow button
                         },
@@ -162,20 +162,20 @@ class HomeTab extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 15),
-          Padding(
-            padding: const EdgeInsets.only(right: 200.0),
+          const SizedBox(height: 15),
+          const Padding(
+            padding: EdgeInsets.only(right: 200.0),
             child: Text(
               'Popular dentist',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
             ),
           ),
-          SizedBox(height: 18),
+          const SizedBox(height: 18),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
               children: <Widget>[
-                SizedBox(width: 8),
+                const SizedBox(width: 8),
                 _buildDoctorCard(context, 'Dr. Praa', 4.5, 'assets/doctor1.png',
                     'assets/star.png'),
                 _buildDoctorCard(context, 'Dr. Bellamy R', 4.5,
@@ -183,7 +183,7 @@ class HomeTab extends StatelessWidget {
                 _buildDoctorCard(context, 'Dr. Klimisch J', 4.5,
                     'assets/doctor3.png', 'assets/star.png'),
 
-                SizedBox(width: 8),
+                const SizedBox(width: 8),
               ],
             ),
           ),
@@ -217,7 +217,7 @@ Widget _buildDoctorCard(BuildContext context, String name, double rating,
       child: Container(
         width: 160,
         height: 160,
-        padding: EdgeInsets.all(13),
+        padding: const EdgeInsets.all(13),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
@@ -234,12 +234,12 @@ Widget _buildDoctorCard(BuildContext context, String name, double rating,
             // Doctor's name
             Text(
               name,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             // Star rating sentence
             RichText(
               text: TextSpan(
@@ -253,7 +253,7 @@ Widget _buildDoctorCard(BuildContext context, String name, double rating,
                   ),
                   TextSpan(
                     text: '${rating.toStringAsFixed(1)} (135 reviews)',
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w400,
                         color: Color.fromARGB(255, 143, 139, 139)),

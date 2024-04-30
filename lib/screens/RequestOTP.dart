@@ -21,12 +21,13 @@ class _RequstOtpPageState extends State<RequstOtpPage> {
             onTap: () => Navigator.of(context).pop(),
             child: Center(
               child: Container(
-                margin: EdgeInsets.only(top: 15, left: 15),
+                margin: const EdgeInsets.only(top: 15, left: 15),
                 width: 40,
                 height: 40,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
-                    border: Border.all(color: Color.fromRGBO(0, 0, 0, 0.2))),
+                    border:
+                        Border.all(color: const Color.fromRGBO(0, 0, 0, 0.2))),
                 child: Center(child: Image.asset('lib/Photo/back_arrow.png')),
               ),
             ),
@@ -37,7 +38,7 @@ class _RequstOtpPageState extends State<RequstOtpPage> {
         child: Column(
           children: [
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 30),
+              margin: const EdgeInsets.symmetric(horizontal: 30),
               child: Center(
                 child: Container(
                   width: 350,
@@ -46,23 +47,23 @@ class _RequstOtpPageState extends State<RequstOtpPage> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Container(
-                        margin: EdgeInsets.only(top: 50),
-                        child: Text(
+                        margin: const EdgeInsets.only(top: 50),
+                        child: const Text(
                           'OTP Verification',
                           style: TextStyle(
                               fontSize: 30, fontWeight: FontWeight.bold),
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(top: 20),
-                        child: Text("We have sent an OTP to",
+                        margin: const EdgeInsets.only(top: 20),
+                        child: const Text("We have sent an OTP to",
                             style: TextStyle(
                                 fontSize: 16,
                                 color: Color.fromRGBO(131, 145, 161, 1))),
                       ),
                       Container(
-                        margin: EdgeInsets.only(top: 5),
-                        child: Text(
+                        margin: const EdgeInsets.only(top: 5),
+                        child: const Text(
                             "6531503042@lamduan.mfu.ac.th. Please enter the OTP in the boxes below.",
                             style: TextStyle(
                                 fontSize: 16,
@@ -73,18 +74,18 @@ class _RequstOtpPageState extends State<RequstOtpPage> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 100,
             ),
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 30),
+              margin: const EdgeInsets.symmetric(horizontal: 30),
               child: Column(
                 children: [
                   TextFormField(
                     decoration: InputDecoration(
                         hintText: 'Enter your OTP Here',
                         filled: true,
-                        fillColor: Color.fromRGBO(247, 248, 249, 1),
+                        fillColor: const Color.fromRGBO(247, 248, 249, 1),
                         focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
                             borderSide: const BorderSide(
@@ -99,8 +100,8 @@ class _RequstOtpPageState extends State<RequstOtpPage> {
                             ))),
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: 10),
-                    child: Align(
+                    margin: const EdgeInsets.only(top: 10),
+                    child: const Align(
                         alignment: Alignment.centerRight,
                         child: Text(
                           'Ref code: 42dv',
@@ -110,11 +111,11 @@ class _RequstOtpPageState extends State<RequstOtpPage> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 180,
             ),
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 80),
+              margin: const EdgeInsets.symmetric(horizontal: 80),
               child: Column(
                 children: [
                   Center(
@@ -130,9 +131,9 @@ class _RequstOtpPageState extends State<RequstOtpPage> {
                         width: MediaQuery.of(context).size.width,
                         height: 55,
                         decoration: BoxDecoration(
-                            color: Color.fromRGBO(40, 195, 176, 1),
+                            color: const Color.fromRGBO(40, 195, 176, 1),
                             borderRadius: BorderRadius.circular(10)),
-                        child: Center(
+                        child: const Center(
                             child: Text(
                           'Verify',
                           style: TextStyle(
@@ -144,7 +145,7 @@ class _RequstOtpPageState extends State<RequstOtpPage> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: 10),
+                      margin: const EdgeInsets.only(top: 10),
                     child: Align(
                         alignment: Alignment.centerRight,
                         child: SlideCountdownSeparated(
@@ -152,18 +153,20 @@ class _RequstOtpPageState extends State<RequstOtpPage> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const AuthPage()),
+                                builder: (context) => const AuthPage(),
+                              ),
                             );
                           },
-                          style: TextStyle(color: Colors.black),
-                          decoration: BoxDecoration(color: Colors.transparent),
+                          textStyle: const TextStyle(color: Colors.black),
                           duration: const Duration(minutes: 5),
-                        )),
+                        ),
+                      )
+
                   )
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 80,
             ),
             Center(
@@ -175,10 +178,10 @@ class _RequstOtpPageState extends State<RequstOtpPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text('Do you have problem with OTP sender?'),
+                      const Text('Do you have problem with OTP sender?'),
                       TextButton(
                           onPressed: () {},
-                          child: Text(
+                          child: const Text(
                             'Problem Solving',
                             style: TextStyle(
                                 color: Color.fromRGBO(7, 181, 255, 1)),

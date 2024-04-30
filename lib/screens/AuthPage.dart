@@ -30,7 +30,7 @@ class _AuthPageState extends State<AuthPage> {
                 SizedBox(
                   height: 100,
                 ),
-                Center(child: Image.asset('lib/Photo/Banner Animate.png')),
+                Center(child: Image.asset('lib/Photo/BannerAnimate.png')),
                 SizedBox(
                   height: 40,
                 ),
