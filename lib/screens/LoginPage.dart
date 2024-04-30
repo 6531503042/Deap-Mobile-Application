@@ -132,7 +132,7 @@ class _LoginPageState extends State<LoginPage>
                       physics: const NeverScrollableScrollPhysics(),
                       controller: _tabController,
                       children: [
-                        SizedBox(
+                        Container(
                           width: MediaQuery.of(context).size.width,
                           child: Column(
                             children: [
@@ -202,7 +202,7 @@ class _LoginPageState extends State<LoginPage>
                                           width: 1.0,
                                         ))),
                               ),
-                              SizedBox(
+                              Container(
                                 width: MediaQuery.of(context).size.width,
                                 child: Align(
                                   alignment: Alignment.centerRight,
@@ -265,7 +265,7 @@ class _LoginPageState extends State<LoginPage>
                             ],
                           ),
                         ),
-                        SizedBox(
+                        Container(
                           width: MediaQuery.of(context).size.width,
                           child: Column(
                             children: [
@@ -335,7 +335,7 @@ class _LoginPageState extends State<LoginPage>
                                           width: 1.0,
                                         ))),
                               ),
-                              SizedBox(
+                              Container(
                                 width: MediaQuery.of(context).size.width,
                                 child: Align(
                                   alignment: Alignment.centerRight,
@@ -496,7 +496,7 @@ class _LoginPageState extends State<LoginPage>
                   height: 30,
                 ),
                 Center(
-                  child: SizedBox(
+                  child: Container(
                     width: MediaQuery.of(context).size.width,
                     height: 40,
                     child: Center(
