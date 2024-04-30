@@ -200,10 +200,12 @@ Widget _buildDoctorCard(BuildContext context, String name, double rating,
             builder: (context) => DoctorDetailPage(
               name: name,
               rating: rating,
-              imagePath: imagePath,
+              imagePath: imagePath,              // Add this line
+              description:
+                  'This is a description of the dentist.', // Add this line
             ),
           ),
-        ); // Add functionality for viewing doctor's profile
+        );
       },
       child: Container(
         width: 160,
@@ -217,8 +219,8 @@ Widget _buildDoctorCard(BuildContext context, String name, double rating,
               padding: const EdgeInsets.only(bottom: 10.0),
               child: Image.asset(
                 imagePath, // Use the provided imagePath
-                width: 50,
-                height: 50,
+                width: 70,
+                height: 70,
               ),
             ),
 

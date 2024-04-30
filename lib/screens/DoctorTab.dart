@@ -15,49 +15,56 @@ class _DentistPageState extends State<DoctorTab> {
       'rating': 4.5,
       'reviews': 135,
       'type': 'Dentist',
-      'imagePath': 'assets/doctor1.png'
+      'imagePath': 'assets/doctor1.png',
+      'imagePath2': 'assets/star.png'
     },
     {
       'name': 'Dr. Mensah T',
       'rating': 4.3,
       'reviews': 130,
       'type': 'Dentist',
-      'imagePath': 'assets/doctor2.png'
+      'imagePath': 'assets/doctor2.png',
+      'imagePath2': 'assets/star.png'
     },
     {
       'name': 'Dr. Klimisch J',
       'rating': 4.5,
       'reviews': 135,
       'type': 'Dentist',
-      'imagePath': 'assets/doctor3.png'
+      'imagePath': 'assets/doctor3.png',
+      'imagePath2': 'assets/star.png'
     },
     {
       'name': 'Dr. Martinez K',
       'rating': 4.3,
       'reviews': 130,
       'type': 'Dentist',
-      'imagePath': 'assets/doctor4.png'
+      'imagePath': 'assets/doctor4.png',
+      'imagePath2': 'assets/star.png'
     },
     {
       'name': 'Dr. Marc M',
       'rating': 4.3,
       'reviews': 130,
       'type': 'Dentist',
-      'imagePath': 'assets/doctor5.png'
+      'imagePath': 'assets/doctor5.png',
+      'imagePath2': 'assets/star.png'
     },
     {
       'name': 'Dr. O\'Boyle J',
       'rating': 4.5,
       'reviews': 135,
       'type': 'Dentist',
-      'imagePath': 'assets/doctor6.png'
+      'imagePath': 'assets/doctor6.png',
+      'imagePath2': 'assets/star.png'
     },
     {
       'name': 'Dr. Bellamy R',
       'rating': 4.5,
       'reviews': 135,
       'type': 'Dentist',
-      'imagePath': "assets/doctor8.png"
+      'imagePath': "assets/doctor8.png",
+      'imagePath2': 'assets/star.png'
     },
   ];
 
@@ -117,11 +124,13 @@ class _DentistPageState extends State<DoctorTab> {
                   final name = dentist['name'];
                   final rating = dentist['rating'];
                   final type = dentist['type'];
-                  final imagePath =
-                      dentist['imagePath']; // Corrected access to imagePath
+                  final imagePath = dentist['imagePath'];
+                  final imagePath2 = dentist['imagePath2'];
 
-                  return _buildDoctorCard(name, rating, type, imagePath);
+                  return _buildDoctorCard(
+                      context, name, rating, imagePath, imagePath2);
                 }).toList(),
+
               ),
             ),
           ],
@@ -130,69 +139,74 @@ class _DentistPageState extends State<DoctorTab> {
     );
   }
 
-   Widget _buildDoctorCard(
-      String name, double rating, String type, String imagePath) {
-    return Container(
-      child: Card(
-        child: InkWell(
-          splashColor: Colors.blue.withAlpha(30),
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => DoctorDetailPage(
-                  name: name,
-                  rating: rating,
-                  imagePath: imagePath,
+  Widget _buildDoctorCard(BuildContext context, String name, double rating,
+      String imagePath, String imagePath2) {
+    return Card(
+      elevation: 2, // Add elevation for a shadow effect
+      child: InkWell(
+        splashColor: Colors.green.shade200.withAlpha(30),
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => DoctorDetailPage(
+                name: name,
+                rating: rating,
+                imagePath: imagePath,                // Add this line
+                description:
+                    'This is a description of the dentist.', // Add this line
+              ),
+            ),
+          );
+        },
+        child: Container(
+          width: 160,
+          height: 160,
+          padding: EdgeInsets.all(13),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              // Image
+              Padding(
+                padding: const EdgeInsets.only(bottom: 20.0),
+                child: Image.asset(
+                  imagePath, // Use the provided imagePath
+                  width: 80,
+                  height: 80,
                 ),
               ),
-            ); // Add functionality for viewing doctor's profile
-          },
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              boxShadow: [
-                BoxShadow(
-                  color: Color.fromARGB(255, 255, 255, 255)
-                      .withOpacity(0.5), // Shadow color
-                  spreadRadius: 5, // Spread radius
-                  blurRadius: 3, // Blur radius
-                  offset: Offset(0, 3), // Offset
-                ),
-              ],
-            ),
-            width: 150,
-            height: 150,
-            padding: EdgeInsets.all(8),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Expanded(
-                  child: Center(
-                        child: Image.asset(
-                          imagePath, // Use the provided imagePath
-                          width: 70,
-                          height: 70,
-                          
-                        ),
 
-                  ),
+              // Doctor's name
+              Text(
+                name,
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
                 ),
-                SizedBox(height: 10),
-                Text(
-                  name,
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 10),
+              // Star rating sentence
+              RichText(
+                text: TextSpan(
+                  children: [
+                    WidgetSpan(
+                      child: Image.asset(
+                        imagePath2, // Use the provided imagePath2 for the star image
+                        width: 16,
+                        height: 16,
+                      ),
+                    ),
+                    TextSpan(
+                      text: '${rating.toStringAsFixed(1)} (135 reviews)',
+                      style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                          color: Color.fromARGB(255, 143, 139, 139)),
+                    ),
+                  ],
                 ),
-                Text(
-                  '${rating.toStringAsFixed(1)} (135 reviews)',
-                  style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400,
-                      color: Color.fromARGB(255, 143, 139, 139)),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
