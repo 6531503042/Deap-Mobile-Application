@@ -26,7 +26,9 @@ class _MoreInfoPageState extends State<MoreInfoPage> {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
                       border: Border.all(color: Color.fromRGBO(0, 0, 0, 0.2))),
-                  child: Center(child: Image.asset('lib/Photo/back_arrow.png')),
+                  child: Center(
+                      child: Icon(Icons
+                          .arrow_back)), // Changed from Image.asset to Icon
                 ),
               ),
             ),

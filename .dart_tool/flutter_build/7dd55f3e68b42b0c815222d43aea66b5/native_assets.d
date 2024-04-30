@@ -1,0 +1,1 @@
+ /Users/krdare/Desktop/Flutter-Ajarn-B/.dart_tool/flutter_build/7dd55f3e68b42b0c815222d43aea66b5/native_assets.yaml: 
