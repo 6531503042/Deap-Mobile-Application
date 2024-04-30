@@ -58,7 +58,7 @@ class _LoginPageState extends State<LoginPage>
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
                       border: Border.all(color: Color.fromRGBO(0, 0, 0, 0.2))),
-                  child: Center(child: Image.asset('lib/Photo/back_arrow.png')),
+                  child: Center(child: Image.asset('assets/back_arrow.png')),
                 ),
               ),
             ),
@@ -435,7 +435,7 @@ class _LoginPageState extends State<LoginPage>
                                 border: Border.all(
                                     color: Color.fromRGBO(232, 236, 244, 1)),
                                 borderRadius: BorderRadius.circular(8)),
-                            child: Image.asset('assets/Vector.png'),
+                            child: Image.asset('assets/Vector01.png'),
                           ),
                         ),
                         SizedBox(

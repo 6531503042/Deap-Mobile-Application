@@ -10,10 +10,12 @@ class RegisterPage extends StatefulWidget {
 
   @override
   State<RegisterPage> createState() => _RegisterPageState();
+  
 }
 
 class _RegisterPageState extends State<RegisterPage>
     with SingleTickerProviderStateMixin {
+  // final Future<FirebaseApp> firebase = Firebase.initializeApp();
   late TabController _tabController;
 
   var _isObcureText = true;

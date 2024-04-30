@@ -128,25 +128,6 @@ class DoctorDetailPage extends StatelessWidget {
               ),
             ),
             SizedBox(height: 20),
-            Center(
-              child: SizedBox(
-                height: 60,
-                width: 360, // Set width of the button
-                child: ElevatedButton(
-                  onPressed: () {
-                    // Handle booking appointment
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Color.fromRGBO(40, 195, 176, 100), // Set background color
-                  ),
-                  child: Text(
-                    'Book Appointment',
-                    style: TextStyle(fontSize: 16,
-                    color: Color.fromRGBO(255, 255, 255, 1)), // Set font size
-                  ),
-                ),
-              ),
-            ),
           ],
         ),
       ),

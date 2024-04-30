@@ -4,6 +4,7 @@ import 'package:dentist_appointment/screens/AppointmentTab.dart';
 import 'package:dentist_appointment/screens/DoctorTab.dart';
 import 'package:dentist_appointment/screens/ProfileTab.dart';
 import 'package:dentist_appointment/screens/notification.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -39,13 +40,27 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: _showHeader
           ? AppBar(
-              title: const Text(
-                'Welcome, Username', // Must be user model not set name to display
-                style: TextStyle(fontSize: 18),
+              title: Row(
+                children: [
+                  Text(
+                    'Welcome, ',
+                    style: GoogleFonts.urbanist(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500,
+                    ), // Must be user model not set name to display
+                  ),
+                  Text(
+                    'Username', // Must be user model not set name to display
+                    style: GoogleFonts.urbanist(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ],
               ),
               actions: <Widget>[
                 IconButton(
-                  icon: const Icon(Icons.notifications),
+                  icon: const Icon(Icons.notifications_active_outlined),
                   onPressed: () {
                     // Navigate to notifications page
                     Navigator.push(
@@ -55,7 +70,6 @@ class _HomePageState extends State<HomePage> {
                     );
                   },
                 ),
-
                 IconButton(
                   icon: const Icon(Icons.calendar_today),
                   onPressed: () {
@@ -115,32 +129,35 @@ class HomeTab extends StatelessWidget {
             children: <Widget>[
               Container(
                 width: 320,
-                height: 84,
+                height: 80,
                 padding: const EdgeInsets.all(13),
                 decoration: BoxDecoration(
                   color: const Color.fromRGBO(100, 100, 100, 0.05),
-                  border:
-                      Border.all(
+                  border: Border.all(
                       color: const Color.fromRGBO(100, 100, 100, 0.05)),
                   borderRadius: BorderRadius.circular(16),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Column(
+                    Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           'STI Problems?',
-                          style: TextStyle(
-                              fontSize: 17, fontWeight: FontWeight.bold),
+                          style: GoogleFonts.urbanist(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                          ),
                         ),
                         SizedBox(height: 5),
                         Text(
                           'Find suitable specialists here',
-                          style: TextStyle(
-                              fontSize: 15,
-                              color: Color.fromRGBO(165, 157, 157, 1)),
+                          style: GoogleFonts.urbanist(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                            color: Color.fromRGBO(107, 119, 154, 1),
+                          ),
                         ),
                       ],
                     ),
@@ -163,11 +180,17 @@ class HomeTab extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 15),
-          const Padding(
+          Padding(
             padding: EdgeInsets.only(right: 200.0),
-            child: Text(
-              'Popular dentist',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
+            child: Container(
+              margin: EdgeInsets.only(left: 20),
+              child: Text(
+                'Popular dentist',
+                style: GoogleFonts.inter(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
             ),
           ),
           const SizedBox(height: 18),
@@ -182,22 +205,27 @@ class HomeTab extends StatelessWidget {
                     'assets/doctor8.png', 'assets/star.png'),
                 _buildDoctorCard(context, 'Dr. Klimisch J', 4.5,
                     'assets/doctor3.png', 'assets/star.png'),
-
                 const SizedBox(width: 8),
               ],
             ),
           ),
+          const SizedBox(height: 18)
         ],
       ),
     );
   }
 }
 
-
 Widget _buildDoctorCard(BuildContext context, String name, double rating,
     String imagePath, String imagePath2) {
-  return Card(
-    elevation: 2, // Add elevation for a shadow effect
+  return Container(
+    margin: EdgeInsets.symmetric(horizontal: 5),
+    width: 120,
+    height: 140,
+    decoration: BoxDecoration(
+      color: Color.fromRGBO(247, 248, 250, 1),
+      borderRadius: BorderRadius.circular(20),
+    ),
     child: InkWell(
       splashColor: Colors.green.shade200.withAlpha(30),
       onTap: () {
@@ -207,7 +235,7 @@ Widget _buildDoctorCard(BuildContext context, String name, double rating,
             builder: (context) => DoctorDetailPage(
               name: name,
               rating: rating,
-              imagePath: imagePath,              // Add this line
+              imagePath: imagePath, // Add this line
               description:
                   'This is a description of the dentist.', // Add this line
             ),
@@ -226,17 +254,18 @@ Widget _buildDoctorCard(BuildContext context, String name, double rating,
               padding: const EdgeInsets.only(bottom: 10.0),
               child: Image.asset(
                 imagePath, // Use the provided imagePath
-                width: 70,
-                height: 70,
+                width: 40,
+                height: 40,
               ),
             ),
 
             // Doctor's name
             Text(
               name,
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
+              style: GoogleFonts.urbanist(
+                fontSize: 13,
+                fontWeight: FontWeight.w600,
+                color: Color.fromRGBO(0, 0, 0, 1),
               ),
             ),
             const SizedBox(height: 10),
@@ -247,16 +276,17 @@ Widget _buildDoctorCard(BuildContext context, String name, double rating,
                   WidgetSpan(
                     child: Image.asset(
                       imagePath2, // Use the provided imagePath2 for the star image
-                      width: 16,
-                      height: 16,
+                      width: 14,
+                      height: 14,
                     ),
                   ),
                   TextSpan(
                     text: '${rating.toStringAsFixed(1)} (135 reviews)',
-                    style: const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                        color: Color.fromARGB(255, 143, 139, 139)),
+                    style: GoogleFonts.urbanist(
+                      fontSize: 10,
+                      fontWeight: FontWeight.w600,
+                      color: Color.fromRGBO(107, 119, 154, 1),
+                    ),
                   ),
                 ],
               ),
@@ -267,4 +297,3 @@ Widget _buildDoctorCard(BuildContext context, String name, double rating,
     ),
   );
 }
-

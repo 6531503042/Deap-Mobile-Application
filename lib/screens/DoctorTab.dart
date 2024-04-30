@@ -1,7 +1,11 @@
 import 'dart:ui';
 
 import 'package:dentist_appointment/screens/Doctor_detail.dart';
+import 'package:dentist_appointment/screens/home_page.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class DoctorTab extends StatefulWidget {
   @override
@@ -74,12 +78,25 @@ class _DentistPageState extends State<DoctorTab> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Doctors'),
+        centerTitle: true,
+        title: Text(
+          'Doctors',
+          style: GoogleFonts.urbanist(
+              fontSize: 18,
+              fontWeight: FontWeight.w600,
+              color: Color.fromRGBO(0, 0, 0, 1)),
+        ),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: Icon(
+            Icons.arrow_back_ios,
+            size: 20,
+          ),
           onPressed: () {
             try {
-              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => HomePage()),
+              );
             } catch (e) {
               print("Error navigating back: $e");
             }
@@ -99,12 +116,26 @@ class _DentistPageState extends State<DoctorTab> {
                   color: Colors.grey[200], // Background color of box
                 ),
                 child: TextField(
+                  cursorColor: Color.fromRGBO(40, 195, 176, 1),
+                  style: GoogleFonts.urbanist(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w500,
+                      color: Color.fromRGBO(107, 119, 154, 1)),
                   controller: _searchController,
                   decoration: InputDecoration(
-                    labelText: 'Search for doctors',
-                    hintText: 'Enter a dentist name',
+                    filled: true,
+                    fillColor: Color.fromRGBO(231, 232, 233, 1),
+                    hintText: 'Search for doctors',
                     prefixIcon: Icon(Icons.search),
-                    border: InputBorder.none, // Remove the border line
+                    border: OutlineInputBorder(
+                      borderRadius: const BorderRadius.all(
+                        const Radius.circular(10.0),
+                      ),
+                      borderSide: BorderSide(
+                        width: 0,
+                        style: BorderStyle.none,
+                      ),
+                    ), // Remove the border line and do the shape
                     contentPadding:
                         EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
                   ),
@@ -118,8 +149,11 @@ class _DentistPageState extends State<DoctorTab> {
             Expanded(
               child: GridView.count(
                 crossAxisCount: 2,
-                mainAxisSpacing: 20, // Add this line
-                crossAxisSpacing: 20, // Add this line
+                childAspectRatio: (1 / 1.17),
+                shrinkWrap: true,
+                scrollDirection: Axis.vertical,
+                crossAxisSpacing: 20,
+                mainAxisSpacing: 20,
                 children: _dentists.map((dentist) {
                   final name = dentist['name'];
                   final rating = dentist['rating'];
@@ -130,7 +164,6 @@ class _DentistPageState extends State<DoctorTab> {
                   return _buildDoctorCard(
                       context, name, rating, imagePath, imagePath2);
                 }).toList(),
-
               ),
             ),
           ],
@@ -141,8 +174,22 @@ class _DentistPageState extends State<DoctorTab> {
 
   Widget _buildDoctorCard(BuildContext context, String name, double rating,
       String imagePath, String imagePath2) {
-    return Card(
-      elevation: 2, // Add elevation for a shadow effect
+    return Container(
+      width: 300,
+      height: 300,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 1,
+            blurRadius: 4,
+            offset: Offset(0, 3), // changes position of shadow
+          ),
+        ],
+      ),
+      // Add elevation for a shadow effect
       child: InkWell(
         splashColor: Colors.green.shade200.withAlpha(30),
         onTap: () {
@@ -152,7 +199,7 @@ class _DentistPageState extends State<DoctorTab> {
               builder: (context) => DoctorDetailPage(
                 name: name,
                 rating: rating,
-                imagePath: imagePath,                // Add this line
+                imagePath: imagePath, // Add this line
                 description:
                     'This is a description of the dentist.', // Add this line
               ),
@@ -162,29 +209,37 @@ class _DentistPageState extends State<DoctorTab> {
         child: Container(
           width: 160,
           height: 160,
-          padding: EdgeInsets.all(13),
+          padding: EdgeInsets.symmetric(vertical: 13),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               // Image
               Padding(
-                padding: const EdgeInsets.only(bottom: 20.0),
+                padding: const EdgeInsets.only(bottom: 10.0),
                 child: Image.asset(
                   imagePath, // Use the provided imagePath
-                  width: 80,
-                  height: 80,
+                  width: 70,
+                  height: 70,
                 ),
               ),
-
               // Doctor's name
               Text(
                 name,
-                style: TextStyle(
+                style: GoogleFonts.urbanist(
                   fontSize: 16,
-                  fontWeight: FontWeight.w500,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
-              SizedBox(height: 10),
+              SizedBox(height: 5),
+              //Which job of that doctor
+              Text(
+                'Dentist',
+                style: GoogleFonts.urbanist(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w700,
+                    color: Color.fromRGBO(107, 119, 154, 1)),
+              ),
+              SizedBox(height: 5),
               // Star rating sentence
               RichText(
                 text: TextSpan(
@@ -192,16 +247,16 @@ class _DentistPageState extends State<DoctorTab> {
                     WidgetSpan(
                       child: Image.asset(
                         imagePath2, // Use the provided imagePath2 for the star image
-                        width: 16,
-                        height: 16,
+                        width: 15,
+                        height: 15,
                       ),
                     ),
                     TextSpan(
                       text: '${rating.toStringAsFixed(1)} (135 reviews)',
-                      style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                          color: Color.fromARGB(255, 143, 139, 139)),
+                      style: GoogleFonts.urbanist(
+                          fontSize: 10,
+                          fontWeight: FontWeight.w600,
+                          color: Color.fromRGBO(107, 119, 154, 1)),
                     ),
                   ],
                 ),
