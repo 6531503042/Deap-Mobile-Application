@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:dentist_appointment/screens/Apmt_confirmation.dart'; // Importing the appointment_confirmation_page.dart file
 
 class AppointmentTab extends StatefulWidget {
   const AppointmentTab({Key? key}) : super(key: key);
@@ -12,27 +11,11 @@ class AppointmentTab extends StatefulWidget {
 class _AppointmentTabState extends State<AppointmentTab> {
   DateTime selectedDate = DateTime.now();
   String selectedTime = "";
-  String selectedDoctor = "";
 
   final List<String> availableTimes = [
-    "09:00 AM",
-    "09:30 AM",
-    "10:00 AM",
-    "10:30 AM",
-    "11:00 AM",
-    "11:30 AM",
-    "12:00 PM",
-    "12:30 PM",
-    "01:00 PM",
-    "01:30 PM",
-    "02:00 PM",
-    "02:30 PM",
-    "03:00 PM",
-    "03:30 PM",
-    "04:00 PM",
-    "04:30 PM",
-    "05:00 PM",
-    "05:30 PM",
+    "09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM",
+    "12:00 PM", "12:30 PM", "01:00 PM", "01:30 PM", "02:00 PM", "02:30 PM",
+    "03:00 PM", "03:30 PM", "04:00 PM", "04:30 PM", "05:00 PM", "05:30 PM",
   ];
 
   @override
@@ -41,10 +24,8 @@ class _AppointmentTabState extends State<AppointmentTab> {
       appBar: AppBar(
         title: Text('Booking Calendar'),
         leading: IconButton(
-          icon: Icon(
-              Icons.arrow_back), // Example of using an icon as leading widget
+          icon: Icon(Icons.arrow_back),
           onPressed: () {
-            // Add functionality for the leading icon/button
             Navigator.pop(context);
           },
         ),
@@ -52,7 +33,6 @@ class _AppointmentTabState extends State<AppointmentTab> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // Calendar widget to select date
             CalendarDatePicker(
               firstDate: DateTime.now(),
               initialDate: selectedDate,
@@ -61,10 +41,9 @@ class _AppointmentTabState extends State<AppointmentTab> {
                   selectedDate = newDate;
                 });
               },
-              lastDate: DateTime.now().add(Duration(days: 30)), // Adjust here for the number of days in advance
+              lastDate: DateTime.now().add(Duration(days: 30)),
             ),
             SizedBox(height: 10.0),
-            // Beautifully styled date display
             Container(
               padding: EdgeInsets.all(16.0),
               decoration: BoxDecoration(
@@ -84,7 +63,6 @@ class _AppointmentTabState extends State<AppointmentTab> {
               ),
             ),
             SizedBox(height: 10.0),
-            // List of available times
             Wrap(
               spacing: 10.0,
               children: availableTimes.map((time) {
@@ -104,23 +82,52 @@ class _AppointmentTabState extends State<AppointmentTab> {
               }).toList(),
             ),
             SizedBox(height: 10.0),
-            // Button to confirm booking
             ElevatedButton(
               onPressed: () {
                 if (selectedTime.isNotEmpty) {
-                  // Navigate to the AppointmentConfirmationPage with selected date and time
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => AppointmentConfirmationPage(
-                        selectedDate: selectedDate,
-                        selectedTime: selectedTime,
-                        selectedDoctor: selectedDoctor, // Pass selected doctor
-                      ),
-                    ),
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text('Congratulations!'),
+                        content: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              'assets/verify.png',
+                              height: 100,
+                            ),
+                            SizedBox(height: 16),
+                            Text('Your appointment is confirmed for'),
+                            Text(
+                              '${DateFormat.MMMM().format(selectedDate)} ${selectedDate.day}, ${selectedDate.year}, at $selectedTime .',
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: Container(
+                              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                              decoration: BoxDecoration(
+                                color: Color.fromARGB(255, 71, 202, 167),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: Text(
+                                'Done',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ),
+                          ),
+                        ],
+                      );
+                    },
                   );
                 } else {
-                  // Show a message if no time is selected
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       content: Text('Please select a time slot'),
