@@ -33,6 +33,10 @@ class _AppointmentTabState extends State<AppointmentTab> {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            Text(
+              'Select Date',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
             CalendarDatePicker(
               firstDate: DateTime.now(),
               initialDate: selectedDate,
@@ -43,25 +47,10 @@ class _AppointmentTabState extends State<AppointmentTab> {
               },
               lastDate: DateTime.now().add(Duration(days: 30)),
             ),
-            SizedBox(height: 10.0),
-            Container(
-              padding: EdgeInsets.all(16.0),
-              decoration: BoxDecoration(
-                color: Color.fromARGB(255, 103, 223, 213),
-                borderRadius: BorderRadius.circular(10.0),
+            Text(
+                'Available Time',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.calendar_today),
-                  SizedBox(width: 10.0),
-                  Text(
-                    '${DateFormat.yMMMMd().format(selectedDate)}',
-                    style: TextStyle(fontSize: 18.0),
-                  ),
-                ],
-              ),
-            ),
             SizedBox(height: 10.0),
             Wrap(
               spacing: 10.0,
@@ -97,7 +86,7 @@ class _AppointmentTabState extends State<AppointmentTab> {
                               'assets/verify.png',
                               height: 100,
                             ),
-                            SizedBox(height: 10),
+                            SizedBox(height: 20),
                             Text(
                               'Congratulations!',
                               style: TextStyle(fontSize: 18),
