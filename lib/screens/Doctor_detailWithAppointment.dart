@@ -1,5 +1,6 @@
 import 'package:dentist_appointment/screens/AppointmentTab.dart';
 import 'package:dentist_appointment/screens/home_page.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -22,7 +23,7 @@ class DoctorDetailWithAppointmentPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back_ios,
             size: 20,
           ),
@@ -33,7 +34,9 @@ class DoctorDetailWithAppointmentPage extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => HomePage()),
               );
             } catch (e) {
-              print("Error navigating back: $e");
+              if (kDebugMode) {
+                print("Error navigating back: $e");
+              }
             }
           },
         ),
@@ -191,7 +194,8 @@ class DoctorDetailWithAppointmentPage extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => AppointmentTab()),
+                    MaterialPageRoute(
+                        builder: (context) => const AppointmentTab()),
                   );
                 },
                 child: Container(

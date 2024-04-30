@@ -72,7 +72,7 @@ class _DentistPageState extends State<DoctorTab> {
     },
   ];
 
-  TextEditingController _searchController = TextEditingController();
+  final TextEditingController _searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -84,10 +84,10 @@ class _DentistPageState extends State<DoctorTab> {
           style: GoogleFonts.urbanist(
               fontSize: 18,
               fontWeight: FontWeight.w600,
-              color: Color.fromRGBO(0, 0, 0, 1)),
+              color: const Color.fromRGBO(0, 0, 0, 1)),
         ),
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back_ios,
             size: 20,
           ),
@@ -104,7 +104,8 @@ class _DentistPageState extends State<DoctorTab> {
         ),
       ),
       body: Padding(
-        padding: EdgeInsets.all(16.0), // Add padding to create space from edge
+        padding:
+            const EdgeInsets.all(16.0), // Add padding to create space from edge
         child: Column(
           children: [
             Padding(
@@ -116,20 +117,20 @@ class _DentistPageState extends State<DoctorTab> {
                   color: Colors.grey[200], // Background color of box
                 ),
                 child: TextField(
-                  cursorColor: Color.fromRGBO(40, 195, 176, 1),
+                  cursorColor: const Color.fromRGBO(40, 195, 176, 1),
                   style: GoogleFonts.urbanist(
                       fontSize: 13,
                       fontWeight: FontWeight.w500,
-                      color: Color.fromRGBO(107, 119, 154, 1)),
+                      color: const Color.fromRGBO(107, 119, 154, 1)),
                   controller: _searchController,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     filled: true,
                     fillColor: Color.fromRGBO(231, 232, 233, 1),
                     hintText: 'Search for doctors',
                     prefixIcon: Icon(Icons.search),
                     border: OutlineInputBorder(
-                      borderRadius: const BorderRadius.all(
-                        const Radius.circular(10.0),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10.0),
                       ),
                       borderSide: BorderSide(
                         width: 0,
@@ -145,7 +146,7 @@ class _DentistPageState extends State<DoctorTab> {
                 ),
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Expanded(
               child: GridView.count(
                 crossAxisCount: 2,
@@ -185,7 +186,7 @@ class _DentistPageState extends State<DoctorTab> {
             color: Colors.grey.withOpacity(0.5),
             spreadRadius: 1,
             blurRadius: 4,
-            offset: Offset(0, 3), // changes position of shadow
+            offset: const Offset(0, 3), // changes position of shadow
           ),
         ],
       ),
@@ -209,7 +210,7 @@ class _DentistPageState extends State<DoctorTab> {
         child: Container(
           width: 160,
           height: 160,
-          padding: EdgeInsets.symmetric(vertical: 13),
+          padding: const EdgeInsets.symmetric(vertical: 13),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
@@ -230,16 +231,16 @@ class _DentistPageState extends State<DoctorTab> {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              SizedBox(height: 5),
+              const SizedBox(height: 5),
               //Which job of that doctor
               Text(
                 'Dentist',
                 style: GoogleFonts.urbanist(
                     fontSize: 12,
                     fontWeight: FontWeight.w700,
-                    color: Color.fromRGBO(107, 119, 154, 1)),
+                    color: const Color.fromRGBO(107, 119, 154, 1)),
               ),
-              SizedBox(height: 5),
+              const SizedBox(height: 5),
               // Star rating sentence
               RichText(
                 text: TextSpan(
@@ -256,7 +257,7 @@ class _DentistPageState extends State<DoctorTab> {
                       style: GoogleFonts.urbanist(
                           fontSize: 10,
                           fontWeight: FontWeight.w600,
-                          color: Color.fromRGBO(107, 119, 154, 1)),
+                          color: const Color.fromRGBO(107, 119, 154, 1)),
                     ),
                   ],
                 ),

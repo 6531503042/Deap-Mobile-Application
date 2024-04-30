@@ -1,5 +1,7 @@
 import 'package:dentist_appointment/screens/DoctorTabInAppointment.dart';
 import 'package:dentist_appointment/screens/Doctor_detail.dart';
+import 'package:dentist_appointment/screens/Progression_page.dart';
+import 'package:dentist_appointment/screens/settings_page.dart';
 import 'package:flutter/material.dart';
 import 'package:dentist_appointment/screens/DoctorTab.dart';
 import 'package:dentist_appointment/screens/ProfileTab.dart';
@@ -75,12 +77,20 @@ class _HomePageState extends State<HomePage> {
                   icon: const Icon(Icons.calendar_today),
                   onPressed: () {
                     // Add functionality for calendar
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => Regression_Page()),
+                    );
                   },
                 ),
                 IconButton(
                   icon: const Icon(Icons.settings),
                   onPressed: () {
                     // Add functionality for settings
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => SettingsPage()),
+                    );
                   },
                 ),
               ],

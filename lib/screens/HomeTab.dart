@@ -15,15 +15,15 @@ class HomeTab extends StatelessWidget {
               width: 320, // Set the width here
               height: 64,
               decoration: BoxDecoration(
-                color: Color.fromARGB(255, 255, 255, 255),
-                border: Border.all(color: Color.fromARGB(255, 178, 178, 178)),
+                color: const Color.fromARGB(255, 255, 255, 255),
+                border: Border.all(color: const Color.fromARGB(255, 178, 178, 178)),
                 borderRadius: BorderRadius.circular(16),
               ),
-              padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Column(
+                  const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
@@ -42,7 +42,7 @@ class HomeTab extends StatelessWidget {
                       borderRadius: BorderRadius.circular(16),
                     ),
                     child: IconButton(
-                      icon: Icon(Icons.arrow_forward, color: Color.fromARGB(255, 203, 203, 203)),
+                      icon: const Icon(Icons.arrow_forward, color: Color.fromARGB(255, 203, 203, 203)),
                       onPressed: () {
                         // Add functionality for the arrow button
                       },
@@ -53,12 +53,12 @@ class HomeTab extends StatelessWidget {
             ),
           ],
         ),
-        SizedBox(height: 8),
-        Text(
+        const SizedBox(height: 8),
+        const Text(
           'Popular dentist',
           style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         ),
-        SizedBox(height: 16),
+        const SizedBox(height: 16),
         Wrap(
           spacing: 8,
           runSpacing: 8,
@@ -83,7 +83,7 @@ Widget _buildDoctorCard(String name, double rating, String imagePath) {
       child: Container(
         width: 150,
         height: 150,
-        padding: EdgeInsets.all(8),
+        padding: const EdgeInsets.all(8),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -105,14 +105,14 @@ Widget _buildDoctorCard(String name, double rating, String imagePath) {
                 },
               ),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Text(
               name,
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
             Text(
               '${rating.toStringAsFixed(1)} (135 reviews)',
-              style: TextStyle(fontSize: 14),
+              style: const TextStyle(fontSize: 14),
             ),
           ],
         ),

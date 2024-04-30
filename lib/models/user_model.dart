@@ -1,4 +1,3 @@
-import 'package:dentist_appointment/models/appointment_model.dart';
 
 class User {
   String email;
