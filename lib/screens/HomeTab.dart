@@ -63,7 +63,7 @@ class HomeTab extends StatelessWidget {
           spacing: 8,
           runSpacing: 8,
           children: <Widget>[
-             _buildDoctorCard('Dr. Praa', 4.5, 'assets/doctor1.png'),
+            _buildDoctorCard('Dr. Praa', 4.5, 'assets/doctor1.png'),
             _buildDoctorCard('Dr. Bellamy R', 4.5, 'assets/doctor8.png'),
             _buildDoctorCard('Dr. Klimisch J', 4.5, 'assets/doctor3.png'),
           ],

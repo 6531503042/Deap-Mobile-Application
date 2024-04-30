@@ -1,11 +1,11 @@
 name: dentist_appointment
 description: "A new Flutter project."
-publish_to: 'none'
+publish_to: "none"
 
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.3.0 <4.0.0'
+  sdk: ">=3.3.0 <4.0.0"
 
 dependencies:
   flutter:
@@ -14,7 +14,8 @@ dependencies:
   intl: ^0.17.0
   percent_indicator: ^4.0.1
   ionicons: ^0.2.2
-  
+  slide_countdown: ^1.6.1
+
   cupertino_icons: ^1.0.6
   image_picker: ^1.1.0
   sqflite: ^2.3.3
@@ -26,8 +27,12 @@ dev_dependencies:
   flutter_lints: ^3.0.0
 
 flutter:
-
   uses-material-design: true
 
   assets:
     - assets/
+    - lib/Photo/Banner Animate.png
+    - lib/Photo/back_arrow.png
+    - lib/Photo/Vector.png
+    - lib/Photo/google_ic.png
+    - lib/Photo/cib_apple.png

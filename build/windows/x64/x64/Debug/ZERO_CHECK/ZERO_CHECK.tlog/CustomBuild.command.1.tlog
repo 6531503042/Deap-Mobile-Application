@@ -1,0 +1,10 @@
+^C:\USERS\ASUS\DOWNLOADS\FLUTTER-AJARN-B\BUILD\WINDOWS\X64\CMAKEFILES\A45A2EAB92258987A2C85509BFFECF57\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/asus/Downloads/Flutter-Ajarn-B/windows -BC:/Users/asus/Downloads/Flutter-Ajarn-B/build/windows/x64 --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/asus/Downloads/Flutter-Ajarn-B/build/windows/x64/b.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
