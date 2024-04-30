@@ -37,7 +37,7 @@ class _EditProfileUIState extends State<ProfileTab> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Profile'),
+        title: const Text('Profile',style: TextStyle(fontWeight: FontWeight.bold),),
         leading: IconButton(
           icon: const Icon(
               Icons.arrow_back), // Example of using an icon as leading widget
@@ -55,7 +55,7 @@ class _EditProfileUIState extends State<ProfileTab> {
                 // This will be triggered when the "Save" button is pressed
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.green,
+                backgroundColor: Color.fromARGB(255, 59, 176, 145),
               ),
               child: const Text('Save', style: TextStyle(color: Colors.white)),
             ),
@@ -133,7 +133,7 @@ class _EditProfileUIState extends State<ProfileTab> {
                 child: const Text(
                   'Email',
                   style: TextStyle(
-                    color: Colors.green,
+                    color: Color.fromARGB(255, 71, 202, 167),
                     fontWeight: FontWeight.bold,
                     fontSize: 18,
                   ),
@@ -154,7 +154,7 @@ class _EditProfileUIState extends State<ProfileTab> {
                 child: const Text(
                   'Bio',
                   style: TextStyle(
-                    color: Colors.green,
+                    color: Color.fromARGB(255, 71, 202, 167),
                     fontWeight: FontWeight.bold,
                     fontSize: 18,
                   ),
@@ -176,7 +176,7 @@ class _EditProfileUIState extends State<ProfileTab> {
                 child: const Text(
                   'Change Password',
                   style: TextStyle(
-                    color: Colors.green,
+                    color: Color.fromARGB(255, 71, 202, 167),
                     fontWeight: FontWeight.bold,
                     fontSize: 18,
                   ),
