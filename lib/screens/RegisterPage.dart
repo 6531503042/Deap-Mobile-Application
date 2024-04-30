@@ -1,5 +1,6 @@
 import 'package:dentist_appointment/screens/LoginPage.dart';
 import 'package:dentist_appointment/screens/RequestOTP.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -15,7 +16,7 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage>
     with SingleTickerProviderStateMixin {
-  // final Future<FirebaseApp> firebase = Firebase.initializeApp();
+  final Future<FirebaseApp> firebase = Firebase.initializeApp();
   late TabController _tabController;
 
   var _isObcureText = true;

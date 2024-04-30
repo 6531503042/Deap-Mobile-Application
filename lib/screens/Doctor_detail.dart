@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class DoctorDetailPage extends StatelessWidget {
   final String name;
@@ -26,90 +27,128 @@ class DoctorDetailPage extends StatelessWidget {
               child: Column(
                 children: [
                   Image.asset(imagePath),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   Text(
                     name,
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: GoogleFonts.urbanist(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w700,
+                        color: const Color.fromRGBO(34, 43, 69, 1)),
                   ),
-                  SizedBox(height: 5),
+                  const SizedBox(height: 5),
                   Text(
                     'Dentist',
-                    style: TextStyle(fontSize: 14),
+                    style: GoogleFonts.urbanist(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w700,
+                      color: const Color.fromRGBO(107, 119, 154, 1),
+                    ),
                   ),
+                  const SizedBox(height: 10),
                 ],
               ),
             ),
-            SizedBox(height: 10), // Keeping SizedBox
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                _buildBox('Patients', Icons.group, '1000+'),
-                SizedBox(width: 20),
-                _buildBox('Experience', Icons.work, '10+ years'),
-                SizedBox(width: 20),
-                _buildBox('Ratings', Icons.star, '$rating'),
-              ],
+            const SizedBox(height: 10), // Keeping SizedBox
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 15),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  _buildBox('Patients', Image.asset('assets/GroupPatients.png'),
+                      '1000+'),
+                  const SizedBox(width: 20),
+                  _buildBox('Experience',
+                      Image.asset('assets/GroupExperience.png'), '10+ years'),
+                  const SizedBox(width: 20),
+                  _buildBox('Ratings', Image.asset('assets/GroupRatings.png'),
+                      '$rating'),
+                ],
+              ),
             ),
-            SizedBox(height: 40),
+            const SizedBox(height: 40),
             Padding(
-              padding: EdgeInsets.only(left: 20.0), // Align to the left
+              padding: const EdgeInsets.only(left: 20.0), // Align to the left
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     'About Doctor',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    style: GoogleFonts.urbanist(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w700,
+                        color: const Color.fromRGBO(34, 43, 69, 1)),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   Text(
                     description,
-                    style: TextStyle(fontSize: 14),
+                    style: GoogleFonts.urbanist(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w600,
+                        color: const Color.fromRGBO(107, 119, 154, 1)),
                   ),
                 ],
               ),
             ),
-            SizedBox(height: 40),
+            const SizedBox(height: 40),
             Padding(
-              padding: EdgeInsets.only(left: 20.0), // Align to the left
+              padding: const EdgeInsets.only(left: 20.0), // Align to the left
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     'Working time',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    style: GoogleFonts.urbanist(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w700,
+                      color: const Color.fromRGBO(34, 43, 69, 1),
+                    ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   Text(
                     'Mon - Sat (08:30 AM - 09:00 PM)',
-                    style: TextStyle(fontSize: 14),
+                    style: GoogleFonts.urbanist(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w600,
+                        color: const Color.fromRGBO(107, 119, 154, 1)),
                   ),
                 ],
               ),
             ),
-            SizedBox(height: 50),
+            const SizedBox(height: 50),
             Padding(
-              padding: EdgeInsets.only(left: 40.0), // Align to the left
+              padding: const EdgeInsets.symmetric(
+                  horizontal: 30), // Align to the left
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
                         'Reviews',
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold),
+                        style: GoogleFonts.urbanist(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600,
+                            color: const Color.fromRGBO(31, 42, 55, 1)),
                       ),
                       TextButton(
                         onPressed: () {
                           // Navigate to see all reviews page
                         },
-                        child: Text('See All'),
+                        child: Text(
+                          'See All',
+                          style: GoogleFonts.urbanist(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                              color: const Color.fromRGBO(107, 114, 128, 1)),
+                        ),
                       ),
                     ],
                   ),
-                  SizedBox(height: 10),
-                  SingleChildScrollView(
+                  const SizedBox(height: 10),
+                  const SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: [
@@ -127,32 +166,51 @@ class DoctorDetailPage extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 60),
+            const SizedBox(height: 60),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildBox(String title, IconData iconData, String subtitle) {
-    return Column(
-      children: [
-        Icon(
-          iconData,
-          size: 24,
-          color: Colors.grey,
-        ),
-        SizedBox(height: 5),
-        Text(
-          title,
-          style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-        ),
-        SizedBox(height: 5),
-        Text(
-          subtitle,
-          style: TextStyle(fontSize: 14),
-        ),
-      ],
+  Widget _buildBox(String title, Image image, String subtitle) {
+    return Container(
+      width: 95,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 0.0005,
+            blurRadius: 8,
+            offset: const Offset(0, 2), // changes position of shadow
+          ),
+        ],
+      ),
+      child: Column(
+        children: [
+          image,
+          const SizedBox(height: 10),
+          Text(
+            subtitle,
+            style: GoogleFonts.urbanist(
+                fontSize: 17,
+                fontWeight: FontWeight.w700,
+                color: const Color.fromRGBO(0, 0, 0, 1)),
+          ),
+          const SizedBox(height: 10),
+          Text(
+            title,
+            style: GoogleFonts.urbanist(
+                fontSize: 12,
+                fontWeight: FontWeight.w600,
+                color: const Color.fromRGBO(107, 119, 154, 1)),
+          ),
+          const SizedBox(height: 10),
+        ],
+      ),
     );
   }
 }
@@ -182,27 +240,75 @@ class ReviewItem extends StatelessWidget {
               radius: 30, // Increased radius for larger image size
               backgroundImage: AssetImage(avatarImage),
             ),
-            SizedBox(width: 10),
+            const SizedBox(width: 10),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   username,
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                  style: GoogleFonts.inter(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w700,
+                      color: const Color.fromRGBO(55, 65, 81, 1)),
                 ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Icon(Icons.star, color: Colors.amber),
-                    Text(rating.toString()),
+                    Text(
+                      rating.toString(),
+                      style: GoogleFonts.inter(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600,
+                          color: const Color.fromRGBO(107, 114, 128, 1)),
+                    ),
+                    const SizedBox(width: 10),
+                    buildStarRating(rating),
                   ],
                 ),
               ],
             ),
           ],
         ),
-        SizedBox(height: 5),
-        Text(review),
+        const SizedBox(height: 10),
+        Text(
+          review,
+          style: GoogleFonts.inter(
+              fontSize: 12,
+              fontWeight: FontWeight.w400,
+              color: const Color.fromRGBO(107, 114, 128, 1)),
+        ),
       ],
     );
   }
+}
+
+Widget buildStarRating(double rating) {
+  List<Widget> stars = [];
+  int numberOfFullStars = rating.floor();
+  double remainder = rating - numberOfFullStars;
+
+  // Add full stars
+  for (int i = 0; i < numberOfFullStars; i++) {
+    stars.add(const Icon(
+      Icons.star,
+      color: Colors.amber,
+      size: 15,
+    ));
+  }
+
+  // Add half star if remainder is greater than 0
+  if (remainder > 0) {
+    stars.add(const Icon(
+      Icons.star_half,
+      color: Colors.amber,
+      size: 15,
+    ));
+  }
+
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: stars,
+  );
 }
