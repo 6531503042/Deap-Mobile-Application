@@ -48,7 +48,10 @@ class _AppointmentTabState extends State<AppointmentTab> {
               GoogleFonts.urbanist(fontSize: 18, fontWeight: FontWeight.w600),
         ),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: Icon(
+            Icons.arrow_back_ios,
+            size: 20,
+          ),
           onPressed: () {
             Navigator.pop(context);
           },

@@ -1,18 +1,19 @@
 import 'dart:ui';
 
 import 'package:dentist_appointment/screens/Doctor_detail.dart';
+import 'package:dentist_appointment/screens/Doctor_detailWithAppointment.dart';
 import 'package:dentist_appointment/screens/home_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class DoctorTab extends StatefulWidget {
+class DoctorTabInAppointment extends StatefulWidget {
   @override
   _DentistPageState createState() => _DentistPageState();
 }
 
-class _DentistPageState extends State<DoctorTab> {
+class _DentistPageState extends State<DoctorTabInAppointment> {
   final List<Map<String, dynamic>> _dentists = [
     {
       'name': 'Dr. Praa',
@@ -196,7 +197,7 @@ class _DentistPageState extends State<DoctorTab> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => DoctorDetailPage(
+              builder: (context) => DoctorDetailWithAppointmentPage(
                 name: name,
                 rating: rating,
                 imagePath: imagePath, // Add this line

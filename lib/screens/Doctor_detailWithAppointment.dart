@@ -1,14 +1,15 @@
+import 'package:dentist_appointment/screens/AppointmentTab.dart';
 import 'package:dentist_appointment/screens/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class DoctorDetailPage extends StatelessWidget {
+class DoctorDetailWithAppointmentPage extends StatelessWidget {
   final String name;
   final double rating;
   final String imagePath;
   final String description;
 
-  const DoctorDetailPage({
+  const DoctorDetailWithAppointmentPage({
     Key? key,
     required this.name,
     required this.rating,
@@ -185,6 +186,29 @@ class DoctorDetailPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 60),
+            Center(
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => AppointmentTab()),
+                  );
+                },
+                child: Container(
+                  height: 60,
+                  width: 300,
+                  decoration: BoxDecoration(
+                      color: const Color.fromRGBO(40, 195, 176, 1),
+                      borderRadius: BorderRadius.circular(10)),
+                  child: const Center(
+                    child: Text(
+                      'Book Appointment',
+                      style: TextStyle(color: Colors.white, fontSize: 15),
+                    ),
+                  ),
+                ),
+              ),
+            ),
             const SizedBox(height: 60),
           ],
         ),
