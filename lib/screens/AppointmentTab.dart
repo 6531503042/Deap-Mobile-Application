@@ -1,3 +1,4 @@
+import 'package:dentist_appointment/screens/home_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -236,7 +237,11 @@ class _AppointmentTabState extends State<AppointmentTab> {
                               Center(
                                 child: TextButton(
                                   onPressed: () {
-                                    Navigator.of(context).pop();
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => HomePage()),
+                                    );
                                   },
                                   child: Container(
                                     padding: EdgeInsets.symmetric(vertical: 10),
