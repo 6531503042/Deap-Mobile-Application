@@ -3,7 +3,7 @@ import 'package:dentist_appointment/screens/RequestOTP.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-
+import 'package:google_fonts/google_fonts.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -34,10 +34,10 @@ class _RegisterPageState extends State<RegisterPage>
   }
 
   final List<Tab> _tabs = [
-    Tab(
+    const Tab(
       text: 'Telephone No.',
     ),
-    Tab(
+    const Tab(
       text: 'Email',
     )
   ];
@@ -51,13 +51,14 @@ class _RegisterPageState extends State<RegisterPage>
             onTap: () => Navigator.of(context).pop(),
             child: Center(
               child: Container(
-                margin: EdgeInsets.only(top: 15, left: 15),
+                margin: const EdgeInsets.only(top: 15, left: 15),
                 width: 40,
                 height: 40,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
-                    border: Border.all(color: Color.fromRGBO(0, 0, 0, 0.2))),
-                child: Center(child: Image.asset('lib/Photo/back_arrow.png')),
+                    border:
+                        Border.all(color: const Color.fromRGBO(0, 0, 0, 0.2))),
+                child: Center(child: Image.asset('assets/back_arrow.png')),
               ),
             ),
           ),
@@ -65,55 +66,59 @@ class _RegisterPageState extends State<RegisterPage>
       ),
       body: SingleChildScrollView(
         child: Container(
-          margin: EdgeInsets.symmetric(horizontal: 30),
+          margin: const EdgeInsets.symmetric(horizontal: 30),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                margin: EdgeInsets.only(left: 20, top: 10),
+                margin: const EdgeInsets.only(left: 20, top: 10),
                 width: 320,
                 child: Text(
                   'Hello! Register to get started',
-                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                  style: GoogleFonts.urbanist(
+                      fontSize: 30, fontWeight: FontWeight.bold),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
               Container(
                 width: MediaQuery.of(context).size.width,
                 child: Text(
                   'Please select your preferred channel for registration.',
-                  style: TextStyle(
+                  style: GoogleFonts.urbanist(
                       fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                      color: Color.fromRGBO(40, 195, 176, 1)),
+                      fontWeight: FontWeight.w500,
+                      color: const Color.fromRGBO(40, 195, 176, 1)),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Container(
                 // height: 65,
                 width: MediaQuery.of(context).size.height,
                 decoration: BoxDecoration(
-                    color: Color.fromRGBO(247, 248, 249, 1),
-                    border: Border.all(color: Color.fromRGBO(232, 236, 244, 1)),
+                    color: const Color.fromRGBO(247, 248, 249, 1),
+                    border: Border.all(
+                        color: const Color.fromRGBO(232, 236, 244, 1)),
                     borderRadius: BorderRadius.circular(8)),
                 child: Container(
                   child: Column(
                     children: [
                       Padding(
-                        padding: EdgeInsets.all(5),
+                        padding: const EdgeInsets.all(5),
                         child: TabBar(
+                          labelStyle: GoogleFonts.urbanist(
+                              fontSize: 15, fontWeight: FontWeight.w500),
                           controller: _tabController,
                           unselectedLabelColor:
-                              Color.fromRGBO(131, 145, 161, 1),
-                          labelColor: Color.fromRGBO(255, 255, 255, 1),
+                              const Color.fromRGBO(131, 145, 161, 1),
+                          labelColor: const Color.fromRGBO(255, 255, 255, 1),
                           indicator: BoxDecoration(
                               border: Border.all(color: Colors.transparent),
-                              color: Color.fromRGBO(40, 195, 176, 1),
+                              color: const Color.fromRGBO(40, 195, 176, 1),
                               borderRadius: BorderRadius.circular(20)),
                           indicatorSize: TabBarIndicatorSize.tab,
                           indicatorColor: Colors.transparent,
@@ -124,12 +129,12 @@ class _RegisterPageState extends State<RegisterPage>
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 50,
               ),
               Container(
                 width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height,
+                height: 950,
                 child: TabBarView(
                   controller: _tabController,
                   children: [
@@ -139,19 +144,27 @@ class _RegisterPageState extends State<RegisterPage>
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
-                              margin: EdgeInsets.only(left: 15, bottom: 5),
+                              margin:
+                                  const EdgeInsets.only(left: 15, bottom: 5),
                               child: Text(
                                 'Telephone No',
-                                style: TextStyle(
+                                style: GoogleFonts.urbanist(
                                     fontSize: 15,
-                                    color: Color.fromRGBO(40, 195, 176, 1)),
+                                    fontWeight: FontWeight.w500,
+                                    color:
+                                        const Color.fromRGBO(40, 195, 176, 1)),
                               )),
                           TextFormField(
+                            style: GoogleFonts.urbanist(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w500,
+                                color: const Color.fromRGBO(40, 195, 176, 1)),
                             cursorColor: Colors.greenAccent,
                             decoration: InputDecoration(
                                 hintText: 'Enter your Telephone No',
                                 filled: true,
-                                fillColor: Color.fromRGBO(247, 248, 249, 1),
+                                fillColor:
+                                    const Color.fromRGBO(247, 248, 249, 1),
                                 focusedBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(12),
                                     borderSide: const BorderSide(
@@ -165,23 +178,31 @@ class _RegisterPageState extends State<RegisterPage>
                                       width: 1.0,
                                     ))),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           Container(
-                              margin: EdgeInsets.only(left: 15, bottom: 5),
+                              margin:
+                                  const EdgeInsets.only(left: 15, bottom: 5),
                               child: Text(
                                 'Citizen ID or Passport No.',
-                                style: TextStyle(
+                                style: GoogleFonts.urbanist(
                                     fontSize: 15,
-                                    color: Color.fromRGBO(40, 195, 176, 1)),
+                                    fontWeight: FontWeight.w500,
+                                    color:
+                                        const Color.fromRGBO(40, 195, 176, 1)),
                               )),
                           TextFormField(
+                            style: GoogleFonts.urbanist(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w500,
+                                color: const Color.fromRGBO(40, 195, 176, 1)),
                             cursorColor: Colors.greenAccent,
                             decoration: InputDecoration(
                                 hintText: 'Enter Citizen ID or Passport No.',
                                 filled: true,
-                                fillColor: Color.fromRGBO(247, 248, 249, 1),
+                                fillColor:
+                                    const Color.fromRGBO(247, 248, 249, 1),
                                 focusedBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(12),
                                     borderSide: const BorderSide(
@@ -195,8 +216,8 @@ class _RegisterPageState extends State<RegisterPage>
                                       width: 1.0,
                                     ))),
                           ),
-                          SizedBox(
-                            height: 240,
+                          const SizedBox(
+                            height: 120,
                           ),
                           Center(
                             child: GestureDetector(
@@ -209,25 +230,28 @@ class _RegisterPageState extends State<RegisterPage>
                                 );
                               }, //Fuction That Will Use After Press This Button
                               child: Container(
-                                margin: EdgeInsets.symmetric(horizontal: 40),
+                                margin:
+                                    const EdgeInsets.symmetric(horizontal: 40),
                                 width: MediaQuery.of(context).size.width,
                                 height: 55,
                                 decoration: BoxDecoration(
-                                    color: Color.fromRGBO(40, 195, 176, 1),
+                                    color:
+                                        const Color.fromRGBO(40, 195, 176, 1),
                                     borderRadius: BorderRadius.circular(10)),
                                 child: Center(
                                     child: Text(
                                   'Request OTP',
-                                  style: TextStyle(
-                                      color: Color.fromRGBO(255, 255, 255, 1),
+                                  style: GoogleFonts.urbanist(
                                       fontSize: 15,
-                                      fontWeight: FontWeight.w400),
+                                      fontWeight: FontWeight.w600,
+                                      color: const Color.fromRGBO(
+                                          255, 255, 255, 1)),
                                 )),
                               ),
                             ),
                           ),
                           Container(
-                              margin: EdgeInsets.only(top: 50),
+                              margin: const EdgeInsets.only(top: 50),
                               width: MediaQuery.of(context).size.width,
                               child: Center(
                                 child: Row(
@@ -236,17 +260,25 @@ class _RegisterPageState extends State<RegisterPage>
                                       child: new Container(
                                           margin: const EdgeInsets.only(
                                               left: 10.0, right: 20.0),
-                                          child: Divider(
+                                          child: const Divider(
                                             color: Colors.black,
                                             height: 20,
                                           )),
                                     ),
-                                    Center(child: Text('Or Login with')),
+                                    Center(
+                                        child: Text(
+                                      'Or Login with',
+                                      style: GoogleFonts.urbanist(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w600,
+                                          color:
+                                              const Color.fromRGBO(0, 0, 0, 1)),
+                                    )),
                                     Expanded(
                                       child: new Container(
                                           margin: const EdgeInsets.only(
                                               left: 10.0, right: 20.0),
-                                          child: Divider(
+                                          child: const Divider(
                                             color: Colors.black,
                                             height: 20,
                                           )),
@@ -255,7 +287,7 @@ class _RegisterPageState extends State<RegisterPage>
                                 ),
                               )),
                           Container(
-                            margin: EdgeInsets.only(top: 20),
+                            margin: const EdgeInsets.only(top: 20),
                             width: MediaQuery.of(context).size.width,
                             child: Center(
                               child: Row(
@@ -266,58 +298,61 @@ class _RegisterPageState extends State<RegisterPage>
                                   GestureDetector(
                                     onTap: () {},
                                     child: Container(
-                                      width: 110,
-                                      height: 50,
+                                      width: 80,
+                                      height: 40,
                                       decoration: BoxDecoration(
                                           color:
-                                              Color.fromRGBO(255, 255, 255, 1),
+                                              const Color.fromRGBO(
+                                              255, 255, 255, 1),
                                           border: Border.all(
-                                              color: Color.fromRGBO(
+                                              color: const Color.fromRGBO(
                                                   232, 236, 244, 1)),
                                           borderRadius:
                                               BorderRadius.circular(8)),
                                       child:
-                                          Image.asset('lib/Photo/Vector.png'),
+                                          Image.asset('assets/Vector01.png'),
                                     ),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 10,
                                   ),
                                   GestureDetector(
                                     onTap: () {},
                                     child: Container(
-                                      width: 110,
-                                      height: 50,
+                                      width: 80,
+                                      height: 40,
                                       decoration: BoxDecoration(
                                           color:
-                                              Color.fromRGBO(255, 255, 255, 1),
+                                              const Color.fromRGBO(
+                                              255, 255, 255, 1),
                                           border: Border.all(
-                                              color: Color.fromRGBO(
+                                              color: const Color.fromRGBO(
                                                   232, 236, 244, 1)),
                                           borderRadius:
                                               BorderRadius.circular(8)),
                                       child: Image.asset(
-                                          'lib/Photo/google_ic.png'),
+                                          'assets/google_ic.png'),
                                     ),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 10,
                                   ),
                                   GestureDetector(
                                     onTap: () {},
                                     child: Container(
-                                      width: 110,
-                                      height: 50,
+                                      width: 80,
+                                      height: 40,
                                       decoration: BoxDecoration(
                                           color:
-                                              Color.fromRGBO(255, 255, 255, 1),
+                                              const Color.fromRGBO(
+                                              255, 255, 255, 1),
                                           border: Border.all(
-                                              color: Color.fromRGBO(
+                                              color: const Color.fromRGBO(
                                                   232, 236, 244, 1)),
                                           borderRadius:
                                               BorderRadius.circular(8)),
                                       child: Image.asset(
-                                          'lib/Photo/cib_apple.png'),
+                                          'assets/cib_apple.png'),
                                     ),
                                   ),
                                 ],
@@ -326,28 +361,37 @@ class _RegisterPageState extends State<RegisterPage>
                           ),
                           Center(
                             child: Container(
-                              margin: EdgeInsets.only(top: 30),
+                              margin: const EdgeInsets.only(top: 30),
                               width: MediaQuery.of(context).size.width,
-                              height: 30,
+                              height: 40,
                               child: Center(
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    Text('Already have an account?'),
+                                    Text(
+                                      'Already have an account?',
+                                      style: GoogleFonts.urbanist(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w500,
+                                          color:
+                                              const Color.fromRGBO(0, 0, 0, 1)),
+                                    ),
                                     TextButton(
                                         onPressed: () {
                                           Navigator.push(
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    const LoginPage()),
+                                                    LoginPage()),
                                           );
                                         },
                                         child: Text(
                                           'Login Now',
-                                          style: TextStyle(
-                                              color: Color.fromRGBO(
+                                          style: GoogleFonts.urbanist(
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.w700,
+                                              color: const Color.fromRGBO(
                                                   7, 181, 255, 1)),
                                         ))
                                   ],
@@ -364,19 +408,27 @@ class _RegisterPageState extends State<RegisterPage>
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
-                              margin: EdgeInsets.only(left: 15, bottom: 5),
+                              margin:
+                                  const EdgeInsets.only(left: 15, bottom: 5),
                               child: Text(
                                 'E-mail Address',
-                                style: TextStyle(
+                                style: GoogleFonts.urbanist(
                                     fontSize: 15,
-                                    color: Color.fromRGBO(40, 195, 176, 1)),
+                                    fontWeight: FontWeight.w500,
+                                    color:
+                                        const Color.fromRGBO(40, 195, 176, 1)),
                               )),
                           TextFormField(
+                            style: GoogleFonts.urbanist(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500,
+                            ),
                             cursorColor: Colors.greenAccent,
                             decoration: InputDecoration(
                                 hintText: 'Enter your E-mail Address.',
                                 filled: true,
-                                fillColor: Color.fromRGBO(247, 248, 249, 1),
+                                fillColor:
+                                    const Color.fromRGBO(247, 248, 249, 1),
                                 focusedBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(12),
                                     borderSide: const BorderSide(
@@ -390,23 +442,31 @@ class _RegisterPageState extends State<RegisterPage>
                                       width: 1.0,
                                     ))),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           Container(
-                              margin: EdgeInsets.only(left: 15, bottom: 5),
+                              margin:
+                                  const EdgeInsets.only(left: 15, bottom: 5),
                               child: Text(
                                 'First Name',
-                                style: TextStyle(
+                                style: GoogleFonts.urbanist(
                                     fontSize: 15,
-                                    color: Color.fromRGBO(40, 195, 176, 1)),
+                                    fontWeight: FontWeight.w500,
+                                    color:
+                                        const Color.fromRGBO(40, 195, 176, 1)),
                               )),
                           TextFormField(
+                            style: GoogleFonts.urbanist(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500,
+                            ),
                             cursorColor: Colors.greenAccent,
                             decoration: InputDecoration(
                                 hintText: 'Enter Your First Name.',
                                 filled: true,
-                                fillColor: Color.fromRGBO(247, 248, 249, 1),
+                                fillColor:
+                                    const Color.fromRGBO(247, 248, 249, 1),
                                 focusedBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(12),
                                     borderSide: const BorderSide(
@@ -420,23 +480,31 @@ class _RegisterPageState extends State<RegisterPage>
                                       width: 1.0,
                                     ))),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           Container(
-                              margin: EdgeInsets.only(left: 15, bottom: 5),
+                              margin:
+                                  const EdgeInsets.only(left: 15, bottom: 5),
                               child: Text(
                                 'Last Name',
-                                style: TextStyle(
+                                style: GoogleFonts.urbanist(
                                     fontSize: 15,
-                                    color: Color.fromRGBO(40, 195, 176, 1)),
+                                    fontWeight: FontWeight.w500,
+                                    color:
+                                        const Color.fromRGBO(40, 195, 176, 1)),
                               )),
                           TextFormField(
+                            style: GoogleFonts.urbanist(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500,
+                            ),
                             cursorColor: Colors.greenAccent,
                             decoration: InputDecoration(
                                 hintText: 'Enter your Last Name.',
                                 filled: true,
-                                fillColor: Color.fromRGBO(247, 248, 249, 1),
+                                fillColor:
+                                    const Color.fromRGBO(247, 248, 249, 1),
                                 focusedBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(12),
                                     borderSide: const BorderSide(
@@ -450,23 +518,31 @@ class _RegisterPageState extends State<RegisterPage>
                                       width: 1.0,
                                     ))),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           Container(
-                              margin: EdgeInsets.only(left: 15, bottom: 5),
+                              margin:
+                                  const EdgeInsets.only(left: 15, bottom: 5),
                               child: Text(
                                 'Citizen ID or Passport No.',
-                                style: TextStyle(
+                                style: GoogleFonts.urbanist(
                                     fontSize: 15,
-                                    color: Color.fromRGBO(40, 195, 176, 1)),
+                                    fontWeight: FontWeight.w500,
+                                    color:
+                                        const Color.fromRGBO(40, 195, 176, 1)),
                               )),
                           TextFormField(
+                            style: GoogleFonts.urbanist(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500,
+                            ),
                             cursorColor: Colors.greenAccent,
                             decoration: InputDecoration(
                                 hintText: 'Enter Citizen ID or Passport No.',
                                 filled: true,
-                                fillColor: Color.fromRGBO(247, 248, 249, 1),
+                                fillColor:
+                                    const Color.fromRGBO(247, 248, 249, 1),
                                 focusedBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(12),
                                     borderSide: const BorderSide(
@@ -480,18 +556,25 @@ class _RegisterPageState extends State<RegisterPage>
                                       width: 1.0,
                                     ))),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           Container(
-                              margin: EdgeInsets.only(left: 15, bottom: 5),
+                              margin:
+                                  const EdgeInsets.only(left: 15, bottom: 5),
                               child: Text(
                                 'Password',
-                                style: TextStyle(
+                                style: GoogleFonts.urbanist(
                                     fontSize: 15,
-                                    color: Color.fromRGBO(40, 195, 176, 1)),
+                                    fontWeight: FontWeight.w500,
+                                    color:
+                                        const Color.fromRGBO(40, 195, 176, 1)),
                               )),
                           TextFormField(
+                            style: GoogleFonts.urbanist(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500,
+                            ),
                             obscureText: _isObcureText,
                             obscuringCharacter: '*',
                             decoration: InputDecoration(
@@ -508,7 +591,8 @@ class _RegisterPageState extends State<RegisterPage>
                                   },
                                 ),
                                 filled: true,
-                                fillColor: Color.fromRGBO(247, 248, 249, 1),
+                                fillColor:
+                                    const Color.fromRGBO(247, 248, 249, 1),
                                 focusedBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(15),
                                     borderSide: const BorderSide(
@@ -522,18 +606,25 @@ class _RegisterPageState extends State<RegisterPage>
                                       width: 1.0,
                                     ))),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           Container(
-                              margin: EdgeInsets.only(left: 15, bottom: 5),
+                              margin:
+                                  const EdgeInsets.only(left: 15, bottom: 5),
                               child: Text(
                                 'Confirm Password',
-                                style: TextStyle(
+                                style: GoogleFonts.urbanist(
                                     fontSize: 15,
-                                    color: Color.fromRGBO(40, 195, 176, 1)),
+                                    fontWeight: FontWeight.w500,
+                                    color:
+                                        const Color.fromRGBO(40, 195, 176, 1)),
                               )),
                           TextFormField(
+                            style: GoogleFonts.urbanist(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500,
+                            ),
                             obscureText: _isObcureText1,
                             obscuringCharacter: '*',
                             decoration: InputDecoration(
@@ -550,7 +641,8 @@ class _RegisterPageState extends State<RegisterPage>
                                   },
                                 ),
                                 filled: true,
-                                fillColor: Color.fromRGBO(247, 248, 249, 1),
+                                fillColor:
+                                    const Color.fromRGBO(247, 248, 249, 1),
                                 focusedBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(15),
                                     borderSide: const BorderSide(
@@ -564,7 +656,7 @@ class _RegisterPageState extends State<RegisterPage>
                                       width: 1.0,
                                     ))),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 60,
                           ),
                           Center(
@@ -578,13 +670,15 @@ class _RegisterPageState extends State<RegisterPage>
                                 );
                               }, //Fuction That Will Use After Press This Button
                               child: Container(
-                                margin: EdgeInsets.symmetric(horizontal: 40),
+                                margin:
+                                    const EdgeInsets.symmetric(horizontal: 40),
                                 width: MediaQuery.of(context).size.width,
                                 height: 55,
                                 decoration: BoxDecoration(
-                                    color: Color.fromRGBO(40, 195, 176, 1),
+                                    color:
+                                        const Color.fromRGBO(40, 195, 176, 1),
                                     borderRadius: BorderRadius.circular(10)),
-                                child: Center(
+                                child: const Center(
                                     child: Text(
                                   'Request OTP',
                                   style: TextStyle(
@@ -596,7 +690,7 @@ class _RegisterPageState extends State<RegisterPage>
                             ),
                           ),
                           Container(
-                              margin: EdgeInsets.only(top: 50),
+                              margin: const EdgeInsets.only(top: 50),
                               width: MediaQuery.of(context).size.width,
                               child: Center(
                                 child: Row(
@@ -605,17 +699,25 @@ class _RegisterPageState extends State<RegisterPage>
                                       child: new Container(
                                           margin: const EdgeInsets.only(
                                               left: 10.0, right: 20.0),
-                                          child: Divider(
+                                          child: const Divider(
                                             color: Colors.black,
                                             height: 20,
                                           )),
                                     ),
-                                    Center(child: Text('Or Login with')),
+                                    Center(
+                                        child: Text(
+                                      'Or Login with',
+                                      style: GoogleFonts.urbanist(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w600,
+                                          color:
+                                              const Color.fromRGBO(0, 0, 0, 1)),
+                                    )),
                                     Expanded(
                                       child: new Container(
                                           margin: const EdgeInsets.only(
                                               left: 10.0, right: 20.0),
-                                          child: Divider(
+                                          child: const Divider(
                                             color: Colors.black,
                                             height: 20,
                                           )),
@@ -624,7 +726,7 @@ class _RegisterPageState extends State<RegisterPage>
                                 ),
                               )),
                           Container(
-                            margin: EdgeInsets.only(top: 20),
+                            margin: const EdgeInsets.only(top: 20),
                             width: MediaQuery.of(context).size.width,
                             child: Center(
                               child: Row(
@@ -635,58 +737,61 @@ class _RegisterPageState extends State<RegisterPage>
                                   GestureDetector(
                                     onTap: () {},
                                     child: Container(
-                                      width: 110,
-                                      height: 50,
+                                      width: 80,
+                                      height: 40,
                                       decoration: BoxDecoration(
                                           color:
-                                              Color.fromRGBO(255, 255, 255, 1),
+                                              const Color.fromRGBO(
+                                              255, 255, 255, 1),
                                           border: Border.all(
-                                              color: Color.fromRGBO(
+                                              color: const Color.fromRGBO(
                                                   232, 236, 244, 1)),
                                           borderRadius:
                                               BorderRadius.circular(8)),
                                       child:
-                                          Image.asset('lib/Photo/Vector.png'),
+                                          Image.asset('assets/Vector01.png'),
                                     ),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 10,
                                   ),
                                   GestureDetector(
                                     onTap: () {},
                                     child: Container(
-                                      width: 110,
-                                      height: 50,
+                                      width: 80,
+                                      height: 40,
                                       decoration: BoxDecoration(
                                           color:
-                                              Color.fromRGBO(255, 255, 255, 1),
+                                              const Color.fromRGBO(
+                                              255, 255, 255, 1),
                                           border: Border.all(
-                                              color: Color.fromRGBO(
+                                              color: const Color.fromRGBO(
                                                   232, 236, 244, 1)),
                                           borderRadius:
                                               BorderRadius.circular(8)),
                                       child: Image.asset(
-                                          'lib/Photo/google_ic.png'),
+                                          'assets/google_ic.png'),
                                     ),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 10,
                                   ),
                                   GestureDetector(
                                     onTap: () {},
                                     child: Container(
-                                      width: 110,
-                                      height: 50,
+                                      width: 80,
+                                      height: 40,
                                       decoration: BoxDecoration(
                                           color:
-                                              Color.fromRGBO(255, 255, 255, 1),
+                                              const Color.fromRGBO(
+                                              255, 255, 255, 1),
                                           border: Border.all(
-                                              color: Color.fromRGBO(
+                                              color: const Color.fromRGBO(
                                                   232, 236, 244, 1)),
                                           borderRadius:
                                               BorderRadius.circular(8)),
                                       child: Image.asset(
-                                          'lib/Photo/cib_apple.png'),
+                                          'assets/cib_apple.png'),
                                     ),
                                   ),
                                 ],
@@ -695,28 +800,37 @@ class _RegisterPageState extends State<RegisterPage>
                           ),
                           Center(
                             child: Container(
-                              margin: EdgeInsets.only(top: 30),
+                              margin: const EdgeInsets.only(top: 30),
                               width: MediaQuery.of(context).size.width,
-                              height: 30,
+                              height: 40,
                               child: Center(
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    Text('Already have an account?'),
+                                    Text(
+                                      'Already have an account?',
+                                      style: GoogleFonts.urbanist(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w500,
+                                          color:
+                                              const Color.fromRGBO(0, 0, 0, 1)),
+                                    ),
                                     TextButton(
                                         onPressed: () {
                                           Navigator.push(
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    const LoginPage()),
+                                                    LoginPage()),
                                           );
                                         },
                                         child: Text(
                                           'Login Now',
-                                          style: TextStyle(
-                                              color: Color.fromRGBO(
+                                          style: GoogleFonts.urbanist(
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.w700,
+                                              color: const Color.fromRGBO(
                                                   7, 181, 255, 1)),
                                         ))
                                   ],

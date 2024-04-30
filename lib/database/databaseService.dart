@@ -1,6 +1,7 @@
 import 'package:dentist_appointment/models/appointment_model.dart';
 import 'package:dentist_appointment/models/doctor_model.dart';
 import 'package:dentist_appointment/models/user_model.dart';
+import 'package:flutter/foundation.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart'; // Import the path package
 
@@ -16,7 +17,9 @@ class DatabaseService {
 
     // Return new database
     _database = await _initDatabase();
-    print("Database created");
+    if (kDebugMode) {
+      print("Database created");
+    }
     return _database!;
   }
 
@@ -37,9 +40,17 @@ class DatabaseService {
 
   Future<void> _onCreate(Database db, int version) async {
     //Attach with Forein - Key
-    await db.execute(
-      'CREATE TABLE user(id INTEGER PRIMARY KEY, name TEXT)',
-    );
+    // Create the user table
+    await db.execute('''
+    CREATE TABLE user (
+      id INTEGER PRIMARY KEY,
+      name TEXT,
+      email TEXT, // Add the email column here
+      password TEXT,
+      phoneNumber TEXT,
+      image TEXT
+        )
+      ''');
     await db.execute(
       'CREATE TABLE doctor(id INTEGER PRIMARY KEY, name TEXT)',
     );
@@ -216,15 +227,17 @@ class DatabaseService {
     Future<bool> login(User user) async {
       final db = await _databaseService.getDatabase();
 
-      //if forgot password
-      var result = await db.rawQuery(
-          "select * from user where email = '${user.email} AND  password = '${user.password}'");
-      if (result.isEmpty) {
-        return true;
-      } else {
-        return false;
-      }
+      // Query the user table to check if the provided username and password match
+      final List<Map<String, dynamic>> maps = await db.query(
+        'user',
+        where: 'usrName = ? AND usrPassword = ?',
+        whereArgs: [user.usrName, user.usrPassword],
+      );
+
+      // If there is a matching user, return true; otherwise, return false
+      return maps.isNotEmpty;
     }
+
 
     Future<int> register(User user) async {
       final db = await _databaseService.getDatabase();
@@ -266,4 +279,6 @@ class DatabaseService {
       whereArgs: [id],
     );
   }
+
+  
 }
