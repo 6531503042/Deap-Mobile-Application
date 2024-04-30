@@ -11,6 +11,7 @@ class AppointmentTab extends StatefulWidget {
 class _AppointmentTabState extends State<AppointmentTab> {
   DateTime selectedDate = DateTime.now();
   String selectedTime = "";
+  String problemDescription = "";
 
   final List<String> availableTimes = [
     "09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM",
@@ -76,11 +77,36 @@ class _AppointmentTabState extends State<AppointmentTab> {
                         ? Color.fromARGB(255, 60, 242, 203)
                         : Color.fromARGB(255, 255, 255, 255),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10), // Adjust the roundness here
+                      borderRadius: BorderRadius.circular(10),
                     ),
                   ),
                 );
               }).toList(),
+            ),
+            SizedBox(height: 10.0),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              child: Text(
+                'Write your problem condition',
+                style: TextStyle(fontSize: 14),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16),
+              child: TextField(
+                onChanged: (value) {
+                  setState(() {
+                    problemDescription = value;
+                  });
+                },
+                decoration: InputDecoration(
+                  hintText: 'Write your problem here...',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                ),
+                maxLines: 4,
+              ),
             ),
             SizedBox(height: 10.0),
             Center(
@@ -116,17 +142,23 @@ class _AppointmentTabState extends State<AppointmentTab> {
                                 '${DateFormat.MMMM().format(selectedDate)} ${selectedDate.day}, ${selectedDate.year}, at $selectedTime .',
                                 style: TextStyle(fontWeight: FontWeight.bold),
                               ),
+                              SizedBox(height: 16),
+                              Text('Problem Description:'),
+                              Text(
+                                problemDescription.isNotEmpty ? problemDescription : 'Not provided',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
                             ],
                           ),
                           actions: [
-                            Center( // Center the button
+                            Center(
                               child: TextButton(
                                 onPressed: () {
                                   Navigator.of(context).pop();
                                 },
                                 child: Container(
                                   padding: EdgeInsets.symmetric(vertical: 10),
-                                  width: 240, // Set the width of the container
+                                  width: 240,
                                   decoration: BoxDecoration(
                                     color: Color.fromARGB(255, 71, 202, 167),
                                     borderRadius: BorderRadius.circular(20),
@@ -163,7 +195,7 @@ class _AppointmentTabState extends State<AppointmentTab> {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Color.fromARGB(255, 71, 202, 167),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20), // Adjust the roundness here
+                    borderRadius: BorderRadius.circular(20),
                   ),
                 ),
               ),
