@@ -22,7 +22,7 @@ class _AppointmentTabState extends State<AppointmentTab> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Booking Calendar'),
+        title: Text('Booking Appointments'),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
@@ -33,6 +33,10 @@ class _AppointmentTabState extends State<AppointmentTab> {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            Text(
+              'Select Date',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
             CalendarDatePicker(
               firstDate: DateTime.now(),
               initialDate: selectedDate,
@@ -43,25 +47,10 @@ class _AppointmentTabState extends State<AppointmentTab> {
               },
               lastDate: DateTime.now().add(Duration(days: 30)),
             ),
-            SizedBox(height: 10.0),
-            Container(
-              padding: EdgeInsets.all(16.0),
-              decoration: BoxDecoration(
-                color: Color.fromARGB(255, 103, 223, 213),
-                borderRadius: BorderRadius.circular(10.0),
+            Text(
+                'Available Time',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.calendar_today),
-                  SizedBox(width: 10.0),
-                  Text(
-                    '${DateFormat.yMMMMd().format(selectedDate)}',
-                    style: TextStyle(fontSize: 18.0),
-                  ),
-                ],
-              ),
-            ),
             SizedBox(height: 10.0),
             Wrap(
               spacing: 10.0,
@@ -75,8 +64,8 @@ class _AppointmentTabState extends State<AppointmentTab> {
                   child: Text(time),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: selectedTime == time
-                        ? Color.fromARGB(255, 142, 142, 142)
-                        : Color.fromARGB(255, 60, 242, 203),
+                        ? Color.fromARGB(255, 60, 242, 203)
+                        : Color.fromARGB(255, 255, 255, 255),
                   ),
                 );
               }).toList(),
@@ -89,15 +78,25 @@ class _AppointmentTabState extends State<AppointmentTab> {
                     context: context,
                     builder: (BuildContext context) {
                       return AlertDialog(
-                        title: Text('Congratulations!'),
-                        content: Column(
-                          mainAxisSize: MainAxisSize.min,
+                        title: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Image.asset(
                               'assets/verify.png',
                               height: 100,
                             ),
+                            SizedBox(height: 20),
+                            Text(
+                              'Congratulations!',
+                              style: TextStyle(fontSize: 18),
+                            ),
+                          ],
+                        ),
+                        content: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
                             SizedBox(height: 16),
                             Text('Your appointment is confirmed for'),
                             Text(
@@ -107,19 +106,23 @@ class _AppointmentTabState extends State<AppointmentTab> {
                           ],
                         ),
                         actions: [
-                          TextButton(
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                            child: Container(
-                              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                              decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 71, 202, 167),
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              child: Text(
-                                'Done',
-                                style: TextStyle(color: Colors.white),
+                          Center( // Center the button
+                            child: TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: Container(
+                                padding: EdgeInsets.symmetric(vertical: 10),
+                                width: 240, // Set the width of the container
+                                decoration: BoxDecoration(
+                                  color: Color.fromARGB(255, 71, 202, 167),
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                child: Text(
+                                  'Done',
+                                  style: TextStyle(color: Colors.white),
+                                  textAlign: TextAlign.center,
+                                ),
                               ),
                             ),
                           ),
