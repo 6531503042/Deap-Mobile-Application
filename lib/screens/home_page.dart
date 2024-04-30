@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:dentist_appointment/screens/AppointmentTab.dart';
 import 'package:dentist_appointment/screens/DoctorTab.dart';
 import 'package:dentist_appointment/screens/ProfileTab.dart';
+import 'package:dentist_appointment/screens/notification.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -48,9 +49,15 @@ class _HomePageState extends State<HomePage> {
                 IconButton(
                   icon: Icon(Icons.notifications),
                   onPressed: () {
-                    // Add functionality for notifications
+                    // Navigate to notifications page
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => NotificationPage()),
+                    );
                   },
                 ),
+
                 IconButton(
                   icon: Icon(Icons.calendar_today),
                   onPressed: () {
