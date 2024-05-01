@@ -7,6 +7,7 @@ import 'package:dentist_appointment/screens/DoctorTab.dart';
 import 'package:dentist_appointment/screens/ProfileTab.dart';
 import 'package:dentist_appointment/screens/notification.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:unicons/unicons.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -79,7 +80,8 @@ class _HomePageState extends State<HomePage> {
                     // Add functionality for calendar
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (_) => Regression_Page()),
+                      MaterialPageRoute(
+                          builder: (_) => const Regression_Page()),
                     );
                   },
                 ),
@@ -89,7 +91,7 @@ class _HomePageState extends State<HomePage> {
                     // Add functionality for settings
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (_) => SettingsPage()),
+                      MaterialPageRoute(builder: (_) => const SettingsPage()),
                     );
                   },
                 ),
@@ -98,26 +100,34 @@ class _HomePageState extends State<HomePage> {
           : null,
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_today),
-            label: 'Appointment',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.medical_services),
-            label: 'Doctor',
-          ),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
-        ],
         currentIndex: _selectedIndex,
-        selectedItemColor: const Color.fromARGB(255, 110, 197, 238),
-        unselectedItemColor: Colors.grey,
+        onTap: (index) {
+          setState(() {
+            _selectedIndex = index;
+          });
+        },
         backgroundColor: Colors.white,
-        onTap: _onItemTapped,
+        selectedItemColor: const Color.fromRGBO(146, 165, 253, 1),
+        unselectedItemColor: const Color.fromRGBO(152, 163, 179, 1),
+        selectedLabelStyle: GoogleFonts.poppins(
+          fontSize: 10,
+          fontWeight: FontWeight.w400,
+        ),
+        unselectedLabelStyle: GoogleFonts.poppins(
+          fontSize: 10,
+          fontWeight: FontWeight.w400,
+        ),
+        showUnselectedLabels: true,
+        items: const [
+          BottomNavigationBarItem(
+              icon: Icon(UniconsLine.home), label: 'Home'),
+          BottomNavigationBarItem(
+              icon: Icon(UniconsLine.calendar_alt), label: 'Appointment'),
+          BottomNavigationBarItem(
+              icon: Icon(UniconsLine.user_md), label: 'Doctors'),
+          BottomNavigationBarItem(
+              icon: Icon(UniconsLine.user), label: 'Profile'),
+        ],
       ),
     );
   }
@@ -161,13 +171,13 @@ class HomeTab extends StatelessWidget {
                             fontWeight: FontWeight.w700,
                           ),
                         ),
-                        SizedBox(height: 5),
+                        const SizedBox(height: 5),
                         Text(
                           'Find suitable specialists here',
                           style: GoogleFonts.urbanist(
                             fontSize: 14,
                             fontWeight: FontWeight.w500,
-                            color: Color.fromRGBO(107, 119, 154, 1),
+                            color: const Color.fromRGBO(107, 119, 154, 1),
                           ),
                         ),
                       ],
@@ -192,9 +202,9 @@ class HomeTab extends StatelessWidget {
           ),
           const SizedBox(height: 15),
           Padding(
-            padding: EdgeInsets.only(right: 200.0),
+            padding: const EdgeInsets.only(right: 200.0),
             child: Container(
-              margin: EdgeInsets.only(left: 20),
+              margin: const EdgeInsets.only(left: 20),
               child: Text(
                 'Popular dentist',
                 style: GoogleFonts.inter(
@@ -230,11 +240,11 @@ class HomeTab extends StatelessWidget {
 Widget _buildDoctorCard(BuildContext context, String name, double rating,
     String imagePath, String imagePath2) {
   return Container(
-    margin: EdgeInsets.symmetric(horizontal: 5),
+    margin: const EdgeInsets.symmetric(horizontal: 5),
     width: 120,
     height: 140,
     decoration: BoxDecoration(
-      color: Color.fromRGBO(247, 248, 250, 1),
+      color: const Color.fromRGBO(247, 248, 250, 1),
       borderRadius: BorderRadius.circular(20),
     ),
     child: InkWell(
@@ -276,7 +286,7 @@ Widget _buildDoctorCard(BuildContext context, String name, double rating,
               style: GoogleFonts.urbanist(
                 fontSize: 13,
                 fontWeight: FontWeight.w600,
-                color: Color.fromRGBO(0, 0, 0, 1),
+                color: const Color.fromRGBO(0, 0, 0, 1),
               ),
             ),
             const SizedBox(height: 10),
@@ -296,7 +306,7 @@ Widget _buildDoctorCard(BuildContext context, String name, double rating,
                     style: GoogleFonts.urbanist(
                       fontSize: 10,
                       fontWeight: FontWeight.w600,
-                      color: Color.fromRGBO(107, 119, 154, 1),
+                      color: const Color.fromRGBO(107, 119, 154, 1),
                     ),
                   ),
                 ],

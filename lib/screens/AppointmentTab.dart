@@ -48,7 +48,7 @@ class _AppointmentTabState extends State<AppointmentTab> {
               GoogleFonts.urbanist(fontSize: 18, fontWeight: FontWeight.w600),
         ),
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back_ios,
             size: 20,
           ),
@@ -62,9 +62,9 @@ class _AppointmentTabState extends State<AppointmentTab> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 15.0),
+            const SizedBox(height: 15.0),
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 25),
+              margin: const EdgeInsets.symmetric(horizontal: 25),
               child: Column(
                 children: [
                   Align(
@@ -75,7 +75,7 @@ class _AppointmentTabState extends State<AppointmentTab> {
                           fontSize: 20, fontWeight: FontWeight.w600),
                     ),
                   ),
-                  SizedBox(height: 15.0),
+                  const SizedBox(height: 15.0),
                   Container(
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -85,10 +85,18 @@ class _AppointmentTabState extends State<AppointmentTab> {
                           color: Colors.grey.withOpacity(0.5),
                           spreadRadius: 0.0005,
                           blurRadius: 8,
-                          offset: Offset(0, 2), // changes position of shadow
+                          offset:
+                              const Offset(0, 2), // changes position of shadow
                         ),
                       ],
                     ),
+                    child: Theme(
+                      data: ThemeData.light().copyWith(
+                        colorScheme: const ColorScheme.light(
+                          primary: Color.fromRGBO(
+                              40, 195, 176, 1), // Color of the selected date
+                        ),
+                      ),
                     child: CalendarDatePicker(
                       firstDate: DateTime.now(),
                       initialDate: selectedDate,
@@ -97,21 +105,25 @@ class _AppointmentTabState extends State<AppointmentTab> {
                           selectedDate = newDate;
                         });
                       },
-                      lastDate: DateTime.now().add(Duration(days: 30)),
+                        lastDate: DateTime.now().add(const Duration(
+                            days:
+                                30)), // Adjust here for the number of days in advance
                     ),
+                  ),
+
                   ),
                 ],
               ),
             ),
-            SizedBox(height: 30.0),
-            Padding(
+            const SizedBox(height: 30.0),
+            const Padding(
               padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: Text(
                 'Available Time',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
             ),
-            SizedBox(height: 10.0),
+            const SizedBox(height: 10.0),
             Column(
               children: List.generate(
                 (availableTimes.length / 3).ceil(), // Calculate number of rows
@@ -123,7 +135,7 @@ class _AppointmentTabState extends State<AppointmentTab> {
                         MainAxisAlignment.spaceBetween, // Adjust as needed
                     children: availableTimes.sublist(start, end).map((time) {
                       return Container(
-                        margin: EdgeInsets.all(5),
+                        margin: const EdgeInsets.all(5),
                         width: 110, // <-- Your width
                         height: 40, // <-- Your height
                         child: ElevatedButton(
@@ -132,22 +144,22 @@ class _AppointmentTabState extends State<AppointmentTab> {
                               selectedTime = time;
                             });
                           },
+                          style: ElevatedButton.styleFrom(
+                            foregroundColor: selectedTime == time
+                                ? const Color.fromARGB(255, 255, 255, 255)
+                                : const Color.fromRGBO(107, 119, 154, 1),
+                            backgroundColor: selectedTime == time
+                                ? const Color.fromARGB(255, 60, 242, 203)
+                                : const Color.fromARGB(255, 255, 255, 255),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
                           child: Text(
                             time,
                             style: GoogleFonts.urbanist(
                               fontSize: 13,
                               fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                          style: ElevatedButton.styleFrom(
-                            foregroundColor: selectedTime == time
-                                ? Color.fromARGB(255, 255, 255, 255)
-                                : Color.fromRGBO(107, 119, 154, 1),
-                            backgroundColor: selectedTime == time
-                                ? Color.fromARGB(255, 60, 242, 203)
-                                : Color.fromARGB(255, 255, 255, 255),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
                             ),
                           ),
                         ),
@@ -157,20 +169,20 @@ class _AppointmentTabState extends State<AppointmentTab> {
                 },
               ),
             ),
-            SizedBox(height: 30.0),
+            const SizedBox(height: 30.0),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: Text(
                 'Write your problem condition',
                 style: GoogleFonts.urbanist(
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
-                  color: Color.fromRGBO(107, 119, 154, 1),
+                  color: const Color.fromRGBO(107, 119, 154, 1),
                 ),
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               child: TextField(
                 style: GoogleFonts.urbanist(
                   fontSize: 13,
@@ -190,9 +202,9 @@ class _AppointmentTabState extends State<AppointmentTab> {
                 maxLines: 4,
               ),
             ),
-            SizedBox(height: 40.0),
+            const SizedBox(height: 40.0),
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 20),
+              margin: const EdgeInsets.symmetric(horizontal: 20),
               child: Center(
                 child: ElevatedButton(
                   onPressed: () {
@@ -209,8 +221,8 @@ class _AppointmentTabState extends State<AppointmentTab> {
                                   'assets/verify.png',
                                   height: 100,
                                 ),
-                                SizedBox(height: 20),
-                                Text(
+                                const SizedBox(height: 20),
+                                const Text(
                                   'Congratulations!',
                                   style: TextStyle(fontSize: 18),
                                 ),
@@ -220,19 +232,21 @@ class _AppointmentTabState extends State<AppointmentTab> {
                               mainAxisSize: MainAxisSize.min,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                SizedBox(height: 16),
-                                Text('Your appointment is confirmed for'),
+                                const SizedBox(height: 16),
+                                const Text('Your appointment is confirmed for'),
                                 Text(
                                   '${DateFormat.MMMM().format(selectedDate)} ${selectedDate.day}, ${selectedDate.year}, at $selectedTime .',
-                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold),
                                 ),
-                                SizedBox(height: 16),
-                                Text('Problem Description:'),
+                                const SizedBox(height: 16),
+                                const Text('Problem Description:'),
                                 Text(
                                   problemDescription.isNotEmpty
                                       ? problemDescription
                                       : 'Not provided',
-                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold),
                                 ),
                               ],
                             ),
@@ -247,13 +261,15 @@ class _AppointmentTabState extends State<AppointmentTab> {
                                     );
                                   },
                                   child: Container(
-                                    padding: EdgeInsets.symmetric(vertical: 10),
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 10),
                                     width: 240,
                                     decoration: BoxDecoration(
-                                      color: Color.fromARGB(255, 71, 202, 167),
+                                      color: const Color.fromARGB(
+                                          255, 71, 202, 167),
                                       borderRadius: BorderRadius.circular(20),
                                     ),
-                                    child: Text(
+                                    child: const Text(
                                       'Done',
                                       style: TextStyle(color: Colors.white),
                                       textAlign: TextAlign.center,
@@ -267,31 +283,31 @@ class _AppointmentTabState extends State<AppointmentTab> {
                       );
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
+                        const SnackBar(
                           content: Text('Please select a time slot'),
                         ),
                       );
                     }
                   },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color.fromARGB(255, 71, 202, 167),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
                   child: Container(
-                    padding: EdgeInsets.symmetric(vertical: 15),
+                    padding: const EdgeInsets.symmetric(vertical: 15),
                     width: 400,
-                    child: Text(
+                    child: const Text(
                       'Book Appointment',
                       textAlign: TextAlign.center,
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Color.fromARGB(255, 71, 202, 167),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                  ),
                 ),
               ),
             ),
-            SizedBox(height: 40.0),
+            const SizedBox(height: 40.0),
           ],
         ),
       ),
