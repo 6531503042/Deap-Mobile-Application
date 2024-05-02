@@ -178,7 +178,7 @@ class _RequstOtpPageState extends State<RequstOtpPage> {
                               color: const Color.fromRGBO(0, 0, 0, 1)),
                           decoration:
                               const BoxDecoration(color: Colors.transparent),
-                          duration: const Duration(minutes: 5),
+                          duration: const Duration(seconds: 20),
                         )),
                   )
                 ],

@@ -123,7 +123,10 @@ class _Regression_PageState extends State<Regression_Page>
             Padding(
               padding: const EdgeInsets.only(right: 300, top: 30),
               child: IconButton(
-                icon: const Icon(Icons.arrow_back),
+                icon: const Icon(
+                  Icons.arrow_back_ios,
+                  size: 20,
+                ),
                 onPressed: () {
                   Navigator.pop(context);
                 },
@@ -266,30 +269,58 @@ class _Regression_PageState extends State<Regression_Page>
                         style: TextStyle(
                             fontSize: 20, fontWeight: FontWeight.bold)),
                   ),
+                  SizedBox(
+                    height: 20,
+                  ),
 
                   // Calendar widget to select date
-                  Theme(
-                    data: ThemeData.light().copyWith(
-                      colorScheme: const ColorScheme.light(
-                        primary: Color.fromRGBO(
-                            40, 195, 176, 1), // Color of the selected date
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 30),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 0.0005,
+                          blurRadius: 8,
+                          offset:
+                              const Offset(0, 2), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: Theme(
+                      data: ThemeData.light().copyWith(
+                        colorScheme: const ColorScheme.light(
+                          primary: Color.fromRGBO(
+                              40, 195, 176, 1), // Color of the selected date
+                        ),
+                      ),
+                      child: CalendarDatePicker(
+                        firstDate: DateTime.now(),
+                        initialDate: selectedDate,
+                        onDateChanged: (DateTime newDate) {
+                          setState(() {
+                            selectedDate = newDate;
+                            updateDescription(
+                                newDate); // Update data when date changes
+                            updateStatusImage(newDate);
+                          });
+                        },
+                        lastDate: DateTime.now().add(const Duration(
+                            days:
+                                30)), // Adjust here for the number of days in advance
                       ),
                     ),
-                    child: CalendarDatePicker(
-                      firstDate: DateTime.now(),
-                      initialDate: selectedDate,
-                      onDateChanged: (DateTime newDate) {
-                        setState(() {
-                          selectedDate = newDate;
-                          updateDescription(
-                              newDate); // Update data when date changes
-                          updateStatusImage(newDate);
-                        });
-                      },
-                      lastDate: DateTime.now().add(const Duration(
-                          days:
-                              30)), // Adjust here for the number of days in advance
-                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.only(left: 20),
+                    child: Text("Description",
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold)),
                   ),
 
                   const SizedBox(height: 10),
@@ -300,6 +331,7 @@ class _Regression_PageState extends State<Regression_Page>
                       style: const TextStyle(fontSize: 16),
                     ),
                   ),
+                  const SizedBox(height: 30),
                 ],
               ),
             ),

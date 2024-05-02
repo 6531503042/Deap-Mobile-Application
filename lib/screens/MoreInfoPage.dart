@@ -40,20 +40,24 @@ class _MoreInfoPageState extends State<MoreInfoPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                    child: Text(
-                  'Terms of Use',
-                  style: GoogleFonts.lato(
-                      fontSize: 30, fontWeight: FontWeight.bold),
-                )),
-                Container(
-                    child: Text(
-                  'Last updated on 1/12/2021',
-                  style: GoogleFonts.lato(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                    color: const Color.fromRGBO(124, 124, 124, 1),
+                  child: Text(
+                    'Terms of Use',
+                    style: GoogleFonts.lato(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                )),
+                ),
+                Container(
+                  child: Text(
+                    'Last updated on 1/12/2021',
+                    style: GoogleFonts.lato(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: const Color.fromRGBO(124, 124, 124, 1),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
@@ -72,7 +76,7 @@ class _MoreInfoPageState extends State<MoreInfoPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      '1. Clause 1',
+                      '1. Introduction',
                       style: GoogleFonts.lato(
                         fontSize: 20,
                         fontWeight: FontWeight.w700,
@@ -83,7 +87,7 @@ class _MoreInfoPageState extends State<MoreInfoPage> {
                       height: 20,
                     ),
                     Text(
-                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra condimentum eget purus in. Consectetur eget id morbi amet amet, in. Ipsum viverra pretium tellus neque. Ullamcorper suspendisse aenean leo pharetra in sit semper et. Amet quam placerat sem.',
+                      'Welcome to our app. By accessing or using our services, you agree to these terms...',
                       style: GoogleFonts.lato(
                         fontSize: 16,
                         fontWeight: FontWeight.w400,
@@ -102,7 +106,7 @@ class _MoreInfoPageState extends State<MoreInfoPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      '2. Clause 2',
+                      '2. User Eligibility',
                       style: GoogleFonts.lato(
                         fontSize: 20,
                         fontWeight: FontWeight.w700,
@@ -113,18 +117,7 @@ class _MoreInfoPageState extends State<MoreInfoPage> {
                       height: 20,
                     ),
                     Text(
-                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra condimentum eget purus in. Consectetur eget id morbi amet amet, in. Ipsum viverra pretium tellus neque. Ullamcorper suspendisse aenean leo pharetra in sit semper et. Amet quam placerat sem.',
-                      style: GoogleFonts.lato(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400,
-                        color: const Color.fromRGBO(73, 73, 73, 1),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Text(
-                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra condimentum eget purus in. Consectetur eget id morbi amet amet, in. Ipsum viverra pretium tellus neque. Ullamcorper suspendisse aenean leo pharetra in sit semper et. Amet quam placerat sem.',
+                      'To use our services, you must be at least 18 years old...',
                       style: GoogleFonts.lato(
                         fontSize: 16,
                         fontWeight: FontWeight.w400,
@@ -143,7 +136,7 @@ class _MoreInfoPageState extends State<MoreInfoPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      '3. Clause 3',
+                      '3. User Conduct',
                       style: GoogleFonts.lato(
                         fontSize: 20,
                         fontWeight: FontWeight.w700,
@@ -154,29 +147,127 @@ class _MoreInfoPageState extends State<MoreInfoPage> {
                       height: 20,
                     ),
                     Text(
-                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra condimentum eget purus in. Consectetur eget id morbi amet amet, in. Ipsum viverra pretium tellus neque. Ullamcorper suspendisse aenean leo pharetra in sit semper et. Amet quam placerat sem.',
+                      'You agree to use our services responsibly. You may not...',
                       style: GoogleFonts.lato(
                         fontSize: 16,
                         fontWeight: FontWeight.w400,
                         color: const Color.fromRGBO(73, 73, 73, 1),
                       ),
                     ),
-                    const SizedBox(
-                      height: 20,
-                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Container(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
                     Text(
-                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra condimentum eget purus in. Consectetur eget id morbi amet amet, in. Ipsum viverra pretium tellus neque. Ullamcorper suspendisse aenean leo pharetra in sit semper et. Amet quam placerat sem.',
+                      '4. Intellectual Property',
                       style: GoogleFonts.lato(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400,
-                        color: const Color.fromRGBO(73, 73, 73, 1),
+                        fontSize: 20,
+                        fontWeight: FontWeight.w700,
+                        color: const Color.fromRGBO(0, 0, 0, 1),
                       ),
                     ),
                     const SizedBox(
                       height: 20,
                     ),
                     Text(
-                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra condimentum eget purus in. Consectetur eget id morbi amet amet, in. Ipsum viverra pretium tellus neque. Ullamcorper suspendisse aenean leo pharetra in sit semper et. Amet quam placerat sem.',
+                      'Our app and its content are protected by intellectual property laws...',
+                      style: GoogleFonts.lato(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                        color: const Color.fromRGBO(73, 73, 73, 1),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Container(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      '5. Limitation of Liability',
+                      style: GoogleFonts.lato(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w700,
+                        color: const Color.fromRGBO(0, 0, 0, 1),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Text(
+                      'We are not liable for any damages resulting from your use of our app...',
+                      style: GoogleFonts.lato(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                        color: const Color.fromRGBO(73, 73, 73, 1),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Container(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      '6. Governing Law',
+                      style: GoogleFonts.lato(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w700,
+                        color: const Color.fromRGBO(0, 0, 0, 1),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Text(
+                      'These terms are governed by the laws of your country...',
+                      style: GoogleFonts.lato(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                        color: const Color.fromRGBO(73, 73, 73, 1),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Container(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      '7. Changes to Terms',
+                      style: GoogleFonts.lato(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w700,
+                        color: const Color.fromRGBO(0, 0, 0, 1),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Text(
+                      'We may update these terms from time to time...',
                       style: GoogleFonts.lato(
                         fontSize: 16,
                         fontWeight: FontWeight.w400,

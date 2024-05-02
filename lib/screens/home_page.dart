@@ -54,7 +54,7 @@ class _HomePageState extends State<HomePage> {
                     ), // Must be user model not set name to display
                   ),
                   Text(
-                    'Username', // Must be user model not set name to display
+                    'Nimit', // Must be user model not set name to display
                     style: GoogleFonts.urbanist(
                       fontSize: 15,
                       fontWeight: FontWeight.w500,
