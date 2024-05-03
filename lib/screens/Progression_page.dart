@@ -121,7 +121,7 @@ class _Regression_PageState extends State<Regression_Page>
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Padding(
-              padding: const EdgeInsets.only(right: 300, top: 30),
+              padding: const EdgeInsets.only(right: 350, top: 30),
               child: IconButton(
                 icon: const Icon(
                   Icons.arrow_back_ios,
@@ -322,8 +322,7 @@ class _Regression_PageState extends State<Regression_Page>
                         style: TextStyle(
                             fontSize: 20, fontWeight: FontWeight.bold)),
                   ),
-
-                  const SizedBox(height: 10),
+                  SizedBox(height: 10),
                   Padding(
                     padding: const EdgeInsets.only(left: 30, bottom: 30),
                     child: Text(

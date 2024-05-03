@@ -1,5 +1,6 @@
 import 'dart:io'; // Add this line to import 'File'
 import 'package:dentist_appointment/screens/home_page.dart';
+import 'package:dentist_appointment/screens/setting_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -43,17 +44,9 @@ class _EditProfileUIState extends State<ProfileTab> {
           icon: const Icon(
             Icons.arrow_back_ios,
             size: 20,
-          ), // Example of using an icon as leading widget
+          ),
           onPressed: () {
-            // Add functionality for the leading icon/button
-            try {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => HomePage()),
-              );
-            } catch (e) {
-              print("Error navigating back: $e");
-            }
+            Navigator.pop(context);
           },
         ),
         actions: [

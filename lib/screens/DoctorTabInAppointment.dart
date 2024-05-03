@@ -84,8 +84,7 @@ class _DentistPageState extends State<DoctorTabInAppointment> {
           'Doctors',
           style: GoogleFonts.urbanist(
               fontSize: 18,
-              fontWeight: FontWeight.w600,
-              color: Color.fromRGBO(0, 0, 0, 1)),
+              fontWeight: FontWeight.w600,),
         ),
         leading: IconButton(
           icon: Icon(
@@ -125,7 +124,6 @@ class _DentistPageState extends State<DoctorTabInAppointment> {
                   controller: _searchController,
                   decoration: InputDecoration(
                     filled: true,
-                    fillColor: Color.fromRGBO(231, 232, 233, 1),
                     hintText: 'Search for doctors',
                     prefixIcon: Icon(Icons.search),
                     border: OutlineInputBorder(

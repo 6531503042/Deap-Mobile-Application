@@ -199,11 +199,11 @@ class DoctorDetailWithAppointmentPage extends StatelessWidget {
                   );
                 },
                 child: Container(
-                  height: 60,
+                  height: 55,
                   width: 300,
                   decoration: BoxDecoration(
                       color: const Color.fromRGBO(40, 195, 176, 1),
-                      borderRadius: BorderRadius.circular(10)),
+                      borderRadius: BorderRadius.circular(17)),
                   child: const Center(
                     child: Text(
                       'Book Appointment',

@@ -84,7 +84,7 @@ class _DentistPageState extends State<DoctorTab> {
           style: GoogleFonts.urbanist(
               fontSize: 18,
               fontWeight: FontWeight.w600,
-              color: const Color.fromRGBO(0, 0, 0, 1)),
+              ),
         ),
         leading: IconButton(
           icon: const Icon(
@@ -125,7 +125,6 @@ class _DentistPageState extends State<DoctorTab> {
                   controller: _searchController,
                   decoration: const InputDecoration(
                     filled: true,
-                    fillColor: Color.fromRGBO(231, 232, 233, 1),
                     hintText: 'Search for doctors',
                     prefixIcon: Icon(Icons.search),
                     border: OutlineInputBorder(

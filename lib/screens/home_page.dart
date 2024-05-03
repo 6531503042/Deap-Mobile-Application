@@ -1,6 +1,7 @@
 import 'package:dentist_appointment/screens/DoctorTabInAppointment.dart';
 import 'package:dentist_appointment/screens/Doctor_detail.dart';
 import 'package:dentist_appointment/screens/Progression_page.dart';
+import 'package:dentist_appointment/screens/setting_screen.dart';
 import 'package:dentist_appointment/screens/settings_page.dart';
 import 'package:flutter/material.dart';
 import 'package:dentist_appointment/screens/DoctorTab.dart';
@@ -27,7 +28,7 @@ class _HomePageState extends State<HomePage> {
       HomeTab(showHeader: _showHeader),
       DoctorTabInAppointment(),
       DoctorTab(),
-      ProfileTab(),
+      AccountScreen(),
     ];
   }
 
@@ -71,27 +72,6 @@ class _HomePageState extends State<HomePage> {
                       context,
                       MaterialPageRoute(
                           builder: (context) => NotificationPage()),
-                    );
-                  },
-                ),
-                IconButton(
-                  icon: const Icon(Icons.calendar_today),
-                  onPressed: () {
-                    // Add functionality for calendar
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (_) => const Regression_Page()),
-                    );
-                  },
-                ),
-                IconButton(
-                  icon: const Icon(Icons.settings),
-                  onPressed: () {
-                    // Add functionality for settings
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (_) => const SettingsPage()),
                     );
                   },
                 ),
