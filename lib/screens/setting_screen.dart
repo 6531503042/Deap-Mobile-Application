@@ -126,7 +126,7 @@ class _AccountScreenState extends State<AccountScreen> {
                 },
                 titleTextStyle: const TextStyle(
                   // Add titleTextStyle with GoogleFonts.urbanist
-                  fontSize: 20,
+                  fontSize: 18,
                   fontWeight: FontWeight.w500,
                 ),
               ),
@@ -146,7 +146,7 @@ class _AccountScreenState extends State<AccountScreen> {
                 },
                 titleTextStyle: const TextStyle(
                   // Add titleTextStyle with GoogleFonts.urbanist
-                  fontSize: 20,
+                  fontSize: 18,
                   fontWeight: FontWeight.w500,
                 ),
               ),
