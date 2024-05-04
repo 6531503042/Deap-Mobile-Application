@@ -42,74 +42,71 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _showHeader
-          ? AppBar(
-              automaticallyImplyLeading: false,
-              title: Row(
-                children: [
-                  Text(
-                    'Welcome, ',
-                    style: GoogleFonts.urbanist(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500,
-                    ), // Must be user model not set name to display
-                  ),
-                  Text(
-                    'Nimit', // Must be user model not set name to display
-                    style: GoogleFonts.urbanist(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ],
+  appBar: _selectedIndex == 0 // Show app bar only on the HomePage (index 0)
+      ? AppBar(
+          automaticallyImplyLeading: false,
+          title: Row(
+            children: [
+              Text(
+                'Welcome, ',
+                style: GoogleFonts.urbanist(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w500,
+                ), // Must be user model not set name to display
               ),
-              actions: <Widget>[
-                IconButton(
-                  icon: const Icon(Icons.notifications_active_outlined),
-                  onPressed: () {
-                    // Navigate to notifications page
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => NotificationPage()),
-                    );
-                  },
+              Text(
+                'Nimit', // Must be user model not set name to display
+                style: GoogleFonts.urbanist(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w500,
                 ),
-              ],
-            )
-          : null,
-      body: _widgetOptions.elementAt(_selectedIndex),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex,
-        onTap: (index) {
-          setState(() {
-            _selectedIndex = index;
-          });
-        },
-        backgroundColor: Colors.white,
-        selectedItemColor: const Color.fromRGBO(146, 165, 253, 1),
-        unselectedItemColor: const Color.fromRGBO(152, 163, 179, 1),
-        selectedLabelStyle: GoogleFonts.poppins(
-          fontSize: 10,
-          fontWeight: FontWeight.w400,
-        ),
-        unselectedLabelStyle: GoogleFonts.poppins(
-          fontSize: 10,
-          fontWeight: FontWeight.w400,
-        ),
-        showUnselectedLabels: true,
-        items: const [
-          BottomNavigationBarItem(
-              icon: Icon(UniconsLine.home), label: 'Home'),
-          BottomNavigationBarItem(
-              icon: Icon(UniconsLine.calendar_alt), label: 'Appointment'),
-          BottomNavigationBarItem(
-              icon: Icon(UniconsLine.user_md), label: 'Doctors'),
-          BottomNavigationBarItem(
-              icon: Icon(UniconsLine.user), label: 'Profile'),
-        ],
-      ),
-    );
+              ),
+            ],
+          ),
+          actions: <Widget>[
+            IconButton(
+              icon: const Icon(Icons.notifications_active_outlined),
+              onPressed: () {
+                // Navigate to notifications page
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => NotificationPage()),
+                );
+              },
+            ),
+          ],
+        )
+      : null, // Hide app bar on other pages
+  body: _widgetOptions.elementAt(_selectedIndex),
+  bottomNavigationBar: BottomNavigationBar(
+    currentIndex: _selectedIndex,
+    onTap: _onItemTapped,
+    backgroundColor: Colors.white,
+    selectedItemColor: const Color.fromRGBO(146, 165, 253, 1),
+    unselectedItemColor: const Color.fromRGBO(152, 163, 179, 1),
+    selectedLabelStyle: GoogleFonts.poppins(
+      fontSize: 10,
+      fontWeight: FontWeight.w400,
+    ),
+    unselectedLabelStyle: GoogleFonts.poppins(
+      fontSize: 10,
+      fontWeight: FontWeight.w400,
+    ),
+    showUnselectedLabels: true,
+    items: const [
+      BottomNavigationBarItem(
+          icon: Icon(UniconsLine.home), label: 'Home'),
+      BottomNavigationBarItem(
+          icon: Icon(UniconsLine.calendar_alt), label: 'Appointment'),
+      BottomNavigationBarItem(
+          icon: Icon(UniconsLine.user_md), label: 'Doctors'),
+      BottomNavigationBarItem(
+          icon: Icon(UniconsLine.user), label: 'Profile'),
+    ],
+  ),
+);
+
   }
 }
 
