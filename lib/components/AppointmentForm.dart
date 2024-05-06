@@ -1,3 +1,4 @@
+import 'package:dentist_appointment/screens/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
@@ -5,7 +6,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AppointmentForm extends StatefulWidget {
-  const AppointmentForm({super.key});
+  const AppointmentForm({Key? key}) : super(key: key);
 
   @override
   _AppointmentFormState createState() => _AppointmentFormState();
@@ -49,6 +50,100 @@ class _AppointmentFormState extends State<AppointmentForm> {
   Future<void> _initializeFirebase() async {
     await Firebase.initializeApp();
     _firestore = FirebaseFirestore.instance;
+  }
+
+  Future<void> _addAppointment() async {
+    // Check if an appointment already exists for the selected date and time
+    final existingAppointments = await _firestore
+        .collection('appointments')
+        .where('date',
+            isEqualTo:
+                selectedDate!.toString().split(' ')[0]) // Only compare dates
+        .where('time', isEqualTo: selectedTime)
+        .get();
+
+    if (existingAppointments.docs.isNotEmpty) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text('Oops!'),
+            content: const Text(
+                'An appointment already exists for this date and time. Please select a different time.'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context); // Close the dialog
+                },
+                child: const Text('OK'),
+              ),
+            ],
+          );
+        },
+      );
+      return; // Exit the function
+    }
+
+    // Add the new appointment if no existing appointments were found
+    await _firestore.collection('appointments').add({
+      'date':
+          selectedDate!.toString().split(' ')[0], // Store only the date part
+      'time': selectedTime,
+      'problemDescription': problemDescription,
+    });
+
+    // Show the confirmation dialog and navigate to the home page
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Congratulations!'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const Text('Your appointment is confirmed for'),
+              Text(
+                '${DateFormat.MMMM().format(selectedDate!)} ${selectedDate!.day}, ${selectedDate!.year}, at $selectedTime.',
+                style: const TextStyle(fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 16),
+              const Text('Problem Description:'),
+              Text(
+                problemDescription.isNotEmpty
+                    ? problemDescription
+                    : 'Not provided',
+                style: const TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context); // Close the dialog
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => HomePage()),
+                );
+              },
+              child: Container(
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                width: 240,
+                decoration: BoxDecoration(
+                  color: const Color.fromARGB(255, 71, 202, 167),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: const Text(
+                  'Done',
+                  style: TextStyle(color: Colors.white),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -205,86 +300,7 @@ class _AppointmentFormState extends State<AppointmentForm> {
               margin: const EdgeInsets.symmetric(horizontal: 20),
               child: Center(
                 child: ElevatedButton(
-                  onPressed: () async {
-                    if (_formKey.currentState!.validate() &&
-                        selectedDate != null &&
-                        selectedTime.isNotEmpty) {
-                      await _firestore.collection('appointments').add({
-                        'date': selectedDate.toString(),
-                        'time': selectedTime,
-                        'problemDescription': problemDescription,
-                      });
-
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return AlertDialog(
-                            title: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Image.asset(
-                                  'assets/verify.png',
-                                  height: 100,
-                                ),
-                                const SizedBox(height: 20),
-                                const Text(
-                                  'Congratulations!',
-                                  style: TextStyle(fontSize: 18),
-                                ),
-                              ],
-                            ),
-                            content: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                const SizedBox(height: 16),
-                                const Text('Your appointment is confirmed for'),
-                                Text(
-                                  '${DateFormat.MMMM().format(selectedDate!)} ${selectedDate!.day}, ${selectedDate!.year}, at $selectedTime.',
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                const SizedBox(height: 16),
-                                const Text('Problem Description:'),
-                                Text(
-                                  problemDescription.isNotEmpty
-                                      ? problemDescription
-                                      : 'Not provided',
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ],
-                            ),
-                            actions: [
-                              Center(
-                                child: TextButton(
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                  child: Container(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 10),
-                                    width: 240,
-                                    decoration: BoxDecoration(
-                                      color: const Color.fromARGB(
-                                          255, 71, 202, 167),
-                                      borderRadius: BorderRadius.circular(20),
-                                    ),
-                                    child: const Text(
-                                      'Done',
-                                      style: TextStyle(color: Colors.white),
-                                      textAlign: TextAlign.center,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          );
-                        },
-                      );
-                    }
-                  },
+                  onPressed: _addAppointment,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color.fromARGB(255, 71, 202, 167),
                     shape: RoundedRectangleBorder(
@@ -310,4 +326,3 @@ class _AppointmentFormState extends State<AppointmentForm> {
     );
   }
 }
-
