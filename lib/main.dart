@@ -1,3 +1,7 @@
+import 'package:dentist_appointment/firebase_options.dart';
+import 'package:firebase_app_check/firebase_app_check.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
@@ -6,10 +10,11 @@ import 'theme_config.dart';
 import 'theme_provider.dart';
 import 'localization/Language/languages.dart'; // Import your language utilities
 
-
 void main() async {
-  // WidgetsFlutterBinding.ensureInitialized();
-  // await FirebaseAppCheck.instance.activate();
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   runApp(
     MultiProvider(

@@ -1,57 +1,90 @@
-class Doctor {
-  final int? id;
-  final String name;
-  final String experience;
-  final String specialization;
-  final String description;
-  final String reviews;
-  final double rating;
-  final String image;
+import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-  //foreign - Key
-  final int userId;
+class Doctor {
+  final String name;
+  final double rating;
+  final int reviews;
+  final String type;
+  final String imagePath;
+  final String imagePath2;
 
   Doctor({
-    required this.id,
     required this.name,
-    required this.experience,
-    required this.specialization,
-    required this.description,
-    required this.reviews,
     required this.rating,
-    required this.image,
-    required this.userId,
+    required this.reviews,
+    required this.type,
+    required this.imagePath,
+    required this.imagePath2,
   });
+}
 
-  Map<String, dynamic> toMap() {
-    return {
-      'id': id,
-      'name': name,
-      'experience': experience,
-      'specialization': specialization,
-      'description': description,
-      'reviews': reviews,
-      'rating': rating,
-      'img_url': image,
-      'user_id': userId
-    };
-  }
+class DoctorScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Doctors'),
+      ),
+      body: StreamBuilder<QuerySnapshot>(
+        stream: FirebaseFirestore.instance.collection('doctors').snapshots(),
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) {
+            return Center(child: CircularProgressIndicator());
+          }
 
-  factory Doctor.fromMap(Map<String, dynamic> map) {
-    return Doctor(
-      id: map['id']?.toInt() ?? 0,
-      name: map['name'] ?? '',
-      experience: map['experience'].toString(),
-      specialization: map['specialization'] ?? '',
-      description: map['description'] ?? '',
-      reviews: map['reviews'] ?? '',
-      rating: map['rating']?.toDouble() ?? 0.0,
-      image: map['img_url']?.toString() ?? '',
-      userId: map["user_id"]?.toInt() ?? 0,
+          List<Doctor> doctors = snapshot.data!.docs.map((doc) {
+            var data = doc.data() as Map<String, dynamic>;
+            return Doctor(
+              name: data['name'],
+              rating: data['rating'].toDouble(),
+              reviews: data['reviews'],
+              type: data['type'],
+              imagePath: data['imagePath'],
+              imagePath2: data['imagePath2'],
+            );
+          }).toList();
+
+          return GridView.builder(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 10,
+              childAspectRatio: 0.8,
+            ),
+            itemCount: doctors.length,
+            itemBuilder: (context, index) {
+              return _buildDoctorCard(context, doctors[index]);
+            },
+          );
+        },
+      ),
     );
-
-    //   String toString() {
-    //     return  "Doctor(id: $id, name: $name, experience: $experience, specialization: $specialization, description: $description, reviews: $reviews, image: $img_url,
-    //   }
   }
+
+  Widget _buildDoctorCard(BuildContext context, Doctor doctor) {
+    return Card(
+      elevation: 2,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Image.network(
+            doctor.imagePath,
+            width: 100,
+            height: 100,
+          ),
+          Text(doctor.name),
+          Text('Rating: ${doctor.rating.toStringAsFixed(1)}'),
+          Text('${doctor.reviews} reviews'),
+        ],
+      ),
+    );
+  }
+}
+
+void main() {
+  runApp(MaterialApp(
+    title: 'Doctor App',
+    home: DoctorScreen(),
+  ));
 }
