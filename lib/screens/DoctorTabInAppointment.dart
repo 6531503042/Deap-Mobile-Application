@@ -1,9 +1,9 @@
 import 'dart:ui';
 
-import 'package:dentist_appointment/screens/Doctor_detail.dart';
 import 'package:dentist_appointment/screens/Doctor_detailWithAppointment.dart';
 import 'package:dentist_appointment/screens/home_page.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -73,7 +73,7 @@ class _DentistPageState extends State<DoctorTabInAppointment> {
     },
   ];
 
-  TextEditingController _searchController = TextEditingController();
+  final TextEditingController _searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +87,7 @@ class _DentistPageState extends State<DoctorTabInAppointment> {
               fontWeight: FontWeight.w600,),
         ),
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back_ios,
             size: 20,
           ),
@@ -98,13 +98,16 @@ class _DentistPageState extends State<DoctorTabInAppointment> {
                 MaterialPageRoute(builder: (context) => HomePage()),
               );
             } catch (e) {
-              print("Error navigating back: $e");
+              if (kDebugMode) {
+                print("Error navigating back: $e");
+              }
             }
           },
         ),
       ),
       body: Padding(
-        padding: EdgeInsets.all(16.0), // Add padding to create space from edge
+        padding:
+            const EdgeInsets.all(16.0), // Add padding to create space from edge
         child: Column(
           children: [
             Padding(
@@ -116,19 +119,19 @@ class _DentistPageState extends State<DoctorTabInAppointment> {
                   color: Colors.grey[200], // Background color of box
                 ),
                 child: TextField(
-                  cursorColor: Color.fromRGBO(40, 195, 176, 1),
+                  cursorColor: const Color.fromRGBO(40, 195, 176, 1),
                   style: GoogleFonts.urbanist(
                       fontSize: 13,
                       fontWeight: FontWeight.w500,
-                      color: Color.fromRGBO(107, 119, 154, 1)),
+                      color: const Color.fromRGBO(107, 119, 154, 1)),
                   controller: _searchController,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     filled: true,
                     hintText: 'Search for doctors',
                     prefixIcon: Icon(Icons.search),
                     border: OutlineInputBorder(
-                      borderRadius: const BorderRadius.all(
-                        const Radius.circular(10.0),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10.0),
                       ),
                       borderSide: BorderSide(
                         width: 0,
@@ -144,7 +147,7 @@ class _DentistPageState extends State<DoctorTabInAppointment> {
                 ),
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Expanded(
               child: GridView.count(
                 crossAxisCount: 2,
@@ -184,7 +187,7 @@ class _DentistPageState extends State<DoctorTabInAppointment> {
             color: Colors.grey.withOpacity(0.5),
             spreadRadius: 1,
             blurRadius: 4,
-            offset: Offset(0, 3), // changes position of shadow
+            offset: const Offset(0, 3), // changes position of shadow
           ),
         ],
       ),
@@ -208,7 +211,7 @@ class _DentistPageState extends State<DoctorTabInAppointment> {
         child: Container(
           width: 160,
           height: 160,
-          padding: EdgeInsets.symmetric(vertical: 13),
+          padding: const EdgeInsets.symmetric(vertical: 13),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
@@ -229,16 +232,16 @@ class _DentistPageState extends State<DoctorTabInAppointment> {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              SizedBox(height: 5),
+              const SizedBox(height: 5),
               //Which job of that doctor
               Text(
                 'Dentist',
                 style: GoogleFonts.urbanist(
                     fontSize: 12,
                     fontWeight: FontWeight.w700,
-                    color: Color.fromRGBO(107, 119, 154, 1)),
+                    color: const Color.fromRGBO(107, 119, 154, 1)),
               ),
-              SizedBox(height: 5),
+              const SizedBox(height: 5),
               // Star rating sentence
               RichText(
                 text: TextSpan(
@@ -255,7 +258,7 @@ class _DentistPageState extends State<DoctorTabInAppointment> {
                       style: GoogleFonts.urbanist(
                           fontSize: 10,
                           fontWeight: FontWeight.w600,
-                          color: Color.fromRGBO(107, 119, 154, 1)),
+                          color: const Color.fromRGBO(107, 119, 154, 1)),
                     ),
                   ],
                 ),

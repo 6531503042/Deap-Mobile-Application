@@ -12,7 +12,7 @@ class SettingItem extends StatelessWidget {
   final TextStyle? titleTextStyle; // Define titleTextStyle here
 
   const SettingItem({
-    Key? key, // Change to key from super.key
+    super.key, // Change to key from super.key
     required this.title,
     required this.bgColor,
     required this.iconColor,
@@ -20,7 +20,7 @@ class SettingItem extends StatelessWidget {
     required this.onTap,
     this.value,
     this.titleTextStyle, // Include titleTextStyle as a parameter
-  }) : super(key: key); // Correct key parameter here
+  }); // Correct key parameter here
 
   @override
   Widget build(BuildContext context) {

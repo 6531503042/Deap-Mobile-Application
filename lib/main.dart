@@ -5,28 +5,29 @@ import 'package:dentist_appointment/screens/AuthPage.dart';
 import 'theme_config.dart';
 import 'theme_provider.dart';
 import 'localization/Language/languages.dart'; // Import your language utilities
-import 'localization/Language/language_en.dart'; // Import English language implementation
-import 'localization/Language/language_hi.dart'; // Import Hindi language implementation
 
-void main() {
+
+void main() async {
+  // WidgetsFlutterBinding.ensureInitialized();
+  // await FirebaseAppCheck.instance.activate();
+
   runApp(
     MultiProvider(
       providers: [
         ChangeNotifierProvider(
           create: (context) => ThemeStateProvider(),
         ),
-        // Provider for the custom localization class
         ChangeNotifierProvider<Localization>(
           create: (_) => Localization(),
         ),
       ],
-      child: MyApp(),
+      child: const MyApp(),
     ),
   );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -39,24 +40,19 @@ class MyApp extends StatelessWidget {
           darkTheme: ThemeConfig.darkTheme,
           themeMode: theme.isDarkTheme ? ThemeMode.dark : ThemeMode.light,
           locale: localization.locale,
-          supportedLocales: [
-            const Locale('en', ''),
-            const Locale('hi', ''),
+          supportedLocales: const [
+            Locale('en', ''),
+            Locale('hi', ''),
           ],
-          localizationsDelegates: [
+          localizationsDelegates: const [
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,
           ],
-          home: AuthPage(),
+          home: const AuthPage(),
         );
       },
     );
-  }
-
-  // Static method to set the app's locale
-  static void setLocale(BuildContext context, Locale newLocale) {
-    Provider.of<Localization>(context, listen: false).setLocale(newLocale);
   }
 }
 

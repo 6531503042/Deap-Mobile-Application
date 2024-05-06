@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:dentist_appointment/screens/Doctor_detail.dart';
 import 'package:dentist_appointment/screens/home_page.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -98,7 +99,9 @@ class _DentistPageState extends State<DoctorTab> {
                 MaterialPageRoute(builder: (context) => HomePage()),
               );
             } catch (e) {
-              print("Error navigating back: $e");
+              if (kDebugMode) {
+                print("Error navigating back: $e");
+              }
             }
           },
         ),
