@@ -1,4 +1,5 @@
 import 'package:dentist_appointment/screens/AppointmentTab.dart';
+import 'package:dentist_appointment/screens/Review.dart';
 import 'package:dentist_appointment/screens/home_page.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -149,9 +150,9 @@ class DoctorDetailWithAppointmentPage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
+                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
                         'Reviews',
@@ -160,9 +161,31 @@ class DoctorDetailWithAppointmentPage extends StatelessWidget {
                             fontWeight: FontWeight.w600,
                             color: const Color.fromRGBO(31, 42, 55, 1)),
                       ),
+                      SizedBox(width: 10,),
+                      Image.asset(
+                        'assets/star.png',
+                        height: 15,
+                      ),
+                      Text(
+                        '4.5',
+                        style: GoogleFonts.urbanist(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                            color: const Color.fromRGBO(31, 42, 55, 1)),
+                      ),
+                      SizedBox(width: 157,),
                       TextButton(
                         onPressed: () {
-                          // Navigate to see all reviews page
+                          try {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => reView()),
+                            );
+                          } catch (e) {
+                            if (kDebugMode) {
+                              print("Error navigating back: $e");
+                            }
+                          }
                         },
                         child: Text(
                           'See All',
