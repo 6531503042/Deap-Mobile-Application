@@ -1,11 +1,7 @@
-import 'dart:ui';
-
 import 'package:dentist_appointment/screens/Doctor_detail.dart';
 import 'package:dentist_appointment/screens/home_page.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class DoctorTab extends StatefulWidget {
@@ -74,57 +70,61 @@ class _DentistPageState extends State<DoctorTab> {
   ];
 
   final TextEditingController _searchController = TextEditingController();
-
+  // bool _isScrolled = false;
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(
-          'Doctors',
-          style: GoogleFonts.urbanist(
+Widget build(BuildContext context) {
+  return Scaffold(
+    body: NestedScrollView(
+      headerSliverBuilder: (BuildContext context, bool isScrolled) {
+        return [
+          SliverAppBar(
+            title: Text('View Doctors',style: GoogleFonts.urbanist(
               fontSize: 18,
-              fontWeight: FontWeight.w600,
+              fontWeight: FontWeight.w600,),),
+            floating: true,
+            pinned: false,
+            snap: true,
+            elevation: isScrolled ? 4 : 0,
+            centerTitle: true,
+            leading: IconButton(
+              icon: const Icon(
+                Icons.arrow_back_ios,
+                size: 20,
               ),
-        ),
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back_ios,
-            size: 20,
+              onPressed: () {
+                try {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => HomePage()),
+                  );
+                } catch (e) {
+                  if (kDebugMode) {
+                    print("Error navigating back: $e");
+                  }
+                }
+              },
+            ),
           ),
-          onPressed: () {
-            try {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => HomePage()),
-              );
-            } catch (e) {
-              if (kDebugMode) {
-                print("Error navigating back: $e");
-              }
-            }
-          },
-        ),
-      ),
+        ];
+      },
       body: Padding(
-        padding:
-            const EdgeInsets.all(16.0), // Add padding to create space from edge
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(1.0),
               child: Container(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(
-                      10.0), // Adjust border radius as needed
-                  color: Colors.grey[200], // Background color of box
+                  borderRadius: BorderRadius.circular(10.0),
+                  color: Colors.grey[200],
                 ),
                 child: TextField(
                   cursorColor: const Color.fromRGBO(40, 195, 176, 1),
                   style: GoogleFonts.urbanist(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w500,
-                      color: const Color.fromRGBO(107, 119, 154, 1)),
+                    fontSize: 15,
+                    fontWeight: FontWeight.w500,
+                    color: const Color.fromRGBO(107, 119, 154, 1),
+                  ),
                   controller: _searchController,
                   decoration: const InputDecoration(
                     filled: true,
@@ -138,7 +138,7 @@ class _DentistPageState extends State<DoctorTab> {
                         width: 0,
                         style: BorderStyle.none,
                       ),
-                    ), // Remove the border line and do the shape
+                    ),
                     contentPadding:
                         EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
                   ),
@@ -148,7 +148,7 @@ class _DentistPageState extends State<DoctorTab> {
                 ),
               ),
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 1),
             Expanded(
               child: GridView.count(
                 crossAxisCount: 2,
@@ -172,8 +172,10 @@ class _DentistPageState extends State<DoctorTab> {
           ],
         ),
       ),
-    );
-  }
+    ),
+  );
+}
+
 
   Widget _buildDoctorCard(BuildContext context, String name, double rating,
       String imagePath, String imagePath2) {

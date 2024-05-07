@@ -1,8 +1,5 @@
-import 'package:dentist_appointment/screens/home_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:intl/intl.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
@@ -118,6 +115,11 @@ class _Regression_PageState extends State<Regression_Page>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        bottomOpacity: 0.0,
+        elevation: 0.0,
+        scrolledUnderElevation: 0,
+        backgroundColor: Colors.transparent,
+        shadowColor: Colors.transparent,
         centerTitle: true,
         title: Text(
           'Progression',

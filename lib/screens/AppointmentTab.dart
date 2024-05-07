@@ -1,6 +1,5 @@
 import 'package:dentist_appointment/components/AppointmentForm.dart';
 import 'package:flutter/material.dart';
-import 'package:dentist_appointment/screens/home_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppointmentTab extends StatefulWidget {
@@ -15,6 +14,11 @@ class _AppointmentTabState extends State<AppointmentTab> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        bottomOpacity: 0.0,
+        elevation: 0.0,
+        scrolledUnderElevation: 0,
+        backgroundColor: Colors.transparent,
+        shadowColor: Colors.transparent,
         centerTitle: true,
         title: Text(
           'Booking Appointments',

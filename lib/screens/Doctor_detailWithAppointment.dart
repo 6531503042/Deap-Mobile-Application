@@ -22,6 +22,11 @@ class DoctorDetailWithAppointmentPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        bottomOpacity: 0.0,
+        elevation: 0.0,
+        scrolledUnderElevation: 0,
+        backgroundColor: Colors.transparent,
+        shadowColor: Colors.transparent,
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back_ios,

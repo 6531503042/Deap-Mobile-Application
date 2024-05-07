@@ -1,12 +1,9 @@
+import 'package:dentist_appointment/screens/DoctorTab.dart';
 import 'package:dentist_appointment/screens/DoctorTabInAppointment.dart';
 import 'package:dentist_appointment/screens/Doctor_detail.dart';
-import 'package:dentist_appointment/screens/Progression_page.dart';
-import 'package:dentist_appointment/screens/setting_screen.dart';
-import 'package:dentist_appointment/screens/settings_page.dart';
-import 'package:flutter/material.dart';
-import 'package:dentist_appointment/screens/DoctorTab.dart';
-import 'package:dentist_appointment/screens/ProfileTab.dart';
 import 'package:dentist_appointment/screens/notification.dart';
+import 'package:dentist_appointment/screens/setting_screen.dart';
+import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:unicons/unicons.dart';
 
@@ -44,6 +41,11 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
   appBar: _selectedIndex == 0 // Show app bar only on the HomePage (index 0)
       ? AppBar(
+        bottomOpacity: 0.0,
+        elevation: 0.0,
+        scrolledUnderElevation: 0,
+        backgroundColor: Colors.transparent,
+        shadowColor: Colors.transparent,
           automaticallyImplyLeading: false,
           title: Row(
             children: [

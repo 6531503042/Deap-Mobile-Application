@@ -1,11 +1,12 @@
+import 'package:dentist_appointment/localization/Language/languages.dart'; // Adjust import path as needed
 import 'package:dentist_appointment/localization/locale-constans.dart';
 import 'package:dentist_appointment/screens/AuthPage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import '../theme_provider.dart';
-import 'package:dentist_appointment/localization/Language/languages.dart'; // Adjust import path as needed
+
 import '../models/language_model.dart'; // Adjust import path as needed
+import '../theme_provider.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({Key? key}) : super(key: key);
@@ -14,6 +15,11 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        bottomOpacity: 0.0,
+        elevation: 0.0,
+        scrolledUnderElevation: 0,
+        backgroundColor: Colors.transparent,
+        shadowColor: Colors.transparent,
         centerTitle: true,
         title: Text(
           'Setting',
