@@ -12,20 +12,20 @@ class OnboardingContents {
 
 List<OnboardingContents> contents = [
   OnboardingContents(
-    title: "Track Your work and get the result",
+    title: "Welcome to your Dentist Appointment Application",
     image: "assets/images-2.png",
-    desc: "Remember to keep track of your professional accomplishments.",
+    desc: "This application make you esier to see your dentist.",
   ),
   OnboardingContents(
-    title: "Stay organized with team",
+    title: "Make your oral health better",
     image: "assets/verify.png",
     desc:
-        "But understanding the contributions our colleagues make to our teams and companies.",
+        "When you have oral health problems,just book an appointment with the doctor.",
   ),
   OnboardingContents(
-    title: "Get notified when work happens",
+    title: "Let's book your appointment",
     image: "assets/Banner Animate copy.png",
     desc:
-        "Take control of notifications, collaborate live or on your own time.",
+        "Have a good time with our application and have a good oral health.",
   ),
 ];

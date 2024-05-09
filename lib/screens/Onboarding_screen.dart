@@ -128,7 +128,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             },
                             child: const Text("START"),
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.black,
+                              backgroundColor: Color.fromARGB(255, 23, 224, 157),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(50),
                               ),
@@ -153,7 +153,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                 },
                                 child: const Text(
                                   "SKIP",
-                                  style: TextStyle(color: Colors.black),
+                                  style: TextStyle(color: Color.fromARGB(255, 23, 224, 157)),
                                 ),
                                 style: TextButton.styleFrom(
                                   elevation: 0,
@@ -172,7 +172,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                 },
                                 child: const Text("NEXT"),
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.black,
+                                  backgroundColor: const Color.fromARGB(255, 23, 224, 157),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(50),
                                   ),
