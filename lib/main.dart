@@ -1,4 +1,5 @@
 import 'package:dentist_appointment/firebase_options.dart';
+import 'package:dentist_appointment/screens/Onboarding_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -53,7 +54,7 @@ class MyApp extends StatelessWidget {
             GlobalWidgetsLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,
           ],
-          home: const AuthPage(),
+          home: const OnboardingScreen(),
         );
       },
     );
