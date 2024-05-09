@@ -161,7 +161,9 @@ class DoctorDetailWithAppointmentPage extends StatelessWidget {
                             fontWeight: FontWeight.w600,
                             color: const Color.fromRGBO(31, 42, 55, 1)),
                       ),
-                      SizedBox(width: 10,),
+                      const SizedBox(
+                        width: 10,
+                      ),
                       Image.asset(
                         'assets/star.png',
                         height: 15,
@@ -173,7 +175,9 @@ class DoctorDetailWithAppointmentPage extends StatelessWidget {
                             fontWeight: FontWeight.w500,
                             color: const Color.fromRGBO(31, 42, 55, 1)),
                       ),
-                      SizedBox(width: 157,),
+                      const SizedBox(
+                        width: 140,
+                      ),
                       TextButton(
                         onPressed: () {
                           try {

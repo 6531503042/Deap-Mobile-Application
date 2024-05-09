@@ -7,7 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginEmailForm extends StatefulWidget {
-  const LoginEmailForm({Key? key}) : super(key: key);
+  const LoginEmailForm({super.key});
 
   @override
   State<LoginEmailForm> createState() => _LoginEmailFormState();
@@ -149,7 +149,7 @@ class _LoginEmailFormState extends State<LoginEmailForm> {
                   return null;
                 },
               ),
-              Container(
+              SizedBox(
                 width: MediaQuery.of(context).size.width,
                 child: Align(
                   alignment: Alignment.centerRight,
@@ -229,6 +229,7 @@ class _LoginEmailFormState extends State<LoginEmailForm> {
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
+                      color: Colors.white,
                     ),
                   ),
                 ),

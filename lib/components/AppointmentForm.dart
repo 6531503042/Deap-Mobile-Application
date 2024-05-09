@@ -86,6 +86,7 @@ class _AppointmentFormState extends State<AppointmentForm> {
 
       if (existingAppointments.docs.isNotEmpty) {
         showDialog(
+          // ignore: use_build_context_synchronously
           context: context,
           builder: (BuildContext context) {
             return AlertDialog(
@@ -172,7 +173,7 @@ class _AppointmentFormState extends State<AppointmentForm> {
               margin: const EdgeInsets.symmetric(horizontal: 25),
               child: Column(
                 children: [
-                  Align(
+                  const Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
                       'Select Date',
@@ -259,7 +260,7 @@ class _AppointmentFormState extends State<AppointmentForm> {
                           ),
                           child: Text(
                             time,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 13,
                               fontWeight: FontWeight.w600,
                             ),
@@ -272,21 +273,21 @@ class _AppointmentFormState extends State<AppointmentForm> {
               ),
             ),
             const SizedBox(height: 30.0),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: Text(
                 'Write your problem condition',
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
-                  color: const Color.fromRGBO(107, 119, 154, 1),
+                  color: Color.fromRGBO(107, 119, 154, 1),
                 ),
               ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: TextFormField(
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 13,
                   fontWeight: FontWeight.w600,
                 ),

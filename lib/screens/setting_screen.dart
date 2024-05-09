@@ -66,7 +66,8 @@ class _AccountScreenState extends State<AccountScreen> {
                 width: double.infinity,
                 child: Row(
                   children: [
-                    Image.asset("assets/reviewer1.png", width: 60, height: 60),
+                    Image.asset("assets/default_user.png",
+                        width: 60, height: 60),
                     const SizedBox(width: 20),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
