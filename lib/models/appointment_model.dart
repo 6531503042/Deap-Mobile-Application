@@ -1,39 +1,33 @@
+import 'package:intl/intl.dart';
+
 class Appointment {
-  int id;
-  String drName;
-  String time;
-  String date;
-  String condition;
-  String status;
+  final String userId; // Foreign key
+  final DateTime date;
+  final String time;
+  final String problemDescription;
 
-  Appointment(
-      {required this.id,
-      required this.drName,
-      required this.time,
-      required this.date,
-      required this.condition,
-      required this.status});
+  Appointment({
+    required this.userId,
+    required this.date,
+    required this.time,
+    required this.problemDescription,
+  });
 
-  Map<String, dynamic> toMap() {
-    return {
-      'id': id,
-      'drName': drName,
-      'time': time,
-      'date': date,
-      'condition': condition,
-      'status': status
-    };
+  factory Appointment.fromFirestore(Map<String, dynamic> json) {
+    return Appointment(
+      userId: json['userId'],
+      date: DateTime.parse(json['date']),
+      time: json['time'],
+      problemDescription: json['problemDescription'],
+    );
   }
 
-  static Appointment fromMap(Map<String, dynamic> map) {
-    return Appointment(
-      id: map['id'],
-      drName: map['drName'] as String,
-      time: map['time'] as String,
-      date: map['date'] as String,
-      condition: map['condition'] as String,
-      status: map['status'] as String? ?? "Pending", // Default value is
-      // set to Pending if no status provided
-    );
+  Map<String, dynamic> toFirestore() {
+    return {
+      'userId': userId,
+      'date': DateFormat('yyyy-MM-dd').format(date),
+      'time': time,
+      'problemDescription': problemDescription,
+    };
   }
 }

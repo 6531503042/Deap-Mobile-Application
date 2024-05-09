@@ -10,22 +10,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  font_awesome_flutter: ^10.7.0
-  intl: ^0.18.1  # Update this line
-  percent_indicator: ^4.0.1
-  ionicons: ^0.2.2
-  cupertino_icons: ^1.0.6
-  image_picker: ^1.1.0
-  sqflite: ^2.3.3
-  slide_countdown: ^0.3.1
-
-
-
-
-  unicons: any
-  # flutter_firebase: any
-
-
 
   #Mobile Design Lib
   shared_preferences: ^2.2.3
@@ -33,6 +17,14 @@ dependencies:
   flutter_localization: ^0.2.0
   flutter_launcher_icons: ^0.13.1
   lottie: ^1.2.1
+  font_awesome_flutter: ^10.7.0
+  intl: ^0.18.1  # Update this line
+  percent_indicator: ^4.0.1
+  ionicons: ^0.2.2
+  cupertino_icons: ^1.0.6
+  image_picker: ^1.1.0
+  slide_countdown: ^0.3.1
+  unicons: any
 
 
   #Fire-base 
@@ -41,20 +33,21 @@ dependencies:
   get: ^4.6.6
   get_storage: ^2.1.1 
   firebase_database: ^10.5.4
-  google_sign_in: ^6.2.1
   firebase_auth: ^4.19.4
   firebase_app_check: ^0.2.2+4
   email_validator: ^2.1.17  
   provider: ^6.1.2
-  cloud_firestore: ^4.17.2
+  cloud_firestore: ^4.4.5
+  fluttertoast: ^8.0.8
+  google_sign_in: ^5.2.1
+  sign_in_with_apple: ^3.0.0
+  gradient_icon: ^2.0.9
 
 flutter_icons: 
   android: true
   ios: true
   image_path: "assets/app_icon.png"
-  iconPath: "assets/app_icon.png"
-
-  
+  iconPath: "assets/app_icon.png" 
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -18,7 +18,6 @@ class AuthPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  const SizedBox(height: 100),
                   Center(child: Image.asset('assets/Banner Animate.png')),
                   const SizedBox(height: 40),
                   Center(

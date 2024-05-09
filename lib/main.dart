@@ -1,5 +1,4 @@
 import 'package:dentist_appointment/firebase_options.dart';
-import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +38,7 @@ class MyApp extends StatelessWidget {
     return Consumer2<ThemeStateProvider, Localization>(
       builder: (context, theme, localization, child) {
         return MaterialApp(
-          title: 'Flutter Demo',
+          title: 'Dentist Appointment Application',
           debugShowCheckedModeBanner: false,
           theme: ThemeConfig.lightTheme,
           darkTheme: ThemeConfig.darkTheme,

@@ -41,7 +41,7 @@ class _LoginTelephoneFormState extends State<LoginTelephoneForm>
               enableInteractiveSelection: false,
               cursorColor: const Color.fromRGBO(40, 195, 176, 1),
               decoration: InputDecoration(
-                fillColor: Color.fromRGBO(247, 248, 249, 1),
+                fillColor: const Color.fromRGBO(247, 248, 249, 1),
                 filled: true,
                 labelStyle: GoogleFonts.urbanist(
                   fontSize: 15,
@@ -56,14 +56,14 @@ class _LoginTelephoneFormState extends State<LoginTelephoneForm>
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(15.0),
-                  borderSide: BorderSide(
-                    color: const Color.fromRGBO(40, 195, 176, 1),
+                  borderSide: const BorderSide(
+                    color: Color.fromRGBO(40, 195, 176, 1),
                   ),
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(15.0),
-                  borderSide: BorderSide(
-                    color: const Color.fromRGBO(232, 236, 244, 1),
+                  borderSide: const BorderSide(
+                    color: Color.fromRGBO(232, 236, 244, 1),
                   ),
                 ),
               ),
@@ -90,7 +90,7 @@ class _LoginTelephoneFormState extends State<LoginTelephoneForm>
                       ? Icons.visibility
                       : Icons.visibility_off),
                 ),
-                fillColor: Color.fromRGBO(247, 248, 249, 1),
+                fillColor: const Color.fromRGBO(247, 248, 249, 1),
                 filled: true,
                 labelStyle: GoogleFonts.urbanist(
                   fontSize: 15,
@@ -105,19 +105,19 @@ class _LoginTelephoneFormState extends State<LoginTelephoneForm>
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(15.0),
-                  borderSide: BorderSide(
-                    color: const Color.fromRGBO(40, 195, 176, 1),
+                  borderSide: const BorderSide(
+                    color: Color.fromRGBO(40, 195, 176, 1),
                   ),
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(15.0),
-                  borderSide: BorderSide(
-                    color: const Color.fromRGBO(232, 236, 244, 1),
+                  borderSide: const BorderSide(
+                    color: Color.fromRGBO(232, 236, 244, 1),
                   ),
                 ),
               ),
             ),
-            Container(
+            SizedBox(
               width: MediaQuery.of(context).size.width,
               child: Align(
                 alignment: Alignment.centerRight,
@@ -145,41 +145,39 @@ class _LoginTelephoneFormState extends State<LoginTelephoneForm>
               height: 70,
             ),
             // tap button for register
-            Container(
-              child: Column(
-                children: [
-                  Center(
-                    child: GestureDetector(
-                      onTap: () {
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //       builder: (context) => const RegSuccessPage()),
-                        // );
-                      },
-                      child: Container(
-                        margin: const EdgeInsets.symmetric(horizontal: 30),
-                        height: 50,
-                        decoration: BoxDecoration(
-                            color: const Color.fromRGBO(40, 195, 176, 1),
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Center(
-                          child: Text(
-                            "Login",
-                            textAlign: TextAlign.center,
-                            style: GoogleFonts.urbanist(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w600,
-                              color: const Color.fromARGB(221, 255, 255, 255),
-                            ),
+            Column(
+              children: [
+                Center(
+                  child: GestureDetector(
+                    onTap: () {
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //       builder: (context) => const RegSuccessPage()),
+                      // );
+                    },
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 30),
+                      height: 50,
+                      decoration: BoxDecoration(
+                          color: const Color.fromRGBO(40, 195, 176, 1),
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Center(
+                        child: Text(
+                          "Login",
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.urbanist(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w600,
+                            color: const Color.fromARGB(221, 255, 255, 255),
                           ),
                         ),
                       ),
                     ),
                   ),
-                  OtherloginTapLp(),
-                ],
-              ),
+                ),
+                OtherloginTapLp(),
+              ],
             ),
           ],
         ),

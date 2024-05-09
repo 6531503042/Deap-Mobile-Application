@@ -1,4 +1,6 @@
+import 'package:dentist_appointment/models/appointment_model.dart';
 import 'package:dentist_appointment/screens/home_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
@@ -6,7 +8,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AppointmentForm extends StatefulWidget {
-  const AppointmentForm({Key? key}) : super(key: key);
+  const AppointmentForm({super.key});
 
   @override
   _AppointmentFormState createState() => _AppointmentFormState();
@@ -53,23 +55,13 @@ class _AppointmentFormState extends State<AppointmentForm> {
   }
 
   Future<void> _addAppointment() async {
-    // Check if an appointment already exists for the selected date and time
-    final existingAppointments = await _firestore
-        .collection('appointments')
-        .where('date',
-            isEqualTo:
-                selectedDate!.toString().split(' ')[0]) // Only compare dates
-        .where('time', isEqualTo: selectedTime)
-        .get();
-
-    if (existingAppointments.docs.isNotEmpty) {
+    if (selectedDate == null) {
       showDialog(
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
             title: const Text('Oops!'),
-            content: const Text(
-                'An appointment already exists for this date and time. Please select a different time.'),
+            content: const Text('Please select a date for the appointment.'),
             actions: [
               TextButton(
                 onPressed: () {
@@ -84,66 +76,87 @@ class _AppointmentFormState extends State<AppointmentForm> {
       return; // Exit the function
     }
 
-    // Add the new appointment if no existing appointments were found
-    await _firestore.collection('appointments').add({
-      'date':
-          selectedDate!.toString().split(' ')[0], // Store only the date part
-      'time': selectedTime,
-      'problemDescription': problemDescription,
-    });
+    if (_formKey.currentState!.validate()) {
+      final existingAppointments = await _firestore
+          .collection('appointments')
+          .where('date',
+              isEqualTo: DateFormat('yyyy-MM-dd').format(selectedDate!))
+          .where('time', isEqualTo: selectedTime)
+          .get();
 
-    // Show the confirmation dialog and navigate to the home page
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text('Congratulations!'),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const Text('Your appointment is confirmed for'),
-              Text(
-                '${DateFormat.MMMM().format(selectedDate!)} ${selectedDate!.day}, ${selectedDate!.year}, at $selectedTime.',
-                style: const TextStyle(fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 16),
-              const Text('Problem Description:'),
-              Text(
-                problemDescription.isNotEmpty
-                    ? problemDescription
-                    : 'Not provided',
-                style: const TextStyle(fontWeight: FontWeight.bold),
-              ),
-            ],
-          ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.pop(context); // Close the dialog
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => HomePage()),
-                );
-              },
-              child: Container(
-                padding: const EdgeInsets.symmetric(vertical: 10),
-                width: 240,
-                decoration: BoxDecoration(
-                  color: const Color.fromARGB(255, 71, 202, 167),
-                  borderRadius: BorderRadius.circular(20),
+      if (existingAppointments.docs.isNotEmpty) {
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: const Text('Oops!'),
+              content: const Text(
+                  'An appointment already exists for this date and time. Please select a different time.'),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.pop(context); // Close the dialog
+                  },
+                  child: const Text('OK'),
                 ),
-                child: const Text(
-                  'Done',
-                  style: TextStyle(color: Colors.white),
-                  textAlign: TextAlign.center,
-                ),
-              ),
-            ),
-          ],
+              ],
+            );
+          },
         );
-      },
-    );
+        return; // Exit the function
+      }
+
+      final user = FirebaseAuth.instance.currentUser;
+      if (user != null) {
+        final appointment = {
+          'userId': user.uid,
+          'date': DateFormat('yyyy-MM-dd').format(selectedDate!),
+          'time': selectedTime,
+          'problemDescription': problemDescription,
+        };
+
+        await _firestore.collection('appointments').add(appointment);
+
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: const Text('Congratulations!'),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const Text('Your appointment is confirmed for'),
+                  Text(
+                    '${DateFormat.MMMM().format(selectedDate!)} ${selectedDate!.day}, ${selectedDate!.year}, at $selectedTime.',
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 16),
+                  const Text('Problem Description:'),
+                  Text(
+                    problemDescription.isNotEmpty
+                        ? problemDescription
+                        : 'Not provided',
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.pop(context); // Close the dialog
+                    Navigator.pop(context); // Close the form
+                  },
+                  child: const Text('Done'),
+                ),
+              ],
+            );
+          },
+        );
+      } else {
+        // User not authenticated
+      }
+    }
   }
 
   @override
@@ -163,8 +176,10 @@ class _AppointmentFormState extends State<AppointmentForm> {
                     alignment: Alignment.centerLeft,
                     child: Text(
                       'Select Date',
-                      style: GoogleFonts.inter(
-                          fontSize: 20, fontWeight: FontWeight.w600),
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
                   const SizedBox(height: 15.0),
@@ -244,7 +259,7 @@ class _AppointmentFormState extends State<AppointmentForm> {
                           ),
                           child: Text(
                             time,
-                            style: GoogleFonts.urbanist(
+                            style: TextStyle(
                               fontSize: 13,
                               fontWeight: FontWeight.w600,
                             ),
@@ -261,7 +276,7 @@ class _AppointmentFormState extends State<AppointmentForm> {
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: Text(
                 'Write your problem condition',
-                style: GoogleFonts.urbanist(
+                style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
                   color: const Color.fromRGBO(107, 119, 154, 1),
@@ -271,7 +286,7 @@ class _AppointmentFormState extends State<AppointmentForm> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: TextFormField(
-                style: GoogleFonts.urbanist(
+                style: TextStyle(
                   fontSize: 13,
                   fontWeight: FontWeight.w600,
                 ),

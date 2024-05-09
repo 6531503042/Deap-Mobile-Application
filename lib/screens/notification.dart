@@ -22,11 +22,13 @@ class NotificationModel {
 }
 
 class NotificationPage extends StatelessWidget {
+  const NotificationPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Notifications'),
+        title: const Text('Notifications'),
       ),
       body: ListView.builder(
         itemCount: notifications.length,
@@ -40,20 +42,20 @@ class NotificationPage extends StatelessWidget {
   Widget _buildNotificationItem(
       BuildContext context, NotificationModel notification) {
     return Container(
-      padding: EdgeInsets.all(8.0),
-      margin: EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0),
+      padding: const EdgeInsets.all(8.0),
+      margin: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0),
       decoration: BoxDecoration(
         color: Colors.grey[200],
         borderRadius: BorderRadius.circular(12.0),
       ),
       child: ListTile(
-        leading: CircleAvatar(
+        leading: const CircleAvatar(
           // Placeholder image, replace with actual image source
-          backgroundImage: AssetImage('assets/doctor1.png'),
+          backgroundImage: AssetImage('assets/default.jpeg'),
         ),
         title: Text(
           notification.title,
-          style: TextStyle(
+          style: const TextStyle(
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -61,8 +63,8 @@ class NotificationPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(notification.body),
-            SizedBox(height: 8.0),
-            Row(
+            const SizedBox(height: 8.0),
+            const Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             ),
           ],
