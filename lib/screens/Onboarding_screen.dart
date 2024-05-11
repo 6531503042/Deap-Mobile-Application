@@ -4,6 +4,8 @@ import 'package:dentist_appointment/screens/home_page.dart';
 import 'package:flutter/material.dart';
 // import 'package:onboarding_app/onboarding_contents.dart';
 import '../utils/size_config.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({Key? key}) : super(key: key);
@@ -14,11 +16,20 @@ class OnboardingScreen extends StatefulWidget {
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
   late PageController _controller;
+  late SharedPreferences _prefs;
+  late bool _showOnboarding;
 
   @override
   void initState() {
-    _controller = PageController();
     super.initState();
+    _controller = PageController();
+    _initPrefs();
+  }
+
+  Future<void> _initPrefs() async {
+    _prefs = await SharedPreferences.getInstance();
+    _showOnboarding = _prefs.getBool('showOnboarding') ?? true;
+    setState(() {}); // Rebuild UI after prefs are loaded
   }
 
   int _currentPage = 0;
@@ -51,6 +62,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     SizeConfig().init(context);
     double width = SizeConfig.screenW!;
     double height = SizeConfig.screenH!;
+
+    if (!_showOnboarding) {
+      // If onboarding is already completed, navigate to the main screen
+      return AuthPage();
+    }
 
     return Scaffold(
       backgroundColor: colors[_currentPage],

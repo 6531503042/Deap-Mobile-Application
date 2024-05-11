@@ -196,16 +196,48 @@ class _LoginEmailFormState extends State<LoginEmailForm> {
                         );
                       } on FirebaseAuthException catch (e) {
                         if (e.code == 'user-not-found') {
+                          // Handle user-not-found exception
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
                               content: Text('No user found for that email.'),
                             ),
                           );
                         } else if (e.code == 'wrong-password') {
+                          // Handle wrong-password exception
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
                               content: Text(
                                   'Wrong password provided for that user.'),
+                            ),
+                          );
+                        } else if (e.code == 'invalid-email') {
+                          // Handle invalid-email exception
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Email address is malformed.'),
+                            ),
+                          );
+                        } else if (e.code == 'user-disabled') {
+                          // Handle user-disabled exception
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('This user has been disabled.'),
+                            ),
+                          );
+                        } else if (e.code == 'too-many-requests') {
+                          // Handle too-many-requests exception
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text(
+                                  'Too many attempts to sign in as this user.'),
+                            ),
+                          );
+                        } else {
+                          // Handle any other exceptions
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text(
+                                  'Unexpected firebase error, Please try again.'),
                             ),
                           );
                         }

@@ -246,7 +246,7 @@ class _RegisterPageState extends State<RegisterPage>
                                     Column(
                                       children: [
                                         Text(
-                                          "We're sorry about that.",
+                                          "Feature Unavailable",
                                           style: GoogleFonts.urbanist(
                                               fontSize: 20,
                                               fontWeight: FontWeight.w700),
@@ -256,7 +256,7 @@ class _RegisterPageState extends State<RegisterPage>
                                           height: 5,
                                         ),
                                         Text(
-                                          "This Feature Doesn't Ready.",
+                                          "This feature is not yet available in this version. Stay tuned for updates!",
                                           style: GoogleFonts.urbanist(
                                             color: const Color(0xff665c5d),
                                             fontSize: 14,

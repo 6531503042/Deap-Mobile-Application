@@ -492,6 +492,33 @@ class _RegEmailFormState extends State<RegEmailForm> {
                                 'The account already exists for that email.'),
                           ),
                         );
+                      } else if (e.code == 'invalid-email') {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Email address is malformed.'),
+                          ),
+                        );
+                      } else if (e.code == 'operation-not-allowed') {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content:
+                                Text('Email/password sign-in is disabled.'),
+                          ),
+                        );
+                      } else if (e.code == 'too-many-requests') {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text(
+                                'Too many attempts to sign in as this user.'),
+                          ),
+                        );
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text(
+                                'Unexpected firebase error, Please try again.'),
+                          ),
+                        );
                       }
                     } catch (e) {
                       ScaffoldMessenger.of(context).showSnackBar(

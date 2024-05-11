@@ -1,4 +1,5 @@
 import 'package:dentist_appointment/screens/NewPasswordForm.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -11,6 +12,46 @@ class ForgetPassPage extends StatefulWidget {
 }
 
 class _ForgetPassPageState extends State<ForgetPassPage> {
+final _emailController = TextEditingController();
+
+@override
+void dispose(){
+  _emailController.dispose();
+  super.dispose();
+}
+
+Future passwordReset() async {
+  try{
+    await FirebaseAuth.instance
+      .sendPasswordResetEmail(email: _emailController.text.trim());
+       {
+                   Navigator.push(
+                     context,
+                     MaterialPageRoute(
+                         builder: (context) => const NewPasswordForm()),
+                   );
+                 };
+      showDialog(
+      context: context,
+      builder: (context){
+        return AlertDialog(
+          content: Text("Password reset link sent! check your email")
+      );
+      },
+    );
+  } on FirebaseException catch (e) {
+    print(e);
+    showDialog(
+      context: context,
+      builder: (context){
+        return AlertDialog(
+          content: Text(e.message.toString())
+      );
+      },
+    );
+  }
+}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,6 +121,7 @@ class _ForgetPassPageState extends State<ForgetPassPage> {
                   fontWeight: FontWeight.w500,
                 ),
                 cursorColor: const Color.fromRGBO(40, 195, 176, 1),
+                controller: _emailController,
                 decoration: InputDecoration(
                     hintText: 'Enter your email',
                     filled: true,
@@ -102,14 +144,8 @@ class _ForgetPassPageState extends State<ForgetPassPage> {
               height: 180,
             ),
             Center(
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const NewPasswordForm()),
-                  );
-                }, //Fuction That Will Use After Press This Button
+              child: MaterialButton(
+                 onPressed: passwordReset ,
                 child: Container(
                   margin: const EdgeInsets.symmetric(horizontal: 80),
                   width: MediaQuery.of(context).size.width,

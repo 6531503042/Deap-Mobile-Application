@@ -12,9 +12,9 @@ class OnboardingContents {
 
 List<OnboardingContents> contents = [
   OnboardingContents(
-    title: "Welcome to your Dentist Appointment Application",
+    title: "Welcome to our Dentist Appointment Application",
     image: "assets/images-2.png",
-    desc: "This application make you esier to see your dentist.",
+    desc: "This application make you easier to see your dentist.",
   ),
   OnboardingContents(
     title: "Make your oral health better",

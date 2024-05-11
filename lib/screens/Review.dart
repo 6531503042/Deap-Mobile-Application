@@ -23,17 +23,17 @@ class _reViewState extends State<reView> {
               )
             ];
           },
-          body: Column(
+          body: const Column(
             children: [
               Row(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(left: 25, top: 15),
+                    padding: EdgeInsets.only(left: 25, top: 15),
                     child: ReviewItem(
                       username: 'Phumiphat Wongsathit',
                       rating: 4.5,
                       review: 'Great app, grear dentists, great everything.',
-                      avatarImage: 'assets/reviewer1.png',
+                      avatarImage: 'assets/default_user.png',
                     ),
                   ),
                 ],
@@ -42,12 +42,12 @@ class _reViewState extends State<reView> {
               Row(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(left: 25, top: 15),
+                    padding: EdgeInsets.only(left: 25, top: 15),
                     child: ReviewItem(
                       username: 'Ben handsome',
                       rating: 4.5,
                       review: 'Dentist have good communications!.',
-                      avatarImage: 'assets/reviewer1.png',
+                      avatarImage: 'assets/default_user.png',
                     ),
                   ),
                 ],
@@ -56,12 +56,12 @@ class _reViewState extends State<reView> {
               Row(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(left: 25, top: 15),
+                    padding: EdgeInsets.only(left: 25, top: 15),
                     child: ReviewItem(
                       username: 'Soft Saoyer',
                       rating: 4.5,
                       review: 'Nice experience.',
-                      avatarImage: 'assets/reviewer1.png',
+                      avatarImage: 'assets/default_user.png',
                     ),
                   ),
                 ],
@@ -70,12 +70,12 @@ class _reViewState extends State<reView> {
               Row(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(left: 25, top: 15),
+                    padding: EdgeInsets.only(left: 25, top: 15),
                     child: ReviewItem(
                       username: 'Kla kodteh',
                       rating: 4.5,
                       review: 'Everything is perfect!.',
-                      avatarImage: 'assets/reviewer1.png',
+                      avatarImage: 'assets/default_user.png',
                     ),
                   ),
                 ],
@@ -84,12 +84,12 @@ class _reViewState extends State<reView> {
               Row(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(left: 25, top: 15),
+                    padding: EdgeInsets.only(left: 25, top: 15),
                     child: ReviewItem(
                       username: 'Pee khongjing',
                       rating: 4.5,
                       review: 'I was not pain.',
-                      avatarImage: 'assets/reviewer1.png',
+                      avatarImage: 'assets/default_user.png',
                     ),
                   ),
                 ],

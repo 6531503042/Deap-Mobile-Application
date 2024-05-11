@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:dentist_appointment/screens/LoginPage.dart';
+import 'package:dentist_appointment/screens/RegisterPage.dart';
 import 'package:dentist_appointment/screens/home_page.dart';
 import 'package:dentist_appointment/service/google_sign_in_service.dart';
 import 'package:flutter/cupertino.dart';
@@ -108,11 +109,11 @@ class _OtherloginTapState extends State<OtherloginTap> {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const LoginPage()),
+                          builder: (context) => const RegisterPage()),
                     );
                   },
                   child: Text(
-                    'Login Now',
+                    'Register Now',
                     style: GoogleFonts.urbanist(
                       fontSize: 15,
                       fontWeight: FontWeight.w700,

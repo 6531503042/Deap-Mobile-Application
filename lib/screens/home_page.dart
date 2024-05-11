@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
       HomeTab(showHeader: _showHeader),
       DoctorTabInAppointment(),
       DoctorTab(),
-      AccountScreen(),
+      const AccountScreen(),
     ];
   }
 
@@ -57,7 +57,7 @@ class _HomePageState extends State<HomePage> {
                 ), // Must be user model not set name to display
               ),
               Text(
-                'Nimit', // Must be user model not set name to display
+                    'Dentist Appointment', // Must be user model not set name to display
                 style: GoogleFonts.urbanist(
                   fontSize: 15,
                   fontWeight: FontWeight.w500,
@@ -73,7 +73,7 @@ class _HomePageState extends State<HomePage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => NotificationPage()),
+                          builder: (context) => const NotificationPage()),
                 );
               },
             ),

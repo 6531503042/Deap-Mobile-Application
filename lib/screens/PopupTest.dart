@@ -21,24 +21,27 @@ class _PopupTestState extends State<PopupTest> {
           child: Container(
             height: 80,
             width: 200,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Colors.amberAccent,
             ),
-            child: Center(child: Text('Test')),
+            child: const Center(child: Text('Test')),
           ),
           onTap: () => showDialog(
             context: context,
             builder: (BuildContext context) {
               return AlertDialog(
-                backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+                backgroundColor: Colors.white,
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    side: BorderSide(
-                        color: Color.fromARGB(255, 173, 57, 61), width: 5)),
+                  borderRadius: BorderRadius.circular(20),
+                  side: const BorderSide(
+                    color: Colors.redAccent,
+                    width: 5,
+                  ),
+                ),
                 content: Container(
-                  margin: EdgeInsets.only(left: 10, right: 10, top: 30),
+                  margin: const EdgeInsets.only(left: 10, right: 10, top: 30),
                   height: 450,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Colors.transparent,
                   ),
                   child: Column(
@@ -49,14 +52,13 @@ class _PopupTestState extends State<PopupTest> {
                         height: 150,
                         width: 150,
                         decoration: BoxDecoration(
-                          gradient: LinearGradient(
+                          gradient: const LinearGradient(
                             begin: Alignment.centerLeft,
                             end: Alignment.centerRight,
                             colors: <Color>[
-                              Color.fromARGB(255, 255, 110, 115),
-                              Color.fromARGB(255, 173, 57, 61),
-                            ], // Gradient from https://learnui.design/tools/gradient-generator.html
-                            tileMode: TileMode.mirror,
+                              Colors.redAccent,
+                              Colors.pinkAccent,
+                            ],
                           ),
                           borderRadius: BorderRadius.circular(100),
                         ),
@@ -68,27 +70,26 @@ class _PopupTestState extends State<PopupTest> {
                               height: 130,
                               width: 130,
                               decoration: BoxDecoration(
-                                  gradient: LinearGradient(
-                                    begin: Alignment.centerLeft,
-                                    end: Alignment.centerRight,
-                                    colors: <Color>[
-                                      Color.fromARGB(0, 219, 219, 219),
-                                      Color.fromARGB(0, 250, 241, 241),
-                                      Color.fromARGB(0, 248, 229, 229),
-                                      Color.fromARGB(0, 252, 211, 211),
-                                      // Color.fromARGB(255, 255, 110, 115),
-                                      // Color.fromARGB(255, 173, 57, 61),
-                                    ], // Gradient from https://learnui.design/tools/gradient-generator.html
-                                  ),
-                                  borderRadius: BorderRadius.circular(100)),
+                                gradient: const LinearGradient(
+                                  begin: Alignment.centerLeft,
+                                  end: Alignment.centerRight,
+                                  colors: <Color>[
+                                    Color.fromARGB(0, 219, 219, 219),
+                                    Color.fromARGB(0, 250, 241, 241),
+                                    Color.fromARGB(0, 248, 229, 229),
+                                    Color.fromARGB(0, 252, 211, 211),
+                                  ],
+                                ),
+                                borderRadius: BorderRadius.circular(100),
+                              ),
                               child: Container(
-                                margin: EdgeInsets.only(bottom: 15),
-                                child: GradientIcon(
+                                margin: const EdgeInsets.only(bottom: 15),
+                                child: const GradientIcon(
                                   icon: Icons.close_rounded,
                                   gradient: LinearGradient(
                                     colors: [
-                                      Color.fromARGB(255, 255, 255, 255),
-                                      Color.fromARGB(255, 255, 255, 255),
+                                      Colors.white,
+                                      Colors.white,
                                     ],
                                     begin: Alignment.centerLeft,
                                     end: Alignment.centerRight,
@@ -104,8 +105,8 @@ class _PopupTestState extends State<PopupTest> {
                         width: 150,
                         height: 20,
                         decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 151, 145, 145),
-                          borderRadius: BorderRadius.all(
+                          color: Colors.grey[400],
+                          borderRadius: const BorderRadius.all(
                             Radius.elliptical(200, 30),
                           ),
                         ),
@@ -113,38 +114,37 @@ class _PopupTestState extends State<PopupTest> {
                       Column(
                         children: [
                           Text(
-                            "Booking Failed",
+                            "Feature Unavailable",
                             style: GoogleFonts.urbanist(
-                                fontSize: 20, fontWeight: FontWeight.w700),
+                              fontSize: 20,
+                              fontWeight: FontWeight.w700,
+                            ),
                             textAlign: TextAlign.center,
                           ),
-                          SizedBox(
-                            height: 5,
-                          ),
+                          const SizedBox(height: 5),
                           Text(
-                            "This Time Have Been Appointments",
+                            "This feature is not yet available in this version. Stay tuned for updates!",
                             style: GoogleFonts.urbanist(
-                              color: Color(0xff665c5d),
+                              color: Colors.grey[700],
                               fontSize: 14,
                               fontWeight: FontWeight.w600,
                             ),
                             textAlign: TextAlign.center,
                           ),
-                          SizedBox(
-                            height: 20,
-                          ),
+                          const SizedBox(height: 20),
                           GestureDetector(
                             onTap: () {
                               Navigator.pop(context);
                             },
                             child: Container(
-                              margin: EdgeInsets.symmetric(horizontal: 10),
+                              margin:
+                                  const EdgeInsets.symmetric(horizontal: 10),
                               height: 50,
                               decoration: BoxDecoration(
-                                gradient: LinearGradient(
+                                gradient: const LinearGradient(
                                   colors: [
-                                    Color.fromARGB(255, 255, 110, 115),
-                                    Color.fromARGB(255, 173, 57, 61),
+                                    Colors.redAccent,
+                                    Colors.pinkAccent,
                                   ],
                                   begin: Alignment.centerLeft,
                                   end: Alignment.centerRight,
@@ -154,11 +154,12 @@ class _PopupTestState extends State<PopupTest> {
                               ),
                               child: Center(
                                 child: Text(
-                                  'Learn More',
+                                  'OK',
                                   style: GoogleFonts.urbanist(
-                                      color: Colors.white,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w700),
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w700,
+                                  ),
                                 ),
                               ),
                             ),

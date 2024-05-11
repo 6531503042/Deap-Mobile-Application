@@ -40,14 +40,13 @@ dependencies:
   cloud_firestore: ^4.4.5
   fluttertoast: ^8.0.8
   google_sign_in: ^5.2.1
-  sign_in_with_apple: ^3.0.0
   gradient_icon: ^2.0.9
 
 flutter_icons: 
   android: true
   ios: true
-  image_path: "assets/app_icon.png"
-  iconPath: "assets/app_icon.png" 
+  image_path: "assets/DeapV2.png"
+  iconPath: "assets/DeapV2.png" 
 dev_dependencies:
   flutter_test:
     sdk: flutter
