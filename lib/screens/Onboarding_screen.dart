@@ -1,11 +1,10 @@
+import 'dart:ui';
+
 import 'package:dentist_appointment/models/onboarding_contents.dart';
 import 'package:dentist_appointment/screens/AuthPage.dart';
-import 'package:dentist_appointment/screens/home_page.dart';
+import 'package:dentist_appointment/utils/size_config.dart';
 import 'package:flutter/material.dart';
-// import 'package:onboarding_app/onboarding_contents.dart';
-import '../utils/size_config.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({Key? key}) : super(key: key);
@@ -33,21 +32,17 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   }
 
   int _currentPage = 0;
-  List colors = const [
-    Color.fromRGBO(248, 246, 244,1),
-    Color.fromRGBO(227, 244, 244,1),
-    Color.fromRGBO(196, 223, 223,1),
+  List<Color> colors = [
+    const Color.fromRGBO(248, 246, 244, 1),
+    const Color.fromRGBO(227, 244, 244, 1),
+    const Color.fromRGBO(196, 223, 223, 1),
   ];
 
-  AnimatedContainer _buildDots({
-    int? index,
-  }) {
+  AnimatedContainer _buildDotIndicator({int? index}) {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 200),
       decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(
-          Radius.circular(50),
-        ),
+        borderRadius: BorderRadius.all(Radius.circular(50)),
         color: Color(0xFF000000),
       ),
       margin: const EdgeInsets.only(right: 5),
@@ -65,7 +60,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
     if (!_showOnboarding) {
       // If onboarding is already completed, navigate to the main screen
-      return AuthPage();
+      return const AuthPage();
     }
 
     return Scaffold(
@@ -82,12 +77,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 itemCount: contents.length,
                 itemBuilder: (context, i) {
                   return Padding(
-                    padding: const EdgeInsets.all(40.0),
+                    padding: EdgeInsets.all(width * 0.05),
                     child: Column(
                       children: [
                         Image.asset(
                           contents[i].image,
-                          height: SizeConfig.blockV! * 35,
+                          height: height * 0.35,
                         ),
                         SizedBox(
                           height: (height >= 1000) ? 60 : 30,
@@ -98,7 +93,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           style: TextStyle(
                             fontFamily: "Mulish",
                             fontWeight: FontWeight.w600,
-                            fontSize: (width <= 550) ? 30 : 35,
+                            fontSize: width <= 550 ? 30 : 35,
                           ),
                         ),
                         const SizedBox(height: 15),
@@ -107,7 +102,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           style: TextStyle(
                             fontFamily: "Mulish",
                             fontWeight: FontWeight.w300,
-                            fontSize: (width <= 550) ? 17 : 25,
+                            fontSize: width <= 550 ? 17 : 25,
                           ),
                           textAlign: TextAlign.center,
                         )
@@ -117,7 +112,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 },
               ),
             ),
-            Expanded(
+            Flexible(
               flex: 1,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -126,40 +121,39 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: List.generate(
                       contents.length,
-                      (int index) => _buildDots(
-                        index: index,
-                      ),
+                      (int index) => _buildDotIndicator(index: index),
                     ),
                   ),
                   _currentPage + 1 == contents.length
                       ? Padding(
-                          padding: const EdgeInsets.all(30),
+                          padding: EdgeInsets.all(width * 0.05),
                           child: ElevatedButton(
                             onPressed: () {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => AuthPage()),
+                                  builder: (context) => const AuthPage(),
+                                ),
                               );
                             },
                             child: const Text("START"),
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Color.fromARGB(255, 23, 224, 157),
+                              backgroundColor:
+                                  const Color.fromARGB(255, 23, 224, 157),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(50),
                               ),
-                              padding: (width <= 550)
-                                  ? const EdgeInsets.symmetric(
-                                      horizontal: 100, vertical: 20)
-                                  : EdgeInsets.symmetric(
-                                      horizontal: width * 0.2, vertical: 25),
+                              padding: EdgeInsets.symmetric(
+                                horizontal: width * 0.2,
+                                vertical: height * 0.025,
+                              ),
                               textStyle:
-                                  TextStyle(fontSize: (width <= 550) ? 13 : 17),
+                                  TextStyle(fontSize: width <= 550 ? 13 : 17),
                             ),
                           ),
                         )
                       : Padding(
-                          padding: const EdgeInsets.all(30),
+                          padding: EdgeInsets.all(width * 0.05),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -169,13 +163,15 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                 },
                                 child: const Text(
                                   "SKIP",
-                                  style: TextStyle(color: Color.fromARGB(255, 23, 224, 157)),
+                                  style: TextStyle(
+                                      color: const Color.fromARGB(
+                                          255, 23, 224, 157)),
                                 ),
                                 style: TextButton.styleFrom(
                                   elevation: 0,
                                   textStyle: TextStyle(
                                     fontWeight: FontWeight.w600,
-                                    fontSize: (width <= 550) ? 13 : 17,
+                                    fontSize: width <= 550 ? 13 : 17,
                                   ),
                                 ),
                               ),
@@ -193,18 +189,17 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                     borderRadius: BorderRadius.circular(50),
                                   ),
                                   elevation: 0,
-                                  padding: (width <= 550)
-                                      ? const EdgeInsets.symmetric(
-                                          horizontal: 30, vertical: 20)
-                                      : const EdgeInsets.symmetric(
-                                          horizontal: 30, vertical: 25),
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 30,
+                                    vertical: 25,
+                                  ),
                                   textStyle: TextStyle(
-                                      fontSize: (width <= 550) ? 13 : 17),
+                                      fontSize: width <= 550 ? 13 : 17),
                                 ),
                               ),
                             ],
                           ),
-                        )
+                        ),
                 ],
               ),
             ),
