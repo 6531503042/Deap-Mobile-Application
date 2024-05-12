@@ -16,9 +16,15 @@ Deap is a mobile application that simplifies the process of scheduling and manag
 
 To get started with Deap, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/yourusername/Deap.git`
-2. Install dependencies: `npm install` or `yarn install`
-3. Run the application: `npm start` or `yarn start`
+1. Clone the repository: `git clone https://github.com/6531503042/Deap-Mobile-Application.git`
+2. Install dependencies: `flutter pub get`
+3. Run the application: `flutter run`
+
+## Technologies Used
+
+- Flutter for the mobile application development
+- Firebase for backend services such as authentication and database management
+
 
 ## Technologies Used
 
