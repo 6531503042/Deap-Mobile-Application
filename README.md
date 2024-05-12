@@ -1,5 +1,7 @@
 # Deap - Dentist Appointment App
 
+![Deap Logo](assets/DeapV2.png)
+
 Deap is a mobile application that simplifies the process of scheduling and managing dental appointments. Users can easily find and book appointments with dentists, manage their schedules, and leave reviews based on their experiences.
 
 ## Features
