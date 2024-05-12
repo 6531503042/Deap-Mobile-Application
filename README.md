@@ -45,6 +45,6 @@ For any questions or suggestions regarding Deap, please contact us at [your-emai
 
 ---
 
-![Example 1](assets/ex1.png)
-![Example 2](assets/ex2.png)
-![Example 3](assets/ex3.png)
+<img src="assets/ex1.png" alt="Example 1" width="200"/>
+<img src="assets/ex2.png" alt="Example 2" width="200"/>
+<img src="assets/ex3.png" alt="Example 3" width="200"/>
