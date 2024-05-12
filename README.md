@@ -45,4 +45,6 @@ For any questions or suggestions regarding Deap, please contact us at [your-emai
 
 ---
 
-**Note**: This README template is a general guide. Please customize it according to your project's specific features and requirements.
+![Example 1](assets/ex1.png)
+![Example 2](assets/ex2.png)
+![Example 3](assets/ex3.png)
