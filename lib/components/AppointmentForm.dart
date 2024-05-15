@@ -127,6 +127,14 @@ class _AppointmentFormState extends State<AppointmentForm> {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  Image.asset(
+                    'assets/verify.png',
+                    width: 100,
+                    height: 100,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
                   const Text('Your appointment is confirmed for'),
                   Text(
                     '${DateFormat.MMMM().format(selectedDate!)} ${selectedDate!.day}, ${selectedDate!.year}, at $selectedTime.',

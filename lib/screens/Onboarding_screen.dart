@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import '../utils/size_config.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({Key? key}) : super(key: key);
 
@@ -34,9 +33,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   int _currentPage = 0;
   List colors = const [
-    Color.fromRGBO(248, 246, 244,1),
-    Color.fromRGBO(227, 244, 244,1),
-    Color.fromRGBO(196, 223, 223,1),
+    Color.fromRGBO(248, 246, 244, 1),
+    Color.fromRGBO(227, 244, 244, 1),
+    Color.fromRGBO(196, 223, 223, 1),
   ];
 
   AnimatedContainer _buildDots({
@@ -107,7 +106,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           style: TextStyle(
                             fontFamily: "Mulish",
                             fontWeight: FontWeight.w300,
-                            fontSize: (width <= 550) ? 17 : 25,
+                            fontSize: (width <= 550) ? 14 : 23,
                           ),
                           textAlign: TextAlign.center,
                         )
@@ -144,7 +143,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             },
                             child: const Text("START"),
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Color.fromARGB(255, 23, 224, 157),
+                              backgroundColor:
+                                  Color.fromARGB(255, 23, 224, 157),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(50),
                               ),
@@ -169,7 +169,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                 },
                                 child: const Text(
                                   "SKIP",
-                                  style: TextStyle(color: Color.fromARGB(255, 23, 224, 157)),
+                                  style: TextStyle(
+                                      color: Color.fromARGB(255, 23, 224, 157)),
                                 ),
                                 style: TextButton.styleFrom(
                                   elevation: 0,
@@ -188,7 +189,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                 },
                                 child: const Text("NEXT"),
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: const Color.fromARGB(255, 23, 224, 157),
+                                  backgroundColor:
+                                      const Color.fromARGB(255, 23, 224, 157),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(50),
                                   ),

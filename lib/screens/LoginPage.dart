@@ -376,7 +376,7 @@ class _LoginPageState extends State<LoginPage>
               Container(
                 height: 556,
                 child: TabBarView(
-                  // physics: const NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   controller: _tabController,
                   children: [
                     const LoginEmailForm(),

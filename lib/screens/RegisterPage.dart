@@ -377,7 +377,7 @@ class _RegisterPageState extends State<RegisterPage>
               Container(
                 height: MediaQuery.of(context).size.height + 172,
                 child: TabBarView(
-                  // physics: const NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   controller: _tabController,
                   children: [RegEmailForm(), TelephoneForm()],
                 ),

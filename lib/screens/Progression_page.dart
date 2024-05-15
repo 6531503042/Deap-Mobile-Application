@@ -71,25 +71,25 @@ class _Regression_PageState extends State<Regression_Page>
     // You can replace this logic with your own logic to fetch description data
     setState(() {
       if (newDate.day == 1) {
-        description = 'Appointments 1st time to Oral examination';
-        dentist = 'Dr. Marc M';
-        no = '#5644';
+        description = '';
+        dentist = '';
+        no = '';
       } else if (newDate.day == 8) {
-        description = 'Appointments 2nd time to Oral examination';
-        dentist = 'Dr. Praa';
-        no = '#5652';
+        description = '';
+        dentist = '';
+        no = '';
       } else if (newDate.day == 15) {
-        description = 'Appointments to play game with dentist';
-        dentist = 'Dr. Mensah T';
-        no = '#5666';
+        description = '';
+        dentist = '';
+        no = '';
       } else if (newDate.day == 20) {
-        description = 'Appointments to only talk with dentist';
-        dentist = 'Dr. Bellamy R';
-        no = '#6000';
+        description = '';
+        dentist = '';
+        no = '';
       } else {
-        description = 'No appointments';
-        dentist = 'No appointments';
-        no = '#XXXX';
+        description = '';
+        dentist = '';
+        no = '';
       }
     });
   }
