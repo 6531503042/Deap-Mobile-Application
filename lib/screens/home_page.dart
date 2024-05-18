@@ -115,7 +115,7 @@ class _HomePageState extends State<HomePage> {
 class HomeTab extends StatelessWidget {
   final bool showHeader;
 
-  const HomeTab({Key? key, required this.showHeader}) : super(key: key);
+  const HomeTab({super.key, required this.showHeader});
 
   @override
   Widget build(BuildContext context) {

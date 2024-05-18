@@ -1,11 +1,15 @@
 import 'package:dentist_appointment/firebase_options.dart';
+import 'package:dentist_appointment/screens/ForgetPassPage.dart';
+import 'package:dentist_appointment/screens/LoginPage.dart';
 import 'package:dentist_appointment/screens/Onboarding_screen.dart';
+import 'package:dentist_appointment/screens/AuthPage.dart';
+import 'package:dentist_appointment/screens/RegisterPage.dart';
+import 'package:dentist_appointment/screens/home_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
-import 'package:dentist_appointment/screens/AuthPage.dart';
 import 'theme_config.dart';
 import 'theme_provider.dart';
 import 'localization/Language/languages.dart'; // Import your language utilities
@@ -54,7 +58,15 @@ class MyApp extends StatelessWidget {
             GlobalWidgetsLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,
           ],
-          home: const OnboardingScreen(),
+          initialRoute: '/',
+          routes: {
+            '/': (context) => const OnboardingScreen(),
+            '/auth': (context) => const AuthPage(),
+            'login': (context) => const LoginPage(),
+            'register': (context) => const RegisterPage(),
+            '/home': (context) => HomePage(),
+            'forget': (context) => const ForgetPassPage(),
+          },
         );
       },
     );
